@@ -95,8 +95,8 @@
 		941FD7AD23625EFA00154668 /* Quick-E-Logger */ = {
 			isa = PBXGroup;
 			children = (
-				941FD7AE23625EFA00154668 /* Quick_E_Logger.h */,
-				941FD7AF23625EFA00154668 /* Info.plist */,
+				948E1E162362617C0089F8FB /* Source */,
+				948E1E17236261830089F8FB /* Supporting Files */,
 			);
 			path = "Quick-E-Logger";
 			sourceTree = "<group>";
@@ -105,9 +105,33 @@
 			isa = PBXGroup;
 			children = (
 				941FD7BC23625F3300154668 /* Specs.swift */,
-				941FD7BE23625F3300154668 /* Info.plist */,
+				948E1E18236261B20089F8FB /* Supporting FIles */,
 			);
 			path = Specs;
+			sourceTree = "<group>";
+		};
+		948E1E162362617C0089F8FB /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				941FD7AE23625EFA00154668 /* Quick_E_Logger.h */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		948E1E17236261830089F8FB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				941FD7AF23625EFA00154668 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		948E1E18236261B20089F8FB /* Supporting FIles */ = {
+			isa = PBXGroup;
+			children = (
+				941FD7BE23625F3300154668 /* Info.plist */,
+			);
+			path = "Supporting FIles";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -412,7 +436,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Quick-E-Logger/Info.plist";
+				INFOPLIST_FILE = "Quick-E-Logger/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -436,7 +460,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Quick-E-Logger/Info.plist";
+				INFOPLIST_FILE = "Quick-E-Logger/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -458,7 +482,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = Specs/Info.plist;
+				INFOPLIST_FILE = "Specs/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -479,7 +503,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = Specs/Info.plist;
+				INFOPLIST_FILE = "Specs/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
