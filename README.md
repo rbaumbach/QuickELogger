@@ -1,4 +1,25 @@
-# Quick-E-Logger
+# Quick-E-Logger [![License](https://img.shields.io/dub/l/vibe-d.svg)](https://github.com/rbaumbach/InstagramSimpleOAuth/blob/master/MIT-LICENSE.txt)
+
+A quick and simple way to log JSON log messages to disk in your iPhone or iPad app.
+
+## Adding Quick-E-Logger to your project
+
+### Clone from Github
+
+1.  Clone repository from github and copy files directly, or add it as a git submodule.
+2.  Add all files from `Source` directory to your project.
+
+## How To
+
+TBA
+
+### Example Usage
+
+TBA
+
+### Gotchas
+
+TBA
 
 ## Testing
 
