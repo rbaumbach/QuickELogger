@@ -26,6 +26,7 @@
 		946E73062363EC0500694575 /* FakeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E73052363EC0500694575 /* FakeError.swift */; };
 		946E73082363F1D800694575 /* FoundationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E73072363F1D800694575 /* FoundationExtensions.swift */; };
 		946E73102364A99000694575 /* QuickELoggerIntegrationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E730F2364A99000694575 /* QuickELoggerIntegrationSpec.swift */; };
+		946E731A2364ACA800694575 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E73192364ACA800694575 /* Utils.swift */; };
 		CA5EE0F5151C9A5DD71795D3 /* Pods_IntegrationSpecs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E45B2BCF7E8F4447D2BD12 /* Pods_IntegrationSpecs.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +77,7 @@
 		946E730D2364A99000694575 /* IntegrationSpecs.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntegrationSpecs.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		946E730F2364A99000694575 /* QuickELoggerIntegrationSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickELoggerIntegrationSpec.swift; sourceTree = "<group>"; };
 		946E73112364A99000694575 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		946E73192364ACA800694575 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		D8E45B2BCF7E8F4447D2BD12 /* Pods_IntegrationSpecs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IntegrationSpecs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -221,6 +223,7 @@
 		946E730E2364A99000694575 /* IntegrationSpecs */ = {
 			isa = PBXGroup;
 			children = (
+				946E73182364AC8D00694575 /* Utils */,
 				946E730F2364A99000694575 /* QuickELoggerIntegrationSpec.swift */,
 				946E73172364A9CA00694575 /* Supporting Files */,
 			);
@@ -233,6 +236,14 @@
 				946E73112364A99000694575 /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		946E73182364AC8D00694575 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				946E73192364ACA800694575 /* Utils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		D817C3C085CFC4CD55B7EEE3 /* Pods */ = {
@@ -490,6 +501,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				946E73102364A99000694575 /* QuickELoggerIntegrationSpec.swift in Sources */,
+				946E731A2364ACA800694575 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
