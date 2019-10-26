@@ -30,7 +30,7 @@ class FakeJSONDecoder<T>: JSONDecoderProtocol {
         }
     }
     
-    func decode<T>(_ type: T.Type, from data: Data) throws -> T where T : Decodable {
+    func decode<T>(_ type: T.Type, from data: Data) throws -> T where T: Decodable {
         capturedDecodeTypeAsString = "\(T.Type.self)"
         capturedDecodeData = data
         

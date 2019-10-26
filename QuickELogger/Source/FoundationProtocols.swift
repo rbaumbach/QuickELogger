@@ -36,7 +36,7 @@ protocol JSONEncoderProtocol {
     var outputFormatting: JSONEncoder.OutputFormatting { get set }
     var dateEncodingStrategy: JSONEncoder.DateEncodingStrategy { get set }
     
-    func encode<T>(_ value: T) throws -> Data where T : Encodable
+    func encode<T>(_ value: T) throws -> Data where T: Encodable
 }
 
 extension JSONEncoder: JSONEncoderProtocol { }
@@ -46,7 +46,7 @@ extension JSONEncoder: JSONEncoderProtocol { }
 protocol JSONDecoderProtocol {
     var dateDecodingStrategy: JSONDecoder.DateDecodingStrategy { get set }
     
-    func decode<T>(_ type: T.Type, from data: Data) throws -> T where T : Decodable
+    func decode<T>(_ type: T.Type, from data: Data) throws -> T where T: Decodable
 }
 
 extension JSONDecoder: JSONDecoderProtocol { }

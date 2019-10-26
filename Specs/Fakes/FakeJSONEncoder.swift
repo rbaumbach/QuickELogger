@@ -37,7 +37,7 @@ class FakeJSONEncoder: JSONEncoderProtocol {
         }
     }
     
-    func encode<T>(_ value: T) throws -> Data where T : Encodable {
+    func encode<T>(_ value: T) throws -> Data where T: Encodable {
         capturedEncodeValue = value
         
         return stubbedEncodeData
