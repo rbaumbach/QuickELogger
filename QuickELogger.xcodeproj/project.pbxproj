@@ -25,6 +25,8 @@
 		946E73042363EA4700694575 /* FakeDataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E73032363EA4700694575 /* FakeDataUtils.swift */; };
 		946E73062363EC0500694575 /* FakeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E73052363EC0500694575 /* FakeError.swift */; };
 		946E73082363F1D800694575 /* FoundationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E73072363F1D800694575 /* FoundationExtensions.swift */; };
+		946E73102364A99000694575 /* QuickELoggerIntegrationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E730F2364A99000694575 /* QuickELoggerIntegrationSpec.swift */; };
+		CA5EE0F5151C9A5DD71795D3 /* Pods_IntegrationSpecs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E45B2BCF7E8F4447D2BD12 /* Pods_IntegrationSpecs.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,10 +37,19 @@
 			remoteGlobalIDString = 942059DC2363B73D0081BE92;
 			remoteInfo = QuickELogger;
 		};
+		946E73122364A99000694575 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 942059D52363B73D0081BE92 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 942059DC2363B73D0081BE92;
+			remoteInfo = QuickELogger;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		003606E0FDC3E5E88DF5C111 /* Pods-Specs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Specs.release.xcconfig"; path = "Target Support Files/Pods-Specs/Pods-Specs.release.xcconfig"; sourceTree = "<group>"; };
+		266CE3AAAC790A23FE18FF91 /* Pods-IntegrationSpecs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IntegrationSpecs.debug.xcconfig"; path = "Target Support Files/Pods-IntegrationSpecs/Pods-IntegrationSpecs.debug.xcconfig"; sourceTree = "<group>"; };
+		6EE858F4CEB0F158A6FBDE03 /* Pods-IntegrationSpecs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IntegrationSpecs.release.xcconfig"; path = "Target Support Files/Pods-IntegrationSpecs/Pods-IntegrationSpecs.release.xcconfig"; sourceTree = "<group>"; };
 		794676E5BEA843B04ACCC6C8 /* Pods_Specs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Specs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F1D8163FBF9F63F58F6657E /* Pods-Specs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Specs.debug.xcconfig"; path = "Target Support Files/Pods-Specs/Pods-Specs.debug.xcconfig"; sourceTree = "<group>"; };
 		942059DD2363B73D0081BE92 /* QuickELogger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickELogger.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +73,10 @@
 		946E73032363EA4700694575 /* FakeDataUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDataUtils.swift; sourceTree = "<group>"; };
 		946E73052363EC0500694575 /* FakeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeError.swift; sourceTree = "<group>"; };
 		946E73072363F1D800694575 /* FoundationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationExtensions.swift; sourceTree = "<group>"; };
+		946E730D2364A99000694575 /* IntegrationSpecs.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntegrationSpecs.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		946E730F2364A99000694575 /* QuickELoggerIntegrationSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickELoggerIntegrationSpec.swift; sourceTree = "<group>"; };
+		946E73112364A99000694575 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8E45B2BCF7E8F4447D2BD12 /* Pods_IntegrationSpecs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IntegrationSpecs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +95,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		946E730A2364A99000694575 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA5EE0F5151C9A5DD71795D3 /* Pods_IntegrationSpecs.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -87,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				794676E5BEA843B04ACCC6C8 /* Pods_Specs.framework */,
+				D8E45B2BCF7E8F4447D2BD12 /* Pods_IntegrationSpecs.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -96,6 +120,7 @@
 			children = (
 				942059DF2363B73D0081BE92 /* QuickELogger */,
 				94205A052363B9F20081BE92 /* Specs */,
+				946E730E2364A99000694575 /* IntegrationSpecs */,
 				942059DE2363B73D0081BE92 /* Products */,
 				D817C3C085CFC4CD55B7EEE3 /* Pods */,
 				89D8AE415839FFC778D27A9A /* Frameworks */,
@@ -107,6 +132,7 @@
 			children = (
 				942059DD2363B73D0081BE92 /* QuickELogger.app */,
 				94205A042363B9F20081BE92 /* Specs.xctest */,
+				946E730D2364A99000694575 /* IntegrationSpecs.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -164,8 +190,8 @@
 		94205A052363B9F20081BE92 /* Specs */ = {
 			isa = PBXGroup;
 			children = (
-				946E72FA2363BEA900694575 /* Fakes */,
 				946E72F82363BE4C00694575 /* QuickELoggerEngineSpec.swift */,
+				946E72FA2363BEA900694575 /* Fakes */,
 				94205A0E2363B9F70081BE92 /* Supporting Files */,
 			);
 			path = Specs;
@@ -192,11 +218,30 @@
 			path = Fakes;
 			sourceTree = "<group>";
 		};
+		946E730E2364A99000694575 /* IntegrationSpecs */ = {
+			isa = PBXGroup;
+			children = (
+				946E730F2364A99000694575 /* QuickELoggerIntegrationSpec.swift */,
+				946E73172364A9CA00694575 /* Supporting Files */,
+			);
+			path = IntegrationSpecs;
+			sourceTree = "<group>";
+		};
+		946E73172364A9CA00694575 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				946E73112364A99000694575 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		D817C3C085CFC4CD55B7EEE3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				8F1D8163FBF9F63F58F6657E /* Pods-Specs.debug.xcconfig */,
 				003606E0FDC3E5E88DF5C111 /* Pods-Specs.release.xcconfig */,
+				266CE3AAAC790A23FE18FF91 /* Pods-IntegrationSpecs.debug.xcconfig */,
+				6EE858F4CEB0F158A6FBDE03 /* Pods-IntegrationSpecs.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -241,6 +286,26 @@
 			productReference = 94205A042363B9F20081BE92 /* Specs.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		946E730C2364A99000694575 /* IntegrationSpecs */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 946E73142364A99000694575 /* Build configuration list for PBXNativeTarget "IntegrationSpecs" */;
+			buildPhases = (
+				5885C7E4F0C82D437946C869 /* [CP] Check Pods Manifest.lock */,
+				946E73092364A99000694575 /* Sources */,
+				946E730A2364A99000694575 /* Frameworks */,
+				946E730B2364A99000694575 /* Resources */,
+				90206D9824EA47A72BC24372 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				946E73132364A99000694575 /* PBXTargetDependency */,
+			);
+			name = IntegrationSpecs;
+			productName = IntegrationSpecs;
+			productReference = 946E730D2364A99000694575 /* IntegrationSpecs.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -254,6 +319,10 @@
 						CreatedOnToolsVersion = 11.1;
 					};
 					94205A032363B9F20081BE92 = {
+						CreatedOnToolsVersion = 11.1;
+						TestTargetID = 942059DC2363B73D0081BE92;
+					};
+					946E730C2364A99000694575 = {
 						CreatedOnToolsVersion = 11.1;
 						TestTargetID = 942059DC2363B73D0081BE92;
 					};
@@ -274,6 +343,7 @@
 			targets = (
 				942059DC2363B73D0081BE92 /* QuickELogger */,
 				94205A032363B9F20081BE92 /* Specs */,
+				946E730C2364A99000694575 /* IntegrationSpecs */,
 			);
 		};
 /* End PBXProject section */
@@ -296,9 +366,55 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		946E730B2364A99000694575 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		5885C7E4F0C82D437946C869 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IntegrationSpecs-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		90206D9824EA47A72BC24372 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IntegrationSpecs/Pods-IntegrationSpecs-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IntegrationSpecs/Pods-IntegrationSpecs-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IntegrationSpecs/Pods-IntegrationSpecs-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A8D4AD44BB758A9116C329EF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -369,6 +485,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		946E73092364A99000694575 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				946E73102364A99000694575 /* QuickELoggerIntegrationSpec.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -376,6 +500,11 @@
 			isa = PBXTargetDependency;
 			target = 942059DC2363B73D0081BE92 /* QuickELogger */;
 			targetProxy = 94205A092363B9F20081BE92 /* PBXContainerItemProxy */;
+		};
+		946E73132364A99000694575 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 942059DC2363B73D0081BE92 /* QuickELogger */;
+			targetProxy = 946E73122364A99000694575 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -603,6 +732,48 @@
 			};
 			name = Release;
 		};
+		946E73152364A99000694575 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 266CE3AAAC790A23FE18FF91 /* Pods-IntegrationSpecs.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "IntegrationSpecs/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = teamthick.IntegrationSpecs;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuickELogger.app/QuickELogger";
+			};
+			name = Debug;
+		};
+		946E73162364A99000694575 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6EE858F4CEB0F158A6FBDE03 /* Pods-IntegrationSpecs.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "IntegrationSpecs/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = teamthick.IntegrationSpecs;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuickELogger.app/QuickELogger";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -629,6 +800,15 @@
 			buildConfigurations = (
 				94205A0C2363B9F20081BE92 /* Debug */,
 				94205A0D2363B9F20081BE92 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		946E73142364A99000694575 /* Build configuration list for PBXNativeTarget "IntegrationSpecs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				946E73152364A99000694575 /* Debug */,
+				946E73162364A99000694575 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

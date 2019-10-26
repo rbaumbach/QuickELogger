@@ -8,3 +8,8 @@ target :Specs do
     pod 'Quick'
     pod 'Nimble'
 end
+
+target :IntegrationSpecs do
+    pod 'Quick'
+    pod 'Nimble'
+end
