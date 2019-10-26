@@ -21,7 +21,7 @@ platform :ios do
   end
 
   desc "Runs all the tests"
-  lane :run_ci_tasks do
+  lane :run_all_specs do
     swiftlint(strict: true,
               quiet: true,
               config_file: ".swiftlint.yml",
