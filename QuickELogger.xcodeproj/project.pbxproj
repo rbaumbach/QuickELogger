@@ -13,7 +13,18 @@
 		942059E82363B73D0081BE92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 942059E62363B73D0081BE92 /* Main.storyboard */; };
 		942059EA2363B73E0081BE92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 942059E92363B73E0081BE92 /* Assets.xcassets */; };
 		942059ED2363B73E0081BE92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 942059EB2363B73E0081BE92 /* LaunchScreen.storyboard */; };
-		94205A072363B9F20081BE92 /* Specs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94205A062363B9F20081BE92 /* Specs.swift */; };
+		946E72F42363BDF800694575 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E72F02363BDF800694575 /* Utils.swift */; };
+		946E72F52363BDF800694575 /* QuickELogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E72F12363BDF800694575 /* QuickELogger.swift */; };
+		946E72F62363BDF800694575 /* FoundationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E72F22363BDF800694575 /* FoundationProtocols.swift */; };
+		946E72F72363BDF800694575 /* QuickELoggerEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E72F32363BDF800694575 /* QuickELoggerEngine.swift */; };
+		946E72F92363BE4C00694575 /* QuickELoggerEngineSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E72F82363BE4C00694575 /* QuickELoggerEngineSpec.swift */; };
+		946E72FC2363BEDB00694575 /* FakeJSONEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E72FB2363BEDB00694575 /* FakeJSONEncoder.swift */; };
+		946E72FE2363BEE900694575 /* FakeJSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E72FD2363BEE900694575 /* FakeJSONDecoder.swift */; };
+		946E73002363BF0F00694575 /* FakeFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E72FF2363BF0F00694575 /* FakeFileManager.swift */; };
+		946E73022363BF2A00694575 /* FakeUUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E73012363BF2A00694575 /* FakeUUID.swift */; };
+		946E73042363EA4700694575 /* FakeDataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E73032363EA4700694575 /* FakeDataUtils.swift */; };
+		946E73062363EC0500694575 /* FakeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E73052363EC0500694575 /* FakeError.swift */; };
+		946E73082363F1D800694575 /* FoundationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E73072363F1D800694575 /* FoundationExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +49,19 @@
 		942059EC2363B73E0081BE92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		942059EE2363B73E0081BE92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94205A042363B9F20081BE92 /* Specs.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Specs.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		94205A062363B9F20081BE92 /* Specs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Specs.swift; sourceTree = "<group>"; };
 		94205A082363B9F20081BE92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		946E72F02363BDF800694575 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		946E72F12363BDF800694575 /* QuickELogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickELogger.swift; sourceTree = "<group>"; };
+		946E72F22363BDF800694575 /* FoundationProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationProtocols.swift; sourceTree = "<group>"; };
+		946E72F32363BDF800694575 /* QuickELoggerEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickELoggerEngine.swift; sourceTree = "<group>"; };
+		946E72F82363BE4C00694575 /* QuickELoggerEngineSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickELoggerEngineSpec.swift; sourceTree = "<group>"; };
+		946E72FB2363BEDB00694575 /* FakeJSONEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeJSONEncoder.swift; sourceTree = "<group>"; };
+		946E72FD2363BEE900694575 /* FakeJSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeJSONDecoder.swift; sourceTree = "<group>"; };
+		946E72FF2363BF0F00694575 /* FakeFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeFileManager.swift; sourceTree = "<group>"; };
+		946E73012363BF2A00694575 /* FakeUUID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeUUID.swift; sourceTree = "<group>"; };
+		946E73032363EA4700694575 /* FakeDataUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDataUtils.swift; sourceTree = "<group>"; };
+		946E73052363EC0500694575 /* FakeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeError.swift; sourceTree = "<group>"; };
+		946E73072363F1D800694575 /* FoundationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +125,11 @@
 		942059F42363B7580081BE92 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				946E73072363F1D800694575 /* FoundationExtensions.swift */,
+				946E72F22363BDF800694575 /* FoundationProtocols.swift */,
+				946E72F12363BDF800694575 /* QuickELogger.swift */,
+				946E72F32363BDF800694575 /* QuickELoggerEngine.swift */,
+				946E72F02363BDF800694575 /* Utils.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -137,7 +164,8 @@
 		94205A052363B9F20081BE92 /* Specs */ = {
 			isa = PBXGroup;
 			children = (
-				94205A062363B9F20081BE92 /* Specs.swift */,
+				946E72FA2363BEA900694575 /* Fakes */,
+				946E72F82363BE4C00694575 /* QuickELoggerEngineSpec.swift */,
 				94205A0E2363B9F70081BE92 /* Supporting Files */,
 			);
 			path = Specs;
@@ -149,6 +177,19 @@
 				94205A082363B9F20081BE92 /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		946E72FA2363BEA900694575 /* Fakes */ = {
+			isa = PBXGroup;
+			children = (
+				946E73032363EA4700694575 /* FakeDataUtils.swift */,
+				946E72FF2363BF0F00694575 /* FakeFileManager.swift */,
+				946E72FD2363BEE900694575 /* FakeJSONDecoder.swift */,
+				946E72FB2363BEDB00694575 /* FakeJSONEncoder.swift */,
+				946E73012363BF2A00694575 /* FakeUUID.swift */,
+				946E73052363EC0500694575 /* FakeError.swift */,
+			);
+			path = Fakes;
 			sourceTree = "<group>";
 		};
 		D817C3C085CFC4CD55B7EEE3 /* Pods */ = {
@@ -304,8 +345,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				946E73082363F1D800694575 /* FoundationExtensions.swift in Sources */,
 				942059E52363B73D0081BE92 /* ViewController.swift in Sources */,
+				946E72F72363BDF800694575 /* QuickELoggerEngine.swift in Sources */,
+				946E72F62363BDF800694575 /* FoundationProtocols.swift in Sources */,
 				942059E12363B73D0081BE92 /* AppDelegate.swift in Sources */,
+				946E72F42363BDF800694575 /* Utils.swift in Sources */,
+				946E72F52363BDF800694575 /* QuickELogger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,7 +359,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94205A072363B9F20081BE92 /* Specs.swift in Sources */,
+				946E73022363BF2A00694575 /* FakeUUID.swift in Sources */,
+				946E72FE2363BEE900694575 /* FakeJSONDecoder.swift in Sources */,
+				946E73042363EA4700694575 /* FakeDataUtils.swift in Sources */,
+				946E72F92363BE4C00694575 /* QuickELoggerEngineSpec.swift in Sources */,
+				946E73062363EC0500694575 /* FakeError.swift in Sources */,
+				946E73002363BF0F00694575 /* FakeFileManager.swift in Sources */,
+				946E72FC2363BEDB00694575 /* FakeJSONEncoder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
