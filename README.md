@@ -26,7 +26,7 @@ import QuickELogger
 
 let logger = QuickELogger()
 
-logger(message: "Tacos > Burritos", type: .info)
+logger(message: "Black beans > Pinto beans", type: .info)
 ```
 
 ### Gotchas
