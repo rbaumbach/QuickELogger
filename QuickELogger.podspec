@@ -3,7 +3,7 @@ Pod::Spec.new do |spec|
   spec.version               = '0.0.1'
   spec.summary               = 'A quick and simple way to log JSON log messages to disk in your iPhone or iPad app'
   spec.homepage              = 'https://github.com/rbaumbach/Quick-E-Logger'
-  spec.license               = 'MIT'
+  spec.license               = { :type => 'MIT', :file => 'MIT-LICENSE.txt' }
   spec.author                = { 'Ryan Baumbach' => 'github@ryan.codes' }
   spec.source                = { :git => 'https://github.com/rbaumbach/Quick-E-Logger.git', :tag => spec.version.to_s }
   spec.requires_arc          = true
