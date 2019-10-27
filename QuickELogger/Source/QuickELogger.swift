@@ -51,7 +51,7 @@ public class QuickELogger: NSObject, QuickELoggerProtocol {
     
     // MARK: - Init methods
     
-    public init(filename: String = "Quick-E-Logger") {
+    public init(filename: String = "QuickELogger") {
         self.filename = filename
         self.engine = QuickELoggerEngine(filename: filename)
     }

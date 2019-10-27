@@ -21,7 +21,7 @@ func emptyDocumentsDirectory() {
     }
 }
 
-func getLogMessages(filename: String = "Quick-E-Logger") -> [LogMessage] {
+func getLogMessages(filename: String = "QuickELogger") -> [LogMessage] {
     let fullPathOfJSONFile = fullJSONFilepath(filename: filename)
     
     guard let jsonData = try? Data(contentsOf: fullPathOfJSONFile, options: .alwaysMapped) else {
