@@ -11,8 +11,9 @@ A quick and simple way to log JSON log messages to disk in your iPhone or iPad a
 
 ## How To
 
+* Import `QuickELogger`.
 * Create an instance of `QuickELogger`, and then it's as simple as calling `log(:message:type)`.
-* This logger has the following (pretty standard) log types: `verbose, info, debug, warn, error`
+* This logger has the following (pretty standard) log types: `verbose, info, debug, warn, error`.
 
 Note: The file is saved in the `/Documents` directory.
 
@@ -21,6 +22,8 @@ Additional note: By default the filename is `Quick-E-Logger.json`.  You can spec
 ### Example Usage
 
 ```swift
+import QuickELogger
+
 let logger = QuickELogger()
 
 logger(message: "Tacos > Burritos", type: .info)
