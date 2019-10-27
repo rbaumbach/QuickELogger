@@ -1,4 +1,4 @@
-# QuickELogger [![License](https://img.shields.io/dub/l/vibe-d.svg)](https://github.com/rbaumbach/InstagramSimpleOAuth/blob/master/MIT-LICENSE.txt)
+# QuickELogger [![Bitrise](https://app.bitrise.io/app/c7517344c4df3fb0/status.svg?token=At32U3i-V_TdPJEvW2yYOQ&branch=master)](https://app.bitrise.io/app/c7517344c4df3fb0) [![License](https://img.shields.io/dub/l/vibe-d.svg)](https://github.com/rbaumbach/InstagramSimpleOAuth/blob/master/MIT-LICENSE.txt)
 
 A quick and simple way to log JSON log messages to disk in your iPhone or iPad app.
 
