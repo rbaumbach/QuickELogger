@@ -21,19 +21,6 @@
 
 import Foundation
 
-struct LogMessage: Equatable, Codable {
-    var id: String
-    var timeStamp: Date
-    var type: LogType
-    var message: String
-}
-
-enum LogType: String, Equatable, Codable {
-    case info
-    case debug
-    case error
-}
-
 protocol QuickELoggerEngineProtocol {
     func log(message: String, type: LogType, currentDate: Date)
 }

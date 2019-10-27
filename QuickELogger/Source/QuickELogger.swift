@@ -21,14 +21,27 @@
 
 import Foundation
 
-protocol QuickELoggerProtocol {
+public struct LogMessage: Equatable, Codable {
+    var id: String
+    var timeStamp: Date
+    var type: LogType
+    var message: String
+}
+
+public enum LogType: String, Equatable, Codable {
+    case info
+    case debug
+    case error
+}
+
+public protocol QuickELoggerProtocol {
     func log(message: String, type: LogType)
 }
 
-class QuickELogger: NSObject, QuickELoggerProtocol {
+public class QuickELogger: NSObject, QuickELoggerProtocol {
     // MARK: - Readonly properties
     
-    let filename: String
+    public let filename: String
     
     // MARK: - Private properties
     
@@ -36,14 +49,14 @@ class QuickELogger: NSObject, QuickELoggerProtocol {
     
     // MARK: - Init methods
     
-    init(filename: String = "Quick-E-Logger") {
+    public init(filename: String = "Quick-E-Logger") {
         self.filename = filename
         self.engine = QuickELoggerEngine(filename: filename)
     }
     
     // MARK: - Public methods
     
-    func log(message: String, type: LogType) {
+    public func log(message: String, type: LogType) {
         engine.log(message: message, type: type, currentDate: Date())
     }
 }

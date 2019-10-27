@@ -6,7 +6,7 @@ Pod::Spec.new do |spec|
   # spec.license               = { :type => 'MIT', :file => 'MIT-LICENSE.txt' }
   spec.license               = 'MIT'
   spec.author                = { 'Ryan Baumbach' => 'github@ryan.codes' }
-  spec.source                = { :git => 'https://github.com/rbaumbach/Quick-E-Logger.git', :tag => s.version.to_s }
+  spec.source                = { :git => 'https://github.com/rbaumbach/Quick-E-Logger.git', :tag => spec.version.to_s }
   spec.requires_arc          = true
   spec.platform              = :ios
   spec.ios.deployment_target = '10.0'
