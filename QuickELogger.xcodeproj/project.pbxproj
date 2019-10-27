@@ -276,7 +276,7 @@
 				942059D92363B73D0081BE92 /* Sources */,
 				942059DA2363B73D0081BE92 /* Frameworks */,
 				942059DB2363B73D0081BE92 /* Resources */,
-				9457A04723650B2D001411D6 /* ShellScript */,
+				9457A04723650B2D001411D6 /* Swiftlint Run Script */,
 			);
 			buildRules = (
 			);
@@ -436,7 +436,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IntegrationSpecs/Pods-IntegrationSpecs-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9457A04723650B2D001411D6 /* ShellScript */ = {
+		9457A04723650B2D001411D6 /* Swiftlint Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -445,6 +445,7 @@
 			);
 			inputPaths = (
 			);
+			name = "Swiftlint Run Script";
 			outputFileListPaths = (
 			);
 			outputPaths = (

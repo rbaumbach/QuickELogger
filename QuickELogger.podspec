@@ -1,9 +1,8 @@
 Pod::Spec.new do |spec|
-  spec.name                  = 'Quick-E-Logger'
+  spec.name                  = 'QuickELogger'
   spec.version               = '0.0.1'
   spec.summary               = 'A quick and simple way to log JSON log messages to disk in your iPhone or iPad app'
   spec.homepage              = 'https://github.com/rbaumbach/Quick-E-Logger'
-  # spec.license               = { :type => 'MIT', :file => 'MIT-LICENSE.txt' }
   spec.license               = 'MIT'
   spec.author                = { 'Ryan Baumbach' => 'github@ryan.codes' }
   spec.source                = { :git => 'https://github.com/rbaumbach/Quick-E-Logger.git', :tag => spec.version.to_s }
