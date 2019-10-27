@@ -29,8 +29,10 @@ public struct LogMessage: Equatable, Codable {
 }
 
 public enum LogType: String, Equatable, Codable {
+    case verbose
     case info
     case debug
+    case warn
     case error
 }
 
