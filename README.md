@@ -29,6 +29,21 @@ let logger = QuickELogger()
 logger(message: "Black beans > Pinto beans", type: .info)
 ```
 
+What happens at `/Documents/QuickELogger.json`:
+
+```
+[
+  {
+    "timeStamp" : "2019-10-27T02:32:57Z",
+    "id" : "41593EA2-9D4D-4406-839B-2298AD7FA2E3",
+    "message" : "Black beans > Pinto beans",
+    "type" : "info"
+  }
+]
+```
+
+Note: `Black beans > Pinto beans` would result in a "falsy" output.
+
 ### Gotchas
 
 This logger doesn't append to a log file in the traditional sense.  It reads from a current log (if one exists), and then overwrites that log with updated logs.  This framework was created out of necessity to write logs to disk easily without loading in huge log frameworks and shouldn't be used for ultra-heavy logging.
