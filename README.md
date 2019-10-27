@@ -44,11 +44,23 @@ What happens at `/Documents/QuickELogger.json`:
 
 Note: `Black beans > Pinto beans` would result in a "falsy" output.
 
+## Additional Info
+
 ### Gotchas
 
 This logger doesn't append to a log file in the traditional sense.  It reads from a current log (if one exists), and then overwrites that log with updated logs.  This framework was created out of necessity to write logs to disk easily without loading in huge log frameworks and shouldn't be used for ultra-heavy logging.
 
 Plans to make this more "enterprise-ready" are being evaluated.
+
+### Treats
+
+This library comes with a protocol ready to use in your application for those of you that enjoy testing your software.  This allows you to program your application to this "interface" and then you can stub it out with your own fake implementation for unit tests:
+
+```swift
+public protocol QuickELoggerProtocol {
+    func log(message: String, type: LogType)
+}
+```
 
 ## Testing
 
