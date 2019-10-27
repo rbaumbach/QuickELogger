@@ -1,8 +1,8 @@
-# Quick-E-Logger [![License](https://img.shields.io/dub/l/vibe-d.svg)](https://github.com/rbaumbach/InstagramSimpleOAuth/blob/master/MIT-LICENSE.txt)
+# QuickELogger [![License](https://img.shields.io/dub/l/vibe-d.svg)](https://github.com/rbaumbach/InstagramSimpleOAuth/blob/master/MIT-LICENSE.txt)
 
 A quick and simple way to log JSON log messages to disk in your iPhone or iPad app.
 
-## Adding Quick-E-Logger to your project
+## Adding QuickELogger to your project
 
 ### Clone from Github
 
@@ -17,7 +17,7 @@ A quick and simple way to log JSON log messages to disk in your iPhone or iPad a
 
 Note: The file is saved in the `/Documents` directory.
 
-Additional note: By default the filename is `Quick-E-Logger.json`.  You can specify a different filename in `init(:filename)`.
+Additional note: By default the filename is `QuickELogger.json`.  You can specify a different filename in `init(:filename)`.
 
 ### Example Usage
 
@@ -55,8 +55,8 @@ $ bundle exec fastlane run_all_specs
 
 ## Version History
 
-Version history can be found [on releases page](https://github.com/rbaumbach/Quick-E-Logger/releases).
+Version history can be found [on releases page](https://github.com/rbaumbach/QuickELogger/releases).
 
 ## Suggestions, requests, and feedback
 
-Thanks for checking out Quick-E-Logger for your logging needs.  Any feedback can be can be sent to: github@ryan.codes.
+Thanks for checking out QuickELogger for your logging needs.  Any feedback can be can be sent to: github@ryan.codes.
