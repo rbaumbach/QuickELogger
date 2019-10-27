@@ -4,6 +4,14 @@ A quick and simple way to log JSON log messages to disk in your iPhone or iPad a
 
 ## Adding QuickELogger to your project
 
+### CocoaPods
+
+[CocoaPods](http://cocoapods.org) is the recommended way to add QuickELogger to your project.
+
+1.  Add QuickELogger to your Podfile `pod 'QuickELogger'`.
+2.  Install the pod(s) by running `pod install`.
+3.  Add QuickELogger to your files with `import QuickELogger`.
+
 ### Clone from Github
 
 1.  Clone repository from github and copy files directly, or add it as a git submodule.
@@ -11,7 +19,6 @@ A quick and simple way to log JSON log messages to disk in your iPhone or iPad a
 
 ## How To
 
-* Import `QuickELogger`.
 * Create an instance of `QuickELogger`, and then it's as simple as calling `log(:message:type)`.
 * This logger has the following (pretty standard) log types: `verbose, info, debug, warn, error`.
 
