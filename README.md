@@ -19,7 +19,8 @@ A quick and simple way to log messages to disk in your iPhone or iPad app.
 
 ## How To
 
-* Create an instance of `QuickELogger`, and then it's as simple as calling `log(:message:type)`.
+* Swift -> Create an instance of `QuickELogger`, and then it's as simple as calling `log(:message:type)`.
+* Objective-C -> Create an instance of `QuickELoggerObjC`, and calling `logWithMessage:type:`
 * This logger has the following (pretty standard) log types: `verbose, info, debug, warn, error`.
 
 Note: The file is saved in the `/Documents` directory.
@@ -28,12 +29,24 @@ Additional note: By default the filename is `QuickELogger.json`.  You can specif
 
 ### Example Usage
 
+Swift
+
 ```swift
 import QuickELogger
 
 let logger = QuickELogger()
 
-logger(message: "Black beans > Pinto beans", type: .info)
+logger(message: "Pinto beans > Black beans", type: .info)
+```
+
+Objective-C
+
+```objective-c
+@import QuickELogger;
+
+QuickELoggerObjC *logger = [[QuickELoggerObjC alloc] init];
+
+[logger logWithMessage:@"Pinto beans > Black beans" type:ObjCLogTypeInfo];
 ```
 
 What happens at `/Documents/QuickELogger.json`:
@@ -43,7 +56,7 @@ What happens at `/Documents/QuickELogger.json`:
   {
     "timeStamp" : "2019-10-27T02:32:57Z",
     "id" : "41593EA2-9D4D-4406-839B-2298AD7FA2E3",
-    "message" : "Black beans > Pinto beans",
+    "message" : "Pinto beans > Black beans",
     "type" : "info"
   }
 ]
