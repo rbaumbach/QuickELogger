@@ -13,6 +13,8 @@
 		942059E82363B73D0081BE92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 942059E62363B73D0081BE92 /* Main.storyboard */; };
 		942059EA2363B73E0081BE92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 942059E92363B73E0081BE92 /* Assets.xcassets */; };
 		942059ED2363B73E0081BE92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 942059EB2363B73E0081BE92 /* LaunchScreen.storyboard */; };
+		946CE535236B4309002DA985 /* QuickELoggerObjC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946CE534236B4309002DA985 /* QuickELoggerObjC.swift */; };
+		946CE537236B433D002DA985 /* QuickELoggerObjCIntegrationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946CE536236B433D002DA985 /* QuickELoggerObjCIntegrationSpec.swift */; };
 		946E72F42363BDF800694575 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E72F02363BDF800694575 /* Utils.swift */; };
 		946E72F52363BDF800694575 /* QuickELogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E72F12363BDF800694575 /* QuickELogger.swift */; };
 		946E72F62363BDF800694575 /* FoundationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E72F22363BDF800694575 /* FoundationProtocols.swift */; };
@@ -65,6 +67,8 @@
 		942059EE2363B73E0081BE92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94205A042363B9F20081BE92 /* Specs.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Specs.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		94205A082363B9F20081BE92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		946CE534236B4309002DA985 /* QuickELoggerObjC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickELoggerObjC.swift; sourceTree = "<group>"; };
+		946CE536236B433D002DA985 /* QuickELoggerObjCIntegrationSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickELoggerObjCIntegrationSpec.swift; sourceTree = "<group>"; };
 		946E72F02363BDF800694575 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		946E72F12363BDF800694575 /* QuickELogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickELogger.swift; sourceTree = "<group>"; };
 		946E72F22363BDF800694575 /* FoundationProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationProtocols.swift; sourceTree = "<group>"; };
@@ -163,6 +167,7 @@
 				946E72F22363BDF800694575 /* FoundationProtocols.swift */,
 				946E72F12363BDF800694575 /* QuickELogger.swift */,
 				946E72F32363BDF800694575 /* QuickELoggerEngine.swift */,
+				946CE534236B4309002DA985 /* QuickELoggerObjC.swift */,
 				946E72F02363BDF800694575 /* Utils.swift */,
 			);
 			path = Source;
@@ -229,9 +234,10 @@
 		946E730E2364A99000694575 /* IntegrationSpecs */ = {
 			isa = PBXGroup;
 			children = (
-				946E73182364AC8D00694575 /* Utils */,
 				946E730F2364A99000694575 /* QuickELoggerIntegrationSpec.swift */,
+				946CE536236B433D002DA985 /* QuickELoggerObjCIntegrationSpec.swift */,
 				946E73172364A9CA00694575 /* Supporting Files */,
+				946E73182364AC8D00694575 /* Utils */,
 			);
 			path = IntegrationSpecs;
 			sourceTree = "<group>";
@@ -523,6 +529,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				946E73082363F1D800694575 /* FoundationExtensions.swift in Sources */,
+				946CE535236B4309002DA985 /* QuickELoggerObjC.swift in Sources */,
 				942059E52363B73D0081BE92 /* ViewController.swift in Sources */,
 				946E72F72363BDF800694575 /* QuickELoggerEngine.swift in Sources */,
 				946E72F62363BDF800694575 /* FoundationProtocols.swift in Sources */,
@@ -550,6 +557,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				946CE537236B433D002DA985 /* QuickELoggerObjCIntegrationSpec.swift in Sources */,
 				946E73102364A99000694575 /* QuickELoggerIntegrationSpec.swift in Sources */,
 				946E731A2364ACA800694575 /* Utils.swift in Sources */,
 			);
