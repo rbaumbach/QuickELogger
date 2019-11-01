@@ -57,6 +57,11 @@ public class QuickELoggerObjC: NSObject {
     }
     
     @objc
+    public convenience init(directory: ObjCDirectory) {
+        self.init(filename: "QuickELogger", directory: directory)
+    }
+    
+    @objc
     public init(filename: String, directory: ObjCDirectory) {
         let transformedDirectory = transformDirectory(objcDirectory: directory)
         
