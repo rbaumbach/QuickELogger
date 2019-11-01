@@ -29,11 +29,11 @@ func transformDirectory(objcDirectory: ObjCDirectory) -> Directory {
     case .temp:
         return .temp
         
-    case .caches:
-        return .caches
-        
     case .library:
         return .library
+        
+    case .caches:
+        return .caches
     }
 }
 

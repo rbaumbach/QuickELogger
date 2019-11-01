@@ -11,11 +11,11 @@ func getLogMessages(filename: String = "QuickELogger", directory: Directory = .d
     case .temp:
         fullPathOfJSONFile = directoryDict[.temp]!.appendingPathComponent("\(filename).json")
         
-    case .caches:
-        fullPathOfJSONFile = directoryDict[.caches]!.appendingPathComponent("\(filename).json")
-        
     case .library:
         fullPathOfJSONFile = directoryDict[.library]!.appendingPathComponent("\(filename).json")
+    
+    case .caches:
+        fullPathOfJSONFile = directoryDict[.caches]!.appendingPathComponent("\(filename).json")
     }
             
     guard let jsonData = try? Data(contentsOf: fullPathOfJSONFile, options: .alwaysMapped) else {

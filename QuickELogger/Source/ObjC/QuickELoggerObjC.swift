@@ -25,8 +25,8 @@ import Foundation
 public enum ObjCDirectory: Int {
     case documents
     case temp
-    case caches
     case library
+    case caches
 }
 
 @objc

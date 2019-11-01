@@ -103,11 +103,11 @@ class QuickELoggerEngine: QuickELoggerEngineProtocol {
         case .temp:
             directoryPath = fileManager.temporaryDirectory
             
-        case .caches:
-            directoryPath = systemDirectory(.cachesDirectory)
-            
         case .library:
             directoryPath = systemDirectory(.libraryDirectory)
+            
+        case .caches:
+            directoryPath = systemDirectory(.cachesDirectory)
         }
                                 
         return directoryPath.appendingPathComponent(filename)
