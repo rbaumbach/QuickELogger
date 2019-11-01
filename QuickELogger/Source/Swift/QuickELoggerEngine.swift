@@ -103,11 +103,18 @@ class QuickELoggerEngine: QuickELoggerEngineProtocol {
         case .temp:
             directoryPath = fileManager.temporaryDirectory
             
+        case .library:
+            directoryPath = systemDirectory(.libraryDirectory)
+            
         case .caches:
             directoryPath = systemDirectory(.cachesDirectory)
             
-        case .library:
-            directoryPath = systemDirectory(.libraryDirectory)
+        case .applicationSupport:
+            directoryPath = systemDirectory(.applicationSupportDirectory)
+            
+            if !fileManager.fileExists(atPath: directoryPath.path) {
+                try! fileManager.createDirectory(at: directoryPath, withIntermediateDirectories: false, attributes: nil)
+            }
         }
                                 
         return directoryPath.appendingPathComponent(filename)

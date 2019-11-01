@@ -1,10 +1,11 @@
 import Foundation
 @testable import QuickELogger
 
-let directoryDict = [Directory.documents: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!,
-                     Directory.temp: FileManager.default.temporaryDirectory,
-                     Directory.caches: FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!,
-                     Directory.library: FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first!]
+let directoryDict = [ Directory.documents: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!,
+                      Directory.temp: FileManager.default.temporaryDirectory,
+                      Directory.library: FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first!,
+                      Directory.caches: FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!,
+                      Directory.applicationSupport: FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first! ]
 
 func deleteAllTestFiles() {
     let fileManager = FileManager.default

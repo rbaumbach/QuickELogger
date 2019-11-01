@@ -24,8 +24,9 @@ import Foundation
 public enum Directory {
     case documents
     case temp
-    case caches
     case library
+    case caches
+    case applicationSupport
 }
 
 public enum LogType: String, Equatable, Codable {

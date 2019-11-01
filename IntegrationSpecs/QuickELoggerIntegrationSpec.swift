@@ -168,6 +168,28 @@ class QuickELoggerIntegrationSpec: QuickSpec {
                         expect(logMessage.message).to(equal("This is temporary and will get deleted frequently"))
                     }
                 }
+                
+                describe("Library") {
+                    beforeEach {
+                        subject = QuickELogger(directory: .library)
+
+                        subject.log(message: "This is the top-level directory for any files that are not user data files", type: .info)
+                    }
+
+                    it("writes the log file to the library directory") {
+                        let logMessages = getLogMessages(filename: "QuickELogger", directory: .library)
+
+                        expect(logMessages.count).to(equal(1))
+
+                        let logMessage = logMessages.first!
+
+                        expect(logMessage.id).toNot(beNil())
+                        expect(logMessage.timeStamp).toNot(beNil())
+
+                        expect(logMessage.type).to(equal(.info))
+                        expect(logMessage.message).to(equal("This is the top-level directory for any files that are not user data files"))
+                    }
+                }
 
                 describe("Caches") {
                     beforeEach {
@@ -191,15 +213,15 @@ class QuickELoggerIntegrationSpec: QuickSpec {
                     }
                 }
                 
-                describe("Library") {
+                describe("Application Support") {
                     beforeEach {
-                        subject = QuickELogger(directory: .library)
+                        subject = QuickELogger(directory: .applicationSupport)
 
-                        subject.log(message: "This is the top-level directory for any files that are not user data files", type: .info)
+                        subject.log(message: "This is where you should add app related data that is to be hidden from the user", type: .info)
                     }
 
-                    it("writes the log file to the library directory") {
-                        let logMessages = getLogMessages(filename: "QuickELogger", directory: .library)
+                    it("writes the log file to the application support directory") {
+                        let logMessages = getLogMessages(filename: "QuickELogger", directory: .applicationSupport)
 
                         expect(logMessages.count).to(equal(1))
 
@@ -209,7 +231,7 @@ class QuickELoggerIntegrationSpec: QuickSpec {
                         expect(logMessage.timeStamp).toNot(beNil())
 
                         expect(logMessage.type).to(equal(.info))
-                        expect(logMessage.message).to(equal("This is the top-level directory for any files that are not user data files"))
+                        expect(logMessage.message).to(equal("This is where you should add app related data that is to be hidden from the user"))
                     }
                 }
             }
