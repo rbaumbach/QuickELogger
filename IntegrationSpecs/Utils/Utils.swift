@@ -1,29 +1,23 @@
 import Foundation
 @testable import QuickELogger
 
-func documentsDirectory() -> URL {
-    return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-}
-
-func fullJSONFilepath(filename: String) -> URL {
-    return documentsDirectory().appendingPathComponent("\(filename).json")
-}
-
-func emptyDocumentsDirectory() {
-    let documentsDirectoryPath = documentsDirectory().path
+func getLogMessages(filename: String = "QuickELogger", directory: Directory = .documents) -> [LogMessage] {
+    var fullPathOfJSONFile: URL
     
-    let fileManager = FileManager.default
-    
-    let allFilePathsInDocumentsDirectory = try! fileManager.contentsOfDirectory(atPath: documentsDirectoryPath)
-    
-    allFilePathsInDocumentsDirectory.forEach { documentPath in
-        try! fileManager.removeItem(atPath: documentsDirectoryPath + "/" + documentPath)
+    switch directory {
+    case .documents:
+        fullPathOfJSONFile = directoryDict[.documents]!.appendingPathComponent("\(filename).json")
+        
+    case .temp:
+        fullPathOfJSONFile = directoryDict[.temp]!.appendingPathComponent("\(filename).json")
+        
+    case .caches:
+        fullPathOfJSONFile = directoryDict[.caches]!.appendingPathComponent("\(filename).json")
+        
+    case .library:
+        fullPathOfJSONFile = directoryDict[.library]!.appendingPathComponent("\(filename).json")
     }
-}
-
-func getLogMessages(filename: String = "QuickELogger") -> [LogMessage] {
-    let fullPathOfJSONFile = fullJSONFilepath(filename: filename)
-    
+            
     guard let jsonData = try? Data(contentsOf: fullPathOfJSONFile, options: .alwaysMapped) else {
         return []
     }
@@ -36,15 +30,4 @@ func getLogMessages(filename: String = "QuickELogger") -> [LogMessage] {
     }
 
     return logMessages
-}
-
-func saveLogMessages(filename: String, messages: [LogMessage]) {
-    let fullPathOfJSONFile = fullJSONFilepath(filename: filename)
-    
-    let jsonEncoder = JSONEncoder()
-    jsonEncoder.dateEncodingStrategy = .iso8601
-    
-    let encodedJSONData = try! jsonEncoder.encode(messages)
-    
-    try! encodedJSONData.write(to: fullPathOfJSONFile, options: .atomic)
 }

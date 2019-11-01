@@ -9,11 +9,11 @@ class QuickELoggerObjCIntegrationSpec: QuickSpec {
             var subject: QuickELoggerObjC!
             
             beforeSuite {
-                emptyDocumentsDirectory()
+                deleteAllTestFiles()
             }
             
             afterSuite {
-                emptyDocumentsDirectory()
+                deleteAllTestFiles()
             }
             
             describe("when using the default filename for the log file") {
@@ -28,7 +28,7 @@ class QuickELoggerObjCIntegrationSpec: QuickSpec {
                         }
                         
                         afterEach {
-                            emptyDocumentsDirectory()
+                            deleteAllTestFiles()
                         }
                         
                         it("is logged in a new JSON file to disk") {
@@ -53,7 +53,7 @@ class QuickELoggerObjCIntegrationSpec: QuickSpec {
                         }
                         
                         afterEach {
-                            emptyDocumentsDirectory()
+                            deleteAllTestFiles()
                         }
                         
                         it("is logged with the previous JSON data to disk") {
@@ -93,7 +93,7 @@ class QuickELoggerObjCIntegrationSpec: QuickSpec {
                         }
                         
                         afterEach {
-                            emptyDocumentsDirectory()
+                            deleteAllTestFiles()
                         }
                         
                         it("is logged in a new JSON file to disk") {
@@ -118,7 +118,7 @@ class QuickELoggerObjCIntegrationSpec: QuickSpec {
                         }
                         
                         afterEach {
-                            emptyDocumentsDirectory()
+                            deleteAllTestFiles()
                         }
                         
                         it("is logged with the previous JSON data to disk") {

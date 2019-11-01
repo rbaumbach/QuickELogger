@@ -13,6 +13,8 @@
 		942059E82363B73D0081BE92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 942059E62363B73D0081BE92 /* Main.storyboard */; };
 		942059EA2363B73E0081BE92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 942059E92363B73E0081BE92 /* Assets.xcassets */; };
 		942059ED2363B73E0081BE92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 942059EB2363B73E0081BE92 /* LaunchScreen.storyboard */; };
+		942A75E1236C8EC0001F5F55 /* EnumTransformationFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942A75E0236C8EC0001F5F55 /* EnumTransformationFunctions.swift */; };
+		9464CAD5236CBDEF00A63EA0 /* FileManagerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9464CAD4236CBDEF00A63EA0 /* FileManagerUtils.swift */; };
 		946CE535236B4309002DA985 /* QuickELoggerObjC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946CE534236B4309002DA985 /* QuickELoggerObjC.swift */; };
 		946CE537236B433D002DA985 /* QuickELoggerObjCIntegrationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946CE536236B433D002DA985 /* QuickELoggerObjCIntegrationSpec.swift */; };
 		946E72F42363BDF800694575 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E72F02363BDF800694575 /* Utils.swift */; };
@@ -67,6 +69,8 @@
 		942059EE2363B73E0081BE92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94205A042363B9F20081BE92 /* Specs.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Specs.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		94205A082363B9F20081BE92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		942A75E0236C8EC0001F5F55 /* EnumTransformationFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumTransformationFunctions.swift; sourceTree = "<group>"; };
+		9464CAD4236CBDEF00A63EA0 /* FileManagerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerUtils.swift; sourceTree = "<group>"; };
 		946CE534236B4309002DA985 /* QuickELoggerObjC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickELoggerObjC.swift; sourceTree = "<group>"; };
 		946CE536236B433D002DA985 /* QuickELoggerObjCIntegrationSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickELoggerObjCIntegrationSpec.swift; sourceTree = "<group>"; };
 		946E72F02363BDF800694575 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -163,12 +167,8 @@
 		942059F42363B7580081BE92 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				946E73072363F1D800694575 /* FoundationExtensions.swift */,
-				946E72F22363BDF800694575 /* FoundationProtocols.swift */,
-				946E72F12363BDF800694575 /* QuickELogger.swift */,
-				946E72F32363BDF800694575 /* QuickELoggerEngine.swift */,
-				946CE534236B4309002DA985 /* QuickELoggerObjC.swift */,
-				946E72F02363BDF800694575 /* Utils.swift */,
+				942A75DF236C8E90001F5F55 /* ObjC */,
+				942A75DE236C8E82001F5F55 /* Swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -218,6 +218,27 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		942A75DE236C8E82001F5F55 /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				946E73072363F1D800694575 /* FoundationExtensions.swift */,
+				946E72F22363BDF800694575 /* FoundationProtocols.swift */,
+				946E72F12363BDF800694575 /* QuickELogger.swift */,
+				946E72F32363BDF800694575 /* QuickELoggerEngine.swift */,
+				946E72F02363BDF800694575 /* Utils.swift */,
+			);
+			path = Swift;
+			sourceTree = "<group>";
+		};
+		942A75DF236C8E90001F5F55 /* ObjC */ = {
+			isa = PBXGroup;
+			children = (
+				942A75E0236C8EC0001F5F55 /* EnumTransformationFunctions.swift */,
+				946CE534236B4309002DA985 /* QuickELoggerObjC.swift */,
+			);
+			path = ObjC;
+			sourceTree = "<group>";
+		};
 		946E72FA2363BEA900694575 /* Fakes */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,6 +274,7 @@
 		946E73182364AC8D00694575 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				9464CAD4236CBDEF00A63EA0 /* FileManagerUtils.swift */,
 				946E73192364ACA800694575 /* Utils.swift */,
 			);
 			path = Utils;
@@ -534,6 +556,7 @@
 				946E72F72363BDF800694575 /* QuickELoggerEngine.swift in Sources */,
 				946E72F62363BDF800694575 /* FoundationProtocols.swift in Sources */,
 				942059E12363B73D0081BE92 /* AppDelegate.swift in Sources */,
+				942A75E1236C8EC0001F5F55 /* EnumTransformationFunctions.swift in Sources */,
 				946E72F42363BDF800694575 /* Utils.swift in Sources */,
 				946E72F52363BDF800694575 /* QuickELogger.swift in Sources */,
 			);
@@ -558,6 +581,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				946CE537236B433D002DA985 /* QuickELoggerObjCIntegrationSpec.swift in Sources */,
+				9464CAD5236CBDEF00A63EA0 /* FileManagerUtils.swift in Sources */,
 				946E73102364A99000694575 /* QuickELoggerIntegrationSpec.swift in Sources */,
 				946E731A2364ACA800694575 /* Utils.swift in Sources */,
 			);

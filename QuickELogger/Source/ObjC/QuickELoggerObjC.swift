@@ -22,6 +22,14 @@
 import Foundation
 
 @objc
+public enum ObjCDirectory: Int {
+    case documents
+    case temp
+    case caches
+    case library
+}
+
+@objc
 public enum ObjCLogType: Int {
     case verbose
     case info
@@ -40,12 +48,19 @@ public class QuickELoggerObjC: NSObject {
     
     @objc
     public convenience override init() {
-        self.init(filename: "QuickELogger")
+        self.init(filename: "QuickELogger", directory: .documents)
     }
     
     @objc
-    public init(filename: String) {
-        engine = QuickELoggerEngine(filename: filename)
+    public convenience init(filename: String) {
+        self.init(filename: filename, directory: .documents)
+    }
+    
+    @objc
+    public init(filename: String, directory: ObjCDirectory) {
+        let transformedDirectory = transformDirectory(objcDirectory: directory)
+        
+        engine = QuickELoggerEngine(filename: filename, directory: transformedDirectory)
         
         super.init()
     }
@@ -57,26 +72,5 @@ public class QuickELoggerObjC: NSObject {
         let transformedLogType = transformLogType(objcLogType: type)
         
         engine.log(message: message, type: transformedLogType, currentDate: Date())
-    }
-    
-    // MARK: - Private methods
-    
-    private func transformLogType(objcLogType: ObjCLogType) -> LogType {
-        switch objcLogType {
-        case .verbose:
-            return .verbose
-            
-        case .info:
-            return .info
-            
-        case .debug:
-            return .debug
-            
-        case .warn:
-            return .warn
-            
-        case .error:
-            return .error
-        }
     }
 }

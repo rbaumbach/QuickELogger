@@ -21,6 +21,13 @@
 
 import Foundation
 
+public struct LogMessage: Equatable, Codable {
+    var id: String
+    var timeStamp: Date
+    var type: LogType
+    var message: String
+}
+
 protocol QuickELoggerEngineProtocol {
     func log(message: String, type: LogType, currentDate: Date)
 }
@@ -29,28 +36,25 @@ class QuickELoggerEngine: QuickELoggerEngineProtocol {
     // MARK: - Readonly properties
     
     let filename: String
+    let directory: Directory
     let fileManager: FileManagerProtocol
     let dataUtils: DataUtilsProtocol
     let uuid: UUIDProtocol
     
     private(set) var jsonEncoder: JSONEncoderProtocol
     private(set) var jsonDecoder: JSONDecoderProtocol
-
-    private(set) lazy var jsonFilePath: URL = {
-        let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
-                        
-        return documentsDirectory.appendingPathComponent(filename)
-    }()
     
     // MARK: - Init method
     
     init(filename: String,
+         directory: Directory,
          fileManager: FileManagerProtocol = FileManager.default,
          jsonEncoder: JSONEncoderProtocol = JSONEncoder(),
          jsonDecoder: JSONDecoderProtocol = JSONDecoder(),
          dataUtils: DataUtilsProtocol = DataUtils(),
          uuid: UUIDProtocol = UUID()) {
         self.filename = filename + ".json"
+        self.directory = directory
         self.fileManager = fileManager
         self.jsonEncoder = jsonEncoder
         self.jsonEncoder.outputFormatting = .prettyPrinted
@@ -78,7 +82,7 @@ class QuickELoggerEngine: QuickELoggerEngineProtocol {
     // MARK: - Private methods
     
     private func getLogMessages() -> [LogMessage] {
-        guard let jsonData = try? dataUtils.loadData(contentsOfPath: jsonFilePath) else {
+        guard let jsonData = try? dataUtils.loadData(contentsOfPath: jsonFilePath()) else {
             return []
         }
         
@@ -89,9 +93,29 @@ class QuickELoggerEngine: QuickELoggerEngineProtocol {
         return logMessages
     }
     
+    private func jsonFilePath() -> URL {
+        var directoryPath: URL
+        
+        switch directory {
+        case .documents:
+            directoryPath = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+            
+        case .temp:
+            directoryPath = fileManager.temporaryDirectory
+            
+        case .caches:
+            directoryPath = fileManager.urls(for: .cachesDirectory, in: .userDomainMask).first!
+            
+        case .library:
+            directoryPath = fileManager.urls(for: .libraryDirectory, in: .userDomainMask).first!
+        }
+                                
+        return directoryPath.appendingPathComponent(filename)
+    }
+    
     private func saveLogMessages(messages: [LogMessage]) {
         let encodedJSONData = try! jsonEncoder.encode(messages)
         
-        try! dataUtils.write(data: encodedJSONData, toPath: jsonFilePath)
+        try! dataUtils.write(data: encodedJSONData, toPath: jsonFilePath())
     }
 }

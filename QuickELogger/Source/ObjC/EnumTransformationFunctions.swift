@@ -21,44 +21,37 @@
 
 import Foundation
 
-public struct LogMessage: Equatable, Codable {
-    var id: String
-    var timeStamp: Date
-    var type: LogType
-    var message: String
-}
-
-public enum LogType: String, Equatable, Codable {
-    case verbose
-    case info
-    case debug
-    case warn
-    case error
-}
-
-public protocol QuickELoggerProtocol {
-    func log(message: String, type: LogType)
-}
-
-public class QuickELogger: NSObject, QuickELoggerProtocol {
-    // MARK: - Readonly properties
-    
-    public let filename: String
-    
-    // MARK: - Private properties
-    
-    private let engine: QuickELoggerEngineProtocol
-    
-    // MARK: - Init methods
-    
-    public init(filename: String = "QuickELogger") {
-        self.filename = filename
-        self.engine = QuickELoggerEngine(filename: filename)
+func transformDirectory(objcDirectory: ObjCDirectory) -> Directory {
+    switch objcDirectory {
+    case .documents:
+        return .documents
+        
+    case .temp:
+        return .temp
+        
+    case .caches:
+        return .caches
+        
+    case .library:
+        return .library
     }
-    
-    // MARK: - Public methods
-    
-    public func log(message: String, type: LogType) {
-        engine.log(message: message, type: type, currentDate: Date())
+}
+
+func transformLogType(objcLogType: ObjCLogType) -> LogType {
+    switch objcLogType {
+    case .verbose:
+        return .verbose
+        
+    case .info:
+        return .info
+        
+    case .debug:
+        return .debug
+        
+    case .warn:
+        return .warn
+        
+    case .error:
+        return .error
     }
 }

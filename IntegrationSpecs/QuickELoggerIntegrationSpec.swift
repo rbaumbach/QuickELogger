@@ -8,12 +8,12 @@ class QuickELoggerIntegrationSpec: QuickSpec {
         describe("QuickELogger") {
             var subject: QuickELogger!
             
-            beforeSuite {
-                emptyDocumentsDirectory()
+            beforeSuite {                
+                deleteAllTestFiles()
             }
             
             afterSuite {
-                emptyDocumentsDirectory()
+                deleteAllTestFiles()
             }
             
             describe("when using the default filename for the log file") {
@@ -28,7 +28,7 @@ class QuickELoggerIntegrationSpec: QuickSpec {
                         }
                         
                         afterEach {
-                            emptyDocumentsDirectory()
+                            deleteAllTestFiles()
                         }
                         
                         it("is logged in a new JSON file to disk") {
@@ -53,7 +53,7 @@ class QuickELoggerIntegrationSpec: QuickSpec {
                         }
                         
                         afterEach {
-                            emptyDocumentsDirectory()
+                            deleteAllTestFiles()
                         }
                         
                         it("is logged with the previous JSON data to disk") {
@@ -93,7 +93,7 @@ class QuickELoggerIntegrationSpec: QuickSpec {
                         }
                         
                         afterEach {
-                            emptyDocumentsDirectory()
+                            deleteAllTestFiles()
                         }
                         
                         it("is logged in a new JSON file to disk") {
@@ -118,7 +118,7 @@ class QuickELoggerIntegrationSpec: QuickSpec {
                         }
                         
                         afterEach {
-                            emptyDocumentsDirectory()
+                            deleteAllTestFiles()
                         }
                         
                         it("is logged with the previous JSON data to disk") {
@@ -142,6 +142,74 @@ class QuickELoggerIntegrationSpec: QuickSpec {
                             expect(newLogMessage.type).to(equal(.info))
                             expect(newLogMessage.message).to(equal("Gallant"))
                         }
+                    }
+                }
+            }
+            
+            describe("writing to other directories besides the Documents directory") {
+                describe("tmp") {
+                    beforeEach {
+                        subject = QuickELogger(directory: .temp)
+
+                        subject.log(message: "This is temporary and will get deleted frequently", type: .info)
+                    }
+
+                    it("writes the log file to the temp directory") {
+                        let logMessages = getLogMessages(filename: "QuickELogger", directory: .temp)
+
+                        expect(logMessages.count).to(equal(1))
+
+                        let logMessage = logMessages.first!
+
+                        expect(logMessage.id).toNot(beNil())
+                        expect(logMessage.timeStamp).toNot(beNil())
+
+                        expect(logMessage.type).to(equal(.info))
+                        expect(logMessage.message).to(equal("This is temporary and will get deleted frequently"))
+                    }
+                }
+
+                describe("Caches") {
+                    beforeEach {
+                        subject = QuickELogger(directory: .caches)
+
+                        subject.log(message: "This can be deleted unexpectedly", type: .info)
+                    }
+
+                    it("writes the log file to the caches directory") {
+                        let logMessages = getLogMessages(filename: "QuickELogger", directory: .caches)
+
+                        expect(logMessages.count).to(equal(1))
+
+                        let logMessage = logMessages.first!
+
+                        expect(logMessage.id).toNot(beNil())
+                        expect(logMessage.timeStamp).toNot(beNil())
+
+                        expect(logMessage.type).to(equal(.info))
+                        expect(logMessage.message).to(equal("This can be deleted unexpectedly"))
+                    }
+                }
+                
+                describe("Library") {
+                    beforeEach {
+                        subject = QuickELogger(directory: .library)
+
+                        subject.log(message: "This is the top-level directory for any files that are not user data files", type: .info)
+                    }
+
+                    it("writes the log file to the library directory") {
+                        let logMessages = getLogMessages(filename: "QuickELogger", directory: .library)
+
+                        expect(logMessages.count).to(equal(1))
+
+                        let logMessage = logMessages.first!
+
+                        expect(logMessage.id).toNot(beNil())
+                        expect(logMessage.timeStamp).toNot(beNil())
+
+                        expect(logMessage.type).to(equal(.info))
+                        expect(logMessage.message).to(equal("This is the top-level directory for any files that are not user data files"))
                     }
                 }
             }
