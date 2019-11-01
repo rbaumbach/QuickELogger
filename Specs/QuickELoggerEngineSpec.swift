@@ -141,29 +141,6 @@ class QuickELoggerEngineSpec: QuickSpec {
                     }
                 }
                 
-                describe("caches directory") {
-                    beforeEach {
-                        subject = QuickELoggerEngine(filename: "ItsLogLog",
-                                                     directory: .caches,
-                                                     fileManager: fakeFileManager,
-                                                     jsonEncoder: fakeJSONEncoder,
-                                                     jsonDecoder: fakeJSONDecoder,
-                                                     dataUtils: fakeDataUtils,
-                                                     uuid: fakeUUID)
-                        
-                        subject.log(message: "caches", type: .info, currentDate: justADate)
-                    }
-                    
-                    it("can accept log saves") {
-                        let expectedLogMessages = [LogMessage(id: "uuid-amigos-012345", timeStamp: justADate, type: .info, message: "caches")]
-                        
-                        expect(fakeJSONEncoder.capturedEncodeValue as? [LogMessage]).to(equal(expectedLogMessages))
-                        
-                        expect(fakeDataUtils.capturedWriteData).to(equal(fakeJSONEncoder.stubbedEncodeData))
-                        expect(fakeDataUtils.capturedWriteURL).to(equal(URL(string: "https://ryan.codes/ItsLogLog.json")))
-                    }
-                }
-                
                 describe("library directory") {
                     beforeEach {
                         subject = QuickELoggerEngine(filename: "ItsLogLog",
@@ -179,6 +156,29 @@ class QuickELoggerEngineSpec: QuickSpec {
                     
                     it("can accept log saves") {
                         let expectedLogMessages = [LogMessage(id: "uuid-amigos-012345", timeStamp: justADate, type: .info, message: "library")]
+                        
+                        expect(fakeJSONEncoder.capturedEncodeValue as? [LogMessage]).to(equal(expectedLogMessages))
+                        
+                        expect(fakeDataUtils.capturedWriteData).to(equal(fakeJSONEncoder.stubbedEncodeData))
+                        expect(fakeDataUtils.capturedWriteURL).to(equal(URL(string: "https://ryan.codes/ItsLogLog.json")))
+                    }
+                }
+                
+                describe("caches directory") {
+                    beforeEach {
+                        subject = QuickELoggerEngine(filename: "ItsLogLog",
+                                                     directory: .caches,
+                                                     fileManager: fakeFileManager,
+                                                     jsonEncoder: fakeJSONEncoder,
+                                                     jsonDecoder: fakeJSONDecoder,
+                                                     dataUtils: fakeDataUtils,
+                                                     uuid: fakeUUID)
+                        
+                        subject.log(message: "caches", type: .info, currentDate: justADate)
+                    }
+                    
+                    it("can accept log saves") {
+                        let expectedLogMessages = [LogMessage(id: "uuid-amigos-012345", timeStamp: justADate, type: .info, message: "caches")]
                         
                         expect(fakeJSONEncoder.capturedEncodeValue as? [LogMessage]).to(equal(expectedLogMessages))
                         
