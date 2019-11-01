@@ -98,19 +98,23 @@ class QuickELoggerEngine: QuickELoggerEngineProtocol {
         
         switch directory {
         case .documents:
-            directoryPath = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+            directoryPath = systemDirectory(.documentDirectory)
             
         case .temp:
             directoryPath = fileManager.temporaryDirectory
             
         case .caches:
-            directoryPath = fileManager.urls(for: .cachesDirectory, in: .userDomainMask).first!
+            directoryPath = systemDirectory(.cachesDirectory)
             
         case .library:
-            directoryPath = fileManager.urls(for: .libraryDirectory, in: .userDomainMask).first!
+            directoryPath = systemDirectory(.libraryDirectory)
         }
                                 
         return directoryPath.appendingPathComponent(filename)
+    }
+    
+    private func systemDirectory(_ directory: FileManager.SearchPathDirectory) -> URL {
+        return fileManager.urls(for: directory, in: .userDomainMask).first!
     }
     
     private func saveLogMessages(messages: [LogMessage]) {
