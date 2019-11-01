@@ -145,6 +145,74 @@ class QuickELoggerObjCIntegrationSpec: QuickSpec {
                     }
                 }
             }
+            
+            describe("writing to other directories besides the Documents directory") {
+                describe("tmp") {
+                    beforeEach {
+                        subject = QuickELoggerObjC(directory: .temp)
+
+                        subject.log(message: "This is temporary and will get deleted frequently", type: .info)
+                    }
+
+                    it("writes the log file to the temp directory") {
+                        let logMessages = getLogMessages(filename: "QuickELogger", directory: .temp)
+
+                        expect(logMessages.count).to(equal(1))
+
+                        let logMessage = logMessages.first!
+
+                        expect(logMessage.id).toNot(beNil())
+                        expect(logMessage.timeStamp).toNot(beNil())
+
+                        expect(logMessage.type).to(equal(.info))
+                        expect(logMessage.message).to(equal("This is temporary and will get deleted frequently"))
+                    }
+                }
+
+                describe("Caches") {
+                    beforeEach {
+                        subject = QuickELoggerObjC(directory: .caches)
+
+                        subject.log(message: "This can be deleted unexpectedly", type: .info)
+                    }
+
+                    it("writes the log file to the caches directory") {
+                        let logMessages = getLogMessages(filename: "QuickELogger", directory: .caches)
+
+                        expect(logMessages.count).to(equal(1))
+
+                        let logMessage = logMessages.first!
+
+                        expect(logMessage.id).toNot(beNil())
+                        expect(logMessage.timeStamp).toNot(beNil())
+
+                        expect(logMessage.type).to(equal(.info))
+                        expect(logMessage.message).to(equal("This can be deleted unexpectedly"))
+                    }
+                }
+                
+                describe("Library") {
+                    beforeEach {
+                        subject = QuickELoggerObjC(directory: .library)
+
+                        subject.log(message: "This is the top-level directory for any files that are not user data files", type: .info)
+                    }
+
+                    it("writes the log file to the library directory") {
+                        let logMessages = getLogMessages(filename: "QuickELogger", directory: .library)
+
+                        expect(logMessages.count).to(equal(1))
+
+                        let logMessage = logMessages.first!
+
+                        expect(logMessage.id).toNot(beNil())
+                        expect(logMessage.timeStamp).toNot(beNil())
+
+                        expect(logMessage.type).to(equal(.info))
+                        expect(logMessage.message).to(equal("This is the top-level directory for any files that are not user data files"))
+                    }
+                }
+            }
         }
     }
 }
