@@ -168,28 +168,6 @@ class QuickELoggerIntegrationSpec: QuickSpec {
                         expect(logMessage.message).to(equal("This is temporary and will get deleted frequently"))
                     }
                 }
-
-                describe("Caches") {
-                    beforeEach {
-                        subject = QuickELogger(directory: .caches)
-
-                        subject.log(message: "This can be deleted unexpectedly", type: .info)
-                    }
-
-                    it("writes the log file to the caches directory") {
-                        let logMessages = getLogMessages(filename: "QuickELogger", directory: .caches)
-
-                        expect(logMessages.count).to(equal(1))
-
-                        let logMessage = logMessages.first!
-
-                        expect(logMessage.id).toNot(beNil())
-                        expect(logMessage.timeStamp).toNot(beNil())
-
-                        expect(logMessage.type).to(equal(.info))
-                        expect(logMessage.message).to(equal("This can be deleted unexpectedly"))
-                    }
-                }
                 
                 describe("Library") {
                     beforeEach {
@@ -210,6 +188,28 @@ class QuickELoggerIntegrationSpec: QuickSpec {
 
                         expect(logMessage.type).to(equal(.info))
                         expect(logMessage.message).to(equal("This is the top-level directory for any files that are not user data files"))
+                    }
+                }
+
+                describe("Caches") {
+                    beforeEach {
+                        subject = QuickELogger(directory: .caches)
+
+                        subject.log(message: "This can be deleted unexpectedly", type: .info)
+                    }
+
+                    it("writes the log file to the caches directory") {
+                        let logMessages = getLogMessages(filename: "QuickELogger", directory: .caches)
+
+                        expect(logMessages.count).to(equal(1))
+
+                        let logMessage = logMessages.first!
+
+                        expect(logMessage.id).toNot(beNil())
+                        expect(logMessage.timeStamp).toNot(beNil())
+
+                        expect(logMessage.type).to(equal(.info))
+                        expect(logMessage.message).to(equal("This can be deleted unexpectedly"))
                     }
                 }
             }
