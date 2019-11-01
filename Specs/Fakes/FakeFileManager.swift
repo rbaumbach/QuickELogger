@@ -7,12 +7,26 @@ class FakeFileManager: FileManagerProtocol {
     var capturedSearchPathDirectory: FileManager.SearchPathDirectory?
     var capturedSearchPathDomainMask: FileManager.SearchPathDomainMask?
     
+    var capturedFileExistsPath: String?
+    
+    var capturedCreateDirectoryURL: URL?
+    var capturedCreateDirectoryCreateIntermediates: Bool?
+    var capturedCreateDirectoryAttributes: [FileAttributeKey: Any]?
+    
     // MARK: - Stubbed properties
     
     var stubbedTemporaryDirectory = URL(string: "https://temp.temp")!
     
-    var stubbedURLS = [URL(string: "https://ryan.codes")!,
-                       URL(string: "https://theaccidentalengineer.com")!]
+    var stubbedURLs: [URL] = {
+        var components = URLComponents()
+        components.scheme = "file"
+        components.host = ""
+        components.path = "/fake-directory/extra-fake-directory"
+        
+        return [components.url!, URL(string: "https://theaccidentalengineer.com")!]
+    }()
+    
+    var stubbedFileExistsPath = false
     
     // MARK: - <FileManagerProtocol>
     
@@ -25,6 +39,18 @@ class FakeFileManager: FileManagerProtocol {
         capturedSearchPathDirectory = directory
         capturedSearchPathDomainMask = domainMask
         
-        return stubbedURLS
+        return stubbedURLs
+    }
+    
+    func fileExists(atPath path: String) -> Bool {
+        capturedFileExistsPath = path
+        
+        return stubbedFileExistsPath
+    }
+    
+    func createDirectory(at url: URL, withIntermediateDirectories createIntermediates: Bool, attributes: [FileAttributeKey: Any]?) throws {
+        capturedCreateDirectoryURL = url
+        capturedCreateDirectoryCreateIntermediates = createIntermediates
+        capturedCreateDirectoryAttributes = attributes
     }
 }

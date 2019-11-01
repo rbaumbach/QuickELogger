@@ -212,6 +212,28 @@ class QuickELoggerIntegrationSpec: QuickSpec {
                         expect(logMessage.message).to(equal("This can be deleted unexpectedly"))
                     }
                 }
+                
+                describe("Application Support") {
+                    beforeEach {
+                        subject = QuickELogger(directory: .applicationSupport)
+
+                        subject.log(message: "This is where you should add app related data that is to be hidden from the user", type: .info)
+                    }
+
+                    it("writes the log file to the application support directory") {
+                        let logMessages = getLogMessages(filename: "QuickELogger", directory: .applicationSupport)
+
+                        expect(logMessages.count).to(equal(1))
+
+                        let logMessage = logMessages.first!
+
+                        expect(logMessage.id).toNot(beNil())
+                        expect(logMessage.timeStamp).toNot(beNil())
+
+                        expect(logMessage.type).to(equal(.info))
+                        expect(logMessage.message).to(equal("This is where you should add app related data that is to be hidden from the user"))
+                    }
+                }
             }
         }
     }

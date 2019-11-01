@@ -111,6 +111,10 @@ class QuickELoggerEngine: QuickELoggerEngineProtocol {
             
         case .applicationSupport:
             directoryPath = systemDirectory(.applicationSupportDirectory)
+            
+            if !fileManager.fileExists(atPath: directoryPath.path) {
+                try! fileManager.createDirectory(at: directoryPath, withIntermediateDirectories: false, attributes: nil)
+            }
         }
                                 
         return directoryPath.appendingPathComponent(filename)
