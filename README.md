@@ -23,9 +23,23 @@ A quick and simple way to log messages to disk in your iPhone or iPad app.
 * Objective-C -> Create an instance of `QuickELoggerObjC`, and calling `logWithMessage:type:`
 * This logger has the following (pretty standard) log types: `verbose, info, debug, warn, error`.
 
-Note: The file is saved in the `/Documents` directory.
+Note: By default the file is saved in the `/Documents` directory with the filename `QuickELogger.json`.
 
-Additional note: By default the filename is `QuickELogger.json`.  You can specify a different filename in `init(:filename)`.
+### Additional configuration options
+
+The filename can be customized for your liking using the `init(filename:)` initializer.
+
+The directory structure can be customized fit in the following standard iOS directories:
+
+* `/Documents`
+* `/tmp`
+* `/Library`
+* `/Library/Caches`
+* `/Library/Application Support`
+
+using the `init(directory:)` initializer.
+
+They can also be customized using the `init(filename:directory:)` initializer as well.
 
 ### Example Usage
 
