@@ -9,9 +9,16 @@ class FakeFileManager: FileManagerProtocol {
     
     // MARK: - Stubbed properties
     
-    var stubbedURLS = [URL(string: "https://ryan.codes")!, URL(string: "https://theaccidentalengineer.com")!]
+    var stubbedTemporaryDirectory = URL(string: "https://temp.temp")!
+    
+    var stubbedURLS = [URL(string: "https://ryan.codes")!,
+                       URL(string: "https://theaccidentalengineer.com")!]
     
     // MARK: - <FileManagerProtocol>
+    
+    var temporaryDirectory: URL {
+        return stubbedTemporaryDirectory
+    }
     
     func urls(for directory: FileManager.SearchPathDirectory,
               in domainMask: FileManager.SearchPathDomainMask) -> [URL] {
