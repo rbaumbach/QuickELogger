@@ -108,6 +108,9 @@ class QuickELoggerEngine: QuickELoggerEngineProtocol {
             
         case .caches:
             directoryPath = systemDirectory(.cachesDirectory)
+            
+        case .applicationSupport:
+            directoryPath = systemDirectory(.applicationSupportDirectory)
         }
                                 
         return directoryPath.appendingPathComponent(filename)

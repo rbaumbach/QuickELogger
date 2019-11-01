@@ -34,6 +34,9 @@ func transformDirectory(objcDirectory: ObjCDirectory) -> Directory {
         
     case .caches:
         return .caches
+        
+    case .applicationSupport:
+        return .applicationSupport
     }
 }
 

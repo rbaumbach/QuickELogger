@@ -27,6 +27,7 @@ public enum ObjCDirectory: Int {
     case temp
     case library
     case caches
+    case applicationSupport
 }
 
 @objc

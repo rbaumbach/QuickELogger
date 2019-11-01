@@ -26,6 +26,7 @@ public enum Directory {
     case temp
     case library
     case caches
+    case applicationSupport
 }
 
 public enum LogType: String, Equatable, Codable {

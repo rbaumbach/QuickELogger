@@ -186,6 +186,29 @@ class QuickELoggerEngineSpec: QuickSpec {
                         expect(fakeDataUtils.capturedWriteURL).to(equal(URL(string: "https://ryan.codes/ItsLogLog.json")))
                     }
                 }
+                
+                describe("application support directory") {
+                    beforeEach {
+                        subject = QuickELoggerEngine(filename: "ItsLogLog",
+                                                     directory: .applicationSupport,
+                                                     fileManager: fakeFileManager,
+                                                     jsonEncoder: fakeJSONEncoder,
+                                                     jsonDecoder: fakeJSONDecoder,
+                                                     dataUtils: fakeDataUtils,
+                                                     uuid: fakeUUID)
+                        
+                        subject.log(message: "application support", type: .info, currentDate: justADate)
+                    }
+                    
+                    it("can accept log saves") {
+                        let expectedLogMessages = [LogMessage(id: "uuid-amigos-012345", timeStamp: justADate, type: .info, message: "application support")]
+                        
+                        expect(fakeJSONEncoder.capturedEncodeValue as? [LogMessage]).to(equal(expectedLogMessages))
+                        
+                        expect(fakeDataUtils.capturedWriteData).to(equal(fakeJSONEncoder.stubbedEncodeData))
+                        expect(fakeDataUtils.capturedWriteURL).to(equal(URL(string: "https://ryan.codes/ItsLogLog.json")))
+                    }
+                }
             }
         }
     }
