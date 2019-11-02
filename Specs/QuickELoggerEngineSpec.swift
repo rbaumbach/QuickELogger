@@ -140,7 +140,7 @@ class QuickELoggerEngineSpec: QuickSpec {
                         expect(fakeJSONEncoder.capturedEncodeValue as? [LogMessage]).to(equal(expectedLogMessages))
                         
                         expect(fakeDataUtils.capturedWriteData).to(equal(fakeJSONEncoder.stubbedEncodeData))
-                        expect(fakeDataUtils.capturedWriteURL).to(equal(URL(string: "https://temp.temp/ItsLogLog.json")))
+                        expect(fakeDataUtils.capturedWriteURL).to(equal(URL(string: "file:///fake-temp-directory/ItsLogLog.json")))
                     }
                 }
                 

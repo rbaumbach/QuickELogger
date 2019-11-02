@@ -21,6 +21,8 @@
 
 import Foundation
 
+// MARK: - DataUtils
+
 protocol DataUtilsProtocol {
     func loadData(contentsOfPath: URL) throws -> Data
     func write(data: Data, toPath path: URL) throws
@@ -33,5 +35,50 @@ class DataUtils: DataUtilsProtocol {
     
     func write(data: Data, toPath path: URL) throws {
         try data.write(to: path, options: .atomic)
+    }
+}
+
+// MARK: - FileUtils
+
+protocol FileUtilsProtocol {
+    func buildFullFileURL(directory: Directory, filename: String) -> URL
+}
+
+class FileUtils: FileUtilsProtocol {
+    let fileManager: FileManagerProtocol
+    
+    init(fileManager: FileManagerProtocol = FileManager.default) {
+        self.fileManager = fileManager
+    }
+    
+    func buildFullFileURL(directory: Directory, filename: String) -> URL {
+        var directoryPath: URL
+        
+        switch directory {
+        case .documents:
+            directoryPath = systemDirectory(.documentDirectory)
+            
+        case .temp:
+            directoryPath = fileManager.temporaryDirectory
+            
+        case .library:
+            directoryPath = systemDirectory(.libraryDirectory)
+            
+        case .caches:
+            directoryPath = systemDirectory(.cachesDirectory)
+            
+        case .applicationSupport:
+            directoryPath = systemDirectory(.applicationSupportDirectory)
+            
+            if !fileManager.fileExists(atPath: directoryPath.path) {
+                try! fileManager.createDirectory(at: directoryPath, withIntermediateDirectories: false, attributes: nil)
+            }
+        }
+                                
+        return directoryPath.appendingPathComponent(filename)
+    }
+    
+    private func systemDirectory(_ directory: FileManager.SearchPathDirectory) -> URL {
+        return fileManager.urls(for: directory, in: .userDomainMask).first!
     }
 }

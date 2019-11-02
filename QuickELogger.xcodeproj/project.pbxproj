@@ -15,6 +15,7 @@
 		942059ED2363B73E0081BE92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 942059EB2363B73E0081BE92 /* LaunchScreen.storyboard */; };
 		942A75E1236C8EC0001F5F55 /* EnumTransformationFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942A75E0236C8EC0001F5F55 /* EnumTransformationFunctions.swift */; };
 		9464CAD5236CBDEF00A63EA0 /* FileManagerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9464CAD4236CBDEF00A63EA0 /* FileManagerUtils.swift */; };
+		9464CAD7236DF14100A63EA0 /* FileUtilsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9464CAD6236DF14100A63EA0 /* FileUtilsSpec.swift */; };
 		946CE535236B4309002DA985 /* QuickELoggerObjC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946CE534236B4309002DA985 /* QuickELoggerObjC.swift */; };
 		946CE537236B433D002DA985 /* QuickELoggerObjCIntegrationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946CE536236B433D002DA985 /* QuickELoggerObjCIntegrationSpec.swift */; };
 		946E72F42363BDF800694575 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E72F02363BDF800694575 /* Utils.swift */; };
@@ -71,6 +72,7 @@
 		94205A082363B9F20081BE92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		942A75E0236C8EC0001F5F55 /* EnumTransformationFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumTransformationFunctions.swift; sourceTree = "<group>"; };
 		9464CAD4236CBDEF00A63EA0 /* FileManagerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerUtils.swift; sourceTree = "<group>"; };
+		9464CAD6236DF14100A63EA0 /* FileUtilsSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtilsSpec.swift; sourceTree = "<group>"; };
 		946CE534236B4309002DA985 /* QuickELoggerObjC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickELoggerObjC.swift; sourceTree = "<group>"; };
 		946CE536236B433D002DA985 /* QuickELoggerObjCIntegrationSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickELoggerObjCIntegrationSpec.swift; sourceTree = "<group>"; };
 		946E72F02363BDF800694575 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 		94205A052363B9F20081BE92 /* Specs */ = {
 			isa = PBXGroup;
 			children = (
+				9464CAD6236DF14100A63EA0 /* FileUtilsSpec.swift */,
 				946E72F82363BE4C00694575 /* QuickELoggerEngineSpec.swift */,
 				946E72FA2363BEA900694575 /* Fakes */,
 				94205A0E2363B9F70081BE92 /* Supporting Files */,
@@ -568,6 +571,7 @@
 			files = (
 				946E73022363BF2A00694575 /* FakeUUID.swift in Sources */,
 				946E72FE2363BEE900694575 /* FakeJSONDecoder.swift in Sources */,
+				9464CAD7236DF14100A63EA0 /* FileUtilsSpec.swift in Sources */,
 				946E73042363EA4700694575 /* FakeDataUtils.swift in Sources */,
 				946E72F92363BE4C00694575 /* QuickELoggerEngineSpec.swift in Sources */,
 				946E73062363EC0500694575 /* FakeError.swift in Sources */,

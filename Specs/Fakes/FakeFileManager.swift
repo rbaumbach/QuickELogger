@@ -14,8 +14,15 @@ class FakeFileManager: FileManagerProtocol {
     var capturedCreateDirectoryAttributes: [FileAttributeKey: Any]?
     
     // MARK: - Stubbed properties
-    
-    var stubbedTemporaryDirectory = URL(string: "https://temp.temp")!
+        
+    var stubbedTemporaryDirectory: URL = {
+        var components = URLComponents()
+        components.scheme = "file"
+        components.host = ""
+        components.path = "/fake-temp-directory"
+        
+        return components.url!
+    }()
     
     var stubbedURLs: [URL] = {
         var components = URLComponents()
