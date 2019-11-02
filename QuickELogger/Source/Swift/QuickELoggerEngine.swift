@@ -39,6 +39,7 @@ class QuickELoggerEngine: QuickELoggerEngineProtocol {
     let directory: Directory
     let fileManager: FileManagerProtocol
     let dataUtils: DataUtilsProtocol
+    let fileUtils: FileUtilsProtocol
     let uuid: UUIDProtocol
     
     private(set) var jsonEncoder: JSONEncoderProtocol
@@ -52,6 +53,7 @@ class QuickELoggerEngine: QuickELoggerEngineProtocol {
          jsonEncoder: JSONEncoderProtocol = JSONEncoder(),
          jsonDecoder: JSONDecoderProtocol = JSONDecoder(),
          dataUtils: DataUtilsProtocol = DataUtils(),
+         fileUtils: FileUtilsProtocol = FileUtils(),
          uuid: UUIDProtocol = UUID()) {
         self.filename = filename + ".json"
         self.directory = directory
@@ -62,6 +64,7 @@ class QuickELoggerEngine: QuickELoggerEngineProtocol {
         self.jsonDecoder = jsonDecoder
         self.jsonDecoder.dateDecodingStrategy = .iso8601
         self.dataUtils = dataUtils
+        self.fileUtils = fileUtils
         self.uuid = uuid
     }
     
@@ -94,34 +97,7 @@ class QuickELoggerEngine: QuickELoggerEngineProtocol {
     }
     
     private func jsonFilePath() -> URL {
-        var directoryPath: URL
-        
-        switch directory {
-        case .documents:
-            directoryPath = systemDirectory(.documentDirectory)
-            
-        case .temp:
-            directoryPath = fileManager.temporaryDirectory
-            
-        case .library:
-            directoryPath = systemDirectory(.libraryDirectory)
-            
-        case .caches:
-            directoryPath = systemDirectory(.cachesDirectory)
-            
-        case .applicationSupport:
-            directoryPath = systemDirectory(.applicationSupportDirectory)
-            
-            if !fileManager.fileExists(atPath: directoryPath.path) {
-                try! fileManager.createDirectory(at: directoryPath, withIntermediateDirectories: false, attributes: nil)
-            }
-        }
-                                
-        return directoryPath.appendingPathComponent(filename)
-    }
-    
-    private func systemDirectory(_ directory: FileManager.SearchPathDirectory) -> URL {
-        return fileManager.urls(for: directory, in: .userDomainMask).first!
+        return fileUtils.buildFullFileURL(directory: directory, filename: filename)
     }
     
     private func saveLogMessages(messages: [LogMessage]) {
