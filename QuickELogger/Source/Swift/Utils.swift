@@ -71,7 +71,9 @@ class FileUtils: FileUtilsProtocol {
             directoryPath = systemDirectory(.applicationSupportDirectory)
             
             if !fileManager.fileExists(atPath: directoryPath.path) {
-                try! fileManager.createDirectory(at: directoryPath, withIntermediateDirectories: false, attributes: nil)
+                try! fileManager.createDirectory(at: directoryPath,
+                                                 withIntermediateDirectories: false,
+                                                 attributes: nil)
             }
         }
                                 
