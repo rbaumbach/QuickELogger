@@ -1,6 +1,6 @@
 # QuickELogger [![Bitrise](https://app.bitrise.io/app/c7517344c4df3fb0/status.svg?token=At32U3i-V_TdPJEvW2yYOQ&branch=master)](https://app.bitrise.io/app/c7517344c4df3fb0) [![Cocoapod Version](https://img.shields.io/cocoapods/v/QuickELogger.svg)](https://github.com/rbaumbach/QuickELogger) [![Cocoapod Platform](https://img.shields.io/badge/platform-iOS-blue.svg)](https://github.com/rbaumbach/QuickELogger) [![License](https://img.shields.io/dub/l/vibe-d.svg)](https://github.com/rbaumbach/InstagramSimpleOAuth/blob/master/MIT-LICENSE.txt)
 
-A quick and simple way to log messages to disk in your iPhone or iPad app.
+A quick and simple way to log messages to disk on your iPhone or iPad app.
 
 ## Adding QuickELogger to your project
 
