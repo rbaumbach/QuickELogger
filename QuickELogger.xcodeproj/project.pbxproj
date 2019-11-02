@@ -248,12 +248,12 @@
 			isa = PBXGroup;
 			children = (
 				946E73032363EA4700694575 /* FakeDataUtils.swift */,
+				946E73052363EC0500694575 /* FakeError.swift */,
 				946E72FF2363BF0F00694575 /* FakeFileManager.swift */,
+				9464CAD8236DF39000A63EA0 /* FakeFileUtils.swift */,
 				946E72FD2363BEE900694575 /* FakeJSONDecoder.swift */,
 				946E72FB2363BEDB00694575 /* FakeJSONEncoder.swift */,
 				946E73012363BF2A00694575 /* FakeUUID.swift */,
-				946E73052363EC0500694575 /* FakeError.swift */,
-				9464CAD8236DF39000A63EA0 /* FakeFileUtils.swift */,
 			);
 			path = Fakes;
 			sourceTree = "<group>";

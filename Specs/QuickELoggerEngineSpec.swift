@@ -13,6 +13,7 @@ class QuickELoggerEngineSpec: QuickSpec {
             var fakeFileManager: FakeFileManager!
             var fakeJSONEncoder: FakeJSONEncoder!
             var fakeDataUtils: FakeDataUtils!
+            var fakeFileUtils: FakeFileUtils!
             var fakeUUID: FakeUUID!
             var fakeJSONDecoder: FakeJSONDecoder<[LogMessage]>!
                         
@@ -22,6 +23,7 @@ class QuickELoggerEngineSpec: QuickSpec {
                 fakeFileManager = FakeFileManager()
                 fakeJSONEncoder = FakeJSONEncoder()
                 fakeDataUtils = FakeDataUtils()
+                fakeFileUtils = FakeFileUtils()
                 fakeUUID = FakeUUID()
                                 
                 fakeJSONDecoder = FakeJSONDecoder<[LogMessage]>()
@@ -35,6 +37,7 @@ class QuickELoggerEngineSpec: QuickSpec {
                                              jsonEncoder: fakeJSONEncoder,
                                              jsonDecoder: fakeJSONDecoder,
                                              dataUtils: fakeDataUtils,
+                                             fileUtils: fakeFileUtils,
                                              uuid: fakeUUID)
                 
                 expect(subject.filename).to(equal("ItsLogLog.json"))
@@ -54,6 +57,7 @@ class QuickELoggerEngineSpec: QuickSpec {
                                                  jsonEncoder: fakeJSONEncoder,
                                                  jsonDecoder: fakeJSONDecoder,
                                                  dataUtils: fakeDataUtils,
+                                                 fileUtils: fakeFileUtils,
                                                  uuid: fakeUUID)
                 }
                 
@@ -70,7 +74,10 @@ class QuickELoggerEngineSpec: QuickSpec {
                         expect(fakeJSONEncoder.capturedEncodeValue as? [LogMessage]).to(equal(expectedLogMessages))
                         
                         expect(fakeDataUtils.capturedWriteData).to(equal(fakeJSONEncoder.stubbedEncodeData))
-                        expect(fakeDataUtils.capturedWriteURL).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/ItsLogLog.json")))
+                        expect(fakeDataUtils.capturedWriteURL).to(equal(URL(string: "file:///fake-directory/fakefilename.json")))
+                        
+                        expect(fakeFileUtils.capturedBuildFullFileURLDirectory).to(equal(.documents))
+                        expect(fakeFileUtils.capturedBuildFullFileURLFilename).to(equal("ItsLogLog.json"))
                     }
                 }
                 
@@ -88,7 +95,10 @@ class QuickELoggerEngineSpec: QuickSpec {
                             expect(fakeJSONEncoder.capturedEncodeValue as? [LogMessage]).to(equal(expectedLogMessages))
                                                        
                             expect(fakeDataUtils.capturedWriteData).to(equal(fakeJSONEncoder.stubbedEncodeData))
-                            expect(fakeDataUtils.capturedWriteURL).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/ItsLogLog.json")))
+                            expect(fakeDataUtils.capturedWriteURL).to(equal(URL(string: "file:///fake-directory/fakefilename.json")))
+                            
+                            expect(fakeFileUtils.capturedBuildFullFileURLDirectory).to(equal(.documents))
+                            expect(fakeFileUtils.capturedBuildFullFileURLFilename).to(equal("ItsLogLog.json"))
                         }
                     }
                     
@@ -107,148 +117,10 @@ class QuickELoggerEngineSpec: QuickSpec {
                             expect(fakeJSONEncoder.capturedEncodeValue as? [LogMessage]).to(equal(expectedLogMessages))
                                                        
                             expect(fakeDataUtils.capturedWriteData).to(equal(fakeJSONEncoder.stubbedEncodeData))
-                            expect(fakeDataUtils.capturedWriteURL).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/ItsLogLog.json")))
-                        }
-                    }
-                }
-            }
-            
-            // Note: Additional information regarding the different save directories on iOS can be found here:
-            // https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html
-            
-            describe("saving to different disk directories") {
-                beforeEach {
-                    fakeDataUtils.shouldThrowLoadDataException = true
-                }
-                
-                describe("temp directory") {
-                    beforeEach {
-                        subject = QuickELoggerEngine(filename: "ItsLogLog",
-                                                     directory: .temp,
-                                                     fileManager: fakeFileManager,
-                                                     jsonEncoder: fakeJSONEncoder,
-                                                     jsonDecoder: fakeJSONDecoder,
-                                                     dataUtils: fakeDataUtils,
-                                                     uuid: fakeUUID)
-                        
-                        subject.log(message: "temp", type: .info, currentDate: justADate)
-                    }
-                    
-                    it("can accept log saves") {
-                        let expectedLogMessages = [LogMessage(id: "uuid-amigos-012345", timeStamp: justADate, type: .info, message: "temp")]
-                        
-                        expect(fakeJSONEncoder.capturedEncodeValue as? [LogMessage]).to(equal(expectedLogMessages))
-                        
-                        expect(fakeDataUtils.capturedWriteData).to(equal(fakeJSONEncoder.stubbedEncodeData))
-                        expect(fakeDataUtils.capturedWriteURL).to(equal(URL(string: "file:///fake-temp-directory/ItsLogLog.json")))
-                    }
-                }
-                
-                describe("library directory") {
-                    beforeEach {
-                        subject = QuickELoggerEngine(filename: "ItsLogLog",
-                                                     directory: .library,
-                                                     fileManager: fakeFileManager,
-                                                     jsonEncoder: fakeJSONEncoder,
-                                                     jsonDecoder: fakeJSONDecoder,
-                                                     dataUtils: fakeDataUtils,
-                                                     uuid: fakeUUID)
-                        
-                        subject.log(message: "library", type: .info, currentDate: justADate)
-                    }
-                    
-                    it("can accept log saves") {
-                        let expectedLogMessages = [LogMessage(id: "uuid-amigos-012345", timeStamp: justADate, type: .info, message: "library")]
-                        
-                        expect(fakeJSONEncoder.capturedEncodeValue as? [LogMessage]).to(equal(expectedLogMessages))
-                        
-                        expect(fakeDataUtils.capturedWriteData).to(equal(fakeJSONEncoder.stubbedEncodeData))
-                        expect(fakeDataUtils.capturedWriteURL).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/ItsLogLog.json")))
-                    }
-                }
-                
-                describe("caches directory") {
-                    beforeEach {
-                        subject = QuickELoggerEngine(filename: "ItsLogLog",
-                                                     directory: .caches,
-                                                     fileManager: fakeFileManager,
-                                                     jsonEncoder: fakeJSONEncoder,
-                                                     jsonDecoder: fakeJSONDecoder,
-                                                     dataUtils: fakeDataUtils,
-                                                     uuid: fakeUUID)
-                        
-                        subject.log(message: "caches", type: .info, currentDate: justADate)
-                    }
-                    
-                    it("can accept log saves") {
-                        let expectedLogMessages = [LogMessage(id: "uuid-amigos-012345", timeStamp: justADate, type: .info, message: "caches")]
-                        
-                        expect(fakeJSONEncoder.capturedEncodeValue as? [LogMessage]).to(equal(expectedLogMessages))
-                        
-                        expect(fakeDataUtils.capturedWriteData).to(equal(fakeJSONEncoder.stubbedEncodeData))
-                        expect(fakeDataUtils.capturedWriteURL).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/ItsLogLog.json")))
-                    }
-                }
-                
-                describe("application support directory") {
-                    // Note: The "Library/Application Support" directory doesn't exist by default when an application is loaded.
-                    // This is why we need code to create the directory to dump our logs in if it doesn't exist.
-                    
-                    // Additional note: The apple docs say that the directory is "Application support" with a lowercase "support".
-                    // However, the FileManager API returns "Application Support" with an uppercase "Support".
-                    
-                    describe("when the application support directory doesn't exist") {
-                        beforeEach {
-                            subject = QuickELoggerEngine(filename: "ItsLogLog",
-                                                         directory: .applicationSupport,
-                                                         fileManager: fakeFileManager,
-                                                         jsonEncoder: fakeJSONEncoder,
-                                                         jsonDecoder: fakeJSONDecoder,
-                                                         dataUtils: fakeDataUtils,
-                                                         uuid: fakeUUID)
-
-                            subject.log(message: "application support", type: .info, currentDate: justADate)
-                        }
-                        
-                        it("creates the application support directory") {
-                            expect(fakeFileManager.capturedFileExistsPath).to(equal("/fake-directory/extra-fake-directory"))
-                            expect(fakeFileManager.capturedCreateDirectoryURL).to(equal(URL(string: "file:///fake-directory/extra-fake-directory")))
-                            expect(fakeFileManager.capturedCreateDirectoryCreateIntermediates).to(beFalsy())
-                            expect(fakeFileManager.capturedCreateDirectoryAttributes).to(beNil())
-                        }
-                        
-                        it("can accept log saves") {
-                            let expectedLogMessages = [LogMessage(id: "uuid-amigos-012345", timeStamp: justADate, type: .info, message: "application support")]
+                            expect(fakeDataUtils.capturedWriteURL).to(equal(URL(string: "file:///fake-directory/fakefilename.json")))
                             
-                            expect(fakeJSONEncoder.capturedEncodeValue as? [LogMessage]).to(equal(expectedLogMessages))
-                            
-                            expect(fakeDataUtils.capturedWriteData).to(equal(fakeJSONEncoder.stubbedEncodeData))
-                            expect(fakeDataUtils.capturedWriteURL).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/ItsLogLog.json")))
-                        }
-                    }
-                    
-                    describe("when the application support directory exists") {
-                        beforeEach {
-                            fakeFileManager.stubbedFileExistsPath = true
-
-                            subject = QuickELoggerEngine(filename: "ItsLogLog",
-                                                         directory: .applicationSupport,
-                                                         fileManager: fakeFileManager,
-                                                         jsonEncoder: fakeJSONEncoder,
-                                                         jsonDecoder: fakeJSONDecoder,
-                                                         dataUtils: fakeDataUtils,
-                                                         uuid: fakeUUID)
-
-                            subject.log(message: "application support", type: .info, currentDate: justADate)
-                        }
-
-                        it("can accept log saves") {
-                            let expectedLogMessages = [LogMessage(id: "uuid-amigos-012345", timeStamp: justADate, type: .info, message: "application support")]
-
-                            expect(fakeJSONEncoder.capturedEncodeValue as? [LogMessage]).to(equal(expectedLogMessages))
-
-                            expect(fakeDataUtils.capturedWriteData).to(equal(fakeJSONEncoder.stubbedEncodeData))
-                            expect(fakeDataUtils.capturedWriteURL).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/ItsLogLog.json")))
+                            expect(fakeFileUtils.capturedBuildFullFileURLDirectory).to(equal(.documents))
+                            expect(fakeFileUtils.capturedBuildFullFileURLFilename).to(equal("ItsLogLog.json"))
                         }
                     }
                 }

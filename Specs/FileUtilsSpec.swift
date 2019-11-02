@@ -16,9 +16,8 @@ class FileUtilsSpec: QuickSpec {
                 subject = FileUtils(fileManager: fakeFileManager)
             }
             
-            it("is setup properly") {
-                expect(subject).toNot(beNil())
-            }
+            // Note: Additional information regarding the different save directories on iOS can be found here:
+            // https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html
             
             describe("when building file URL from directory and filename") {
                 var url: URL!

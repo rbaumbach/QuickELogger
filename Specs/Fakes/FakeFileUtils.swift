@@ -13,7 +13,7 @@ class FakeFileUtils: FileUtilsProtocol {
         var components = URLComponents()
         components.scheme = "file"
         components.host = ""
-        components.path = "/fake-temp-directory/fakefilename.json"
+        components.path = "/fake-directory/fakefilename.json"
         
         return components.url!
     }()
