@@ -27,6 +27,8 @@ Note: By default the file is saved in the `/Documents` directory with the filena
 
 ### Additional configuration options
 
+#### Standard directories
+
 The filename can be customized for your liking using the `init(filename:)` initializer.
 
 The directory structure can be customized fit in the following standard iOS directories:
@@ -40,6 +42,8 @@ The directory structure can be customized fit in the following standard iOS dire
 using the `init(directory:)` initializer.
 
 They can also be customized using the `init(filename:directory:)` initializer as well.
+
+Note: A fully user specified custom directory can be specified as well using the `custom(url: URL)` enum option. However, it is the users responsibility to handle invalid URLs.
 
 ### Example Usage
 
