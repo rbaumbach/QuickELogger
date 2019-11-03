@@ -234,6 +234,41 @@ class QuickELoggerIntegrationSpec: QuickSpec {
                         expect(logMessage.message).to(equal("This is where you should add app related data that is to be hidden from the user"))
                     }
                 }
+                
+                // Note: Make sure your URL is good, or else I will crash!
+                
+                describe("custom user specified path") {
+                    var customURL: URL!
+                    
+                    beforeEach {
+                        customURL = documentsDirectory()
+                        
+                        subject = QuickELogger(directory: .custom(url: customURL))
+
+                        subject.log(message: "I will crash if the custom url isn't good!!!!", type: .info)
+                    }
+                    
+                    afterEach {
+                        // Note: Since I'm creating a custom file in the Documents directory, it will get wiped out without any additional work
+                        // since deleteAllTestFiles() deletes all files from this directory
+                        
+                        deleteAllTestFiles()
+                    }
+
+                    it("writes the log file to the custom user specified directory") {
+                        let logMessages = getLogMessages(filename: "QuickELogger", directory: .custom(url: customURL))
+
+                        expect(logMessages.count).to(equal(1))
+
+                        let logMessage = logMessages.first!
+
+                        expect(logMessage.id).toNot(beNil())
+                        expect(logMessage.timeStamp).toNot(beNil())
+
+                        expect(logMessage.type).to(equal(.info))
+                        expect(logMessage.message).to(equal("I will crash if the custom url isn't good!!!!"))
+                    }
+                }
             }
         }
     }

@@ -71,6 +71,18 @@ public class QuickELoggerObjC: NSObject {
         super.init()
     }
     
+    @objc
+    public convenience init(customDirectory: URL) {
+        self.init(filename: "QuickELogger", customDirectory: customDirectory)
+    }
+    
+    @objc
+    public init(filename: String, customDirectory: URL) {
+        engine = QuickELoggerEngine(filename: filename, directory: .custom(url: customDirectory))
+        
+        super.init()
+    }
+    
     // MARK: - Public methods
     
     @objc

@@ -21,15 +21,16 @@
 
 import Foundation
 
-public enum Directory {
+public enum Directory: Equatable, Hashable {
     case documents
     case temp
     case library
     case caches
     case applicationSupport
+    case custom(url: URL)
 }
 
-public enum LogType: String, Equatable, Codable {
+public enum LogType: String, Equatable, Hashable, Codable {
     case verbose
     case info
     case debug
