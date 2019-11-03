@@ -32,7 +32,7 @@ class DataUtils: DataUtilsProtocol {
     func loadData(contentsOfPath path: URL) throws -> Data {
         return try Data(contentsOf: path, options: .alwaysMapped)
     }
-    
+
     func write(data: Data, toPath path: URL) throws {
         try data.write(to: path, options: .atomic)
     }
@@ -45,42 +45,63 @@ protocol FileUtilsProtocol {
 }
 
 class FileUtils: FileUtilsProtocol {
+    // MARK: - Readonly properties
+    
     let fileManager: FileManagerProtocol
     
+    // MARK: - Init methods
+
     init(fileManager: FileManagerProtocol = FileManager.default) {
         self.fileManager = fileManager
     }
     
+    // MARK: - Public methods
+
     func buildFullFileURL(directory: Directory, filename: String) -> URL {
         var directoryPath: URL
-        
+
         switch directory {
         case .documents:
             directoryPath = systemDirectory(.documentDirectory)
-            
+
         case .temp:
             directoryPath = fileManager.temporaryDirectory
-            
+
         case .library:
             directoryPath = systemDirectory(.libraryDirectory)
-            
+
         case .caches:
             directoryPath = systemDirectory(.cachesDirectory)
-            
+
         case .applicationSupport:
             directoryPath = systemDirectory(.applicationSupportDirectory)
+
+            createDirectoryIfNoneExists(directoryPath: directoryPath)
+
+        case .custom(let url):
+            directoryPath = url
             
-            if !fileManager.fileExists(atPath: directoryPath.path) {
-                try! fileManager.createDirectory(at: directoryPath,
-                                                 withIntermediateDirectories: false,
-                                                 attributes: nil)
-            }
+            createDirectoryIfNoneExists(directoryPath: url)
         }
-                                
+
         return directoryPath.appendingPathComponent(filename)
     }
     
+    // MARK: - Private methods
+
     private func systemDirectory(_ directory: FileManager.SearchPathDirectory) -> URL {
         return fileManager.urls(for: directory, in: .userDomainMask).first!
+    }
+
+    private func createDirectoryIfNoneExists(directoryPath: URL) {
+        if !fileManager.fileExists(atPath: directoryPath.path) {
+            do {
+                try fileManager.createDirectory(at: directoryPath,
+                                                withIntermediateDirectories: false,
+                                                attributes: nil)
+            } catch {
+                preconditionFailure("Unable to create directory: \(directoryPath)")
+            }
+        }
     }
 }

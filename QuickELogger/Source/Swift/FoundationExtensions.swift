@@ -21,6 +21,8 @@
 
 import Foundation
 
+// MARK: - JSONEncoder.DateEncodingStrategy
+
 extension JSONEncoder.DateEncodingStrategy: Equatable {
     // MARK: - <Equatable>
     
@@ -28,6 +30,8 @@ extension JSONEncoder.DateEncodingStrategy: Equatable {
         return "\(lhs)" == "\(rhs)"
     }
 }
+
+// MARK: - JSONDecoder.DataDecodingStrategy
 
 extension JSONDecoder.DataDecodingStrategy: Equatable {
     // MARK: - <Equatable>

@@ -103,6 +103,10 @@ class QuickELoggerEngine: QuickELoggerEngineProtocol {
     private func saveLogMessages(messages: [LogMessage]) {
         let encodedJSONData = try! jsonEncoder.encode(messages)
         
-        try! dataUtils.write(data: encodedJSONData, toPath: jsonFilePath())
+        do {
+            try dataUtils.write(data: encodedJSONData, toPath: jsonFilePath())
+        } catch {
+            preconditionFailure("Unable to save messages json to file path: \(jsonFilePath())")
+        }
     }
 }

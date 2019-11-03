@@ -1,7 +1,11 @@
 import Foundation
 @testable import QuickELogger
 
-let directoryDict = [ Directory.documents: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!,
+func documentsDirectory() -> URL {
+    return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+}
+
+let directoryDict = [ Directory.documents: documentsDirectory(),
                       Directory.temp: FileManager.default.temporaryDirectory,
                       Directory.library: FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first!,
                       Directory.caches: FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!,

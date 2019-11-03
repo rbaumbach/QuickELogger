@@ -109,6 +109,54 @@ class FileUtilsSpec: QuickSpec {
                         }
                     }
                 }
+                
+                describe("when building custom user specified url") {
+                    var customURL: URL!
+                    
+                    beforeEach {
+                        customURL = URL(string: "file:///whocares")!
+                    }
+                    
+                    describe("when the custom user specified directory doesn't exist") {
+                        beforeEach {
+                            url = subject.buildFullFileURL(directory: .custom(url: customURL), filename: "Goofus.json")
+                        }
+                        
+                        it("creates the application support directory") {
+                            expect(fakeFileManager.capturedFileExistsPath).to(equal("/whocares"))
+                            expect(fakeFileManager.capturedCreateDirectoryURL).to(equal(URL(string: "file:///whocares")))
+                            expect(fakeFileManager.capturedCreateDirectoryCreateIntermediates).to(beFalsy())
+                            expect(fakeFileManager.capturedCreateDirectoryAttributes).to(beNil())
+                        }
+                        
+                        it("builds the correct URL") {
+                            expect(fakeFileManager.capturedFileExistsPath).to(equal("/whocares"))
+                            expect(fakeFileManager.capturedCreateDirectoryURL).to(equal(URL(string: "file:///whocares")!))
+                            expect(fakeFileManager.capturedCreateDirectoryCreateIntermediates).to(beFalsy())
+                            expect(fakeFileManager.capturedCreateDirectoryAttributes).to(beNil())
+                            
+                            expect(url).to(equal(URL(string: "file:///whocares/Goofus.json")!))
+                        }
+                    }
+                    
+                    describe("when the custom user specified directory exists") {
+                        beforeEach {
+                            fakeFileManager.stubbedFileExistsPath = true
+                            
+                            url = subject.buildFullFileURL(directory: .custom(url: customURL), filename: "Goofus.json")
+                        }
+                        
+                        it("builds the correct URL") {
+                            expect(url).to(equal(URL(string: "file:///whocares/Goofus.json")!))
+                        }
+                        
+                        it("can accept log saves") {
+                            expect(fakeFileManager.capturedFileExistsPath).to(equal("/whocares"))
+                            
+                            expect(url).to(equal(URL(string: "file:///whocares/Goofus.json")!))
+                        }
+                    }
+                }
             }
         }
     }
