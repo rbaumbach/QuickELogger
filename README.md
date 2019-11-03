@@ -27,8 +27,6 @@ Note: By default the file is saved in the `/Documents` directory with the filena
 
 ### Additional configuration options
 
-#### Standard directories
-
 The filename can be customized for your liking using the `init(filename:)` initializer.
 
 The directory structure can be customized fit in the following standard iOS directories:
