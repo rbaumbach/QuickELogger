@@ -18,6 +18,9 @@
 		9464CAD7236DF14100A63EA0 /* FileUtilsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9464CAD6236DF14100A63EA0 /* FileUtilsSpec.swift */; };
 		9464CAD9236DF39000A63EA0 /* FakeFileUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9464CAD8236DF39000A63EA0 /* FakeFileUtils.swift */; };
 		9464CAE1236F7D3200A63EA0 /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9464CAE0236F7D3200A63EA0 /* PerformanceTests.swift */; };
+		9464CAEA236FD29300A63EA0 /* QuickELogger-3004-messages.json in Resources */ = {isa = PBXBuildFile; fileRef = 9464CAE9236FD29300A63EA0 /* QuickELogger-3004-messages.json */; };
+		9464CAEE236FD6A100A63EA0 /* QuickELogger-10-messages.json in Resources */ = {isa = PBXBuildFile; fileRef = 9464CAED236FD6A100A63EA0 /* QuickELogger-10-messages.json */; };
+		9464CAF0236FD7E400A63EA0 /* QuickELogger-0-messages.json in Resources */ = {isa = PBXBuildFile; fileRef = 9464CAEF236FD7E400A63EA0 /* QuickELogger-0-messages.json */; };
 		946CE535236B4309002DA985 /* QuickELoggerObjC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946CE534236B4309002DA985 /* QuickELoggerObjC.swift */; };
 		946CE537236B433D002DA985 /* QuickELoggerObjCIntegrationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946CE536236B433D002DA985 /* QuickELoggerObjCIntegrationSpec.swift */; };
 		946E72F42363BDF800694575 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E72F02363BDF800694575 /* Utils.swift */; };
@@ -86,6 +89,9 @@
 		9464CADE236F7D3200A63EA0 /* PerformanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PerformanceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9464CAE0236F7D3200A63EA0 /* PerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
 		9464CAE2236F7D3200A63EA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9464CAE9236FD29300A63EA0 /* QuickELogger-3004-messages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "QuickELogger-3004-messages.json"; sourceTree = "<group>"; };
+		9464CAED236FD6A100A63EA0 /* QuickELogger-10-messages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "QuickELogger-10-messages.json"; sourceTree = "<group>"; };
+		9464CAEF236FD7E400A63EA0 /* QuickELogger-0-messages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "QuickELogger-0-messages.json"; sourceTree = "<group>"; };
 		946CE534236B4309002DA985 /* QuickELoggerObjC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickELoggerObjC.swift; sourceTree = "<group>"; };
 		946CE536236B433D002DA985 /* QuickELoggerObjCIntegrationSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickELoggerObjCIntegrationSpec.swift; sourceTree = "<group>"; };
 		946E72F02363BDF800694575 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -267,10 +273,21 @@
 		9464CADF236F7D3200A63EA0 /* PerformanceTests */ = {
 			isa = PBXGroup;
 			children = (
+				9464CAE8236FD27400A63EA0 /* TestFiles */,
 				9464CAE0236F7D3200A63EA0 /* PerformanceTests.swift */,
 				9464CAE2236F7D3200A63EA0 /* Info.plist */,
 			);
 			path = PerformanceTests;
+			sourceTree = "<group>";
+		};
+		9464CAE8236FD27400A63EA0 /* TestFiles */ = {
+			isa = PBXGroup;
+			children = (
+				9464CAEF236FD7E400A63EA0 /* QuickELogger-0-messages.json */,
+				9464CAED236FD6A100A63EA0 /* QuickELogger-10-messages.json */,
+				9464CAE9236FD29300A63EA0 /* QuickELogger-3004-messages.json */,
+			);
+			path = TestFiles;
 			sourceTree = "<group>";
 		};
 		946E72FA2363BEA900694575 /* Fakes */ = {
@@ -477,6 +494,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9464CAEA236FD29300A63EA0 /* QuickELogger-3004-messages.json in Resources */,
+				9464CAEE236FD6A100A63EA0 /* QuickELogger-10-messages.json in Resources */,
+				9464CAF0236FD7E400A63EA0 /* QuickELogger-0-messages.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

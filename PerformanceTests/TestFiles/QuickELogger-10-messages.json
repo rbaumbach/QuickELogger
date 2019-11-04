@@ -1,0 +1,62 @@
+[
+  {
+    "timeStamp" : "2019-11-03T21:36:22Z",
+    "id" : "03D4F666-7C39-4FE5-9003-E87721B79584",
+    "message" : "This is log message 0, this will be used to verify that we can see how the performance and the file size is effected.  This seems like a decently long message that will be a good experiment.",
+    "type" : "verbose"
+  },
+  {
+    "timeStamp" : "2019-11-03T21:36:22Z",
+    "id" : "03D4F666-7C39-4FE5-9003-E87721B79584",
+    "message" : "This is log message 1, this will be used to verify that we can see how the performance and the file size is effected.  This seems like a decently long message that will be a good experiment.",
+    "type" : "verbose"
+  },
+  {
+    "timeStamp" : "2019-11-03T21:36:22Z",
+    "id" : "03D4F666-7C39-4FE5-9003-E87721B79584",
+    "message" : "This is log message 2, this will be used to verify that we can see how the performance and the file size is effected.  This seems like a decently long message that will be a good experiment.",
+    "type" : "verbose"
+  },
+  {
+    "timeStamp" : "2019-11-03T21:36:22Z",
+    "id" : "03D4F666-7C39-4FE5-9003-E87721B79584",
+    "message" : "This is log message 3, this will be used to verify that we can see how the performance and the file size is effected.  This seems like a decently long message that will be a good experiment.",
+    "type" : "verbose"
+  },
+  {
+    "timeStamp" : "2019-11-03T21:36:22Z",
+    "id" : "03D4F666-7C39-4FE5-9003-E87721B79584",
+    "message" : "This is log message 4, this will be used to verify that we can see how the performance and the file size is effected.  This seems like a decently long message that will be a good experiment.",
+    "type" : "verbose"
+  },
+  {
+    "timeStamp" : "2019-11-03T21:36:22Z",
+    "id" : "03D4F666-7C39-4FE5-9003-E87721B79584",
+    "message" : "This is log message 5, this will be used to verify that we can see how the performance and the file size is effected.  This seems like a decently long message that will be a good experiment.",
+    "type" : "verbose"
+  },
+  {
+    "timeStamp" : "2019-11-03T21:36:22Z",
+    "id" : "03D4F666-7C39-4FE5-9003-E87721B79584",
+    "message" : "This is log message 6, this will be used to verify that we can see how the performance and the file size is effected.  This seems like a decently long message that will be a good experiment.",
+    "type" : "verbose"
+  },
+  {
+    "timeStamp" : "2019-11-03T21:36:22Z",
+    "id" : "03D4F666-7C39-4FE5-9003-E87721B79584",
+    "message" : "This is log message 7, this will be used to verify that we can see how the performance and the file size is effected.  This seems like a decently long message that will be a good experiment.",
+    "type" : "verbose"
+  },
+  {
+    "timeStamp" : "2019-11-03T21:36:22Z",
+    "id" : "03D4F666-7C39-4FE5-9003-E87721B79584",
+    "message" : "This is log message 8, this will be used to verify that we can see how the performance and the file size is effected.  This seems like a decently long message that will be a good experiment.",
+    "type" : "verbose"
+  },
+  {
+    "timeStamp" : "2019-11-03T21:36:22Z",
+    "id" : "03D4F666-7C39-4FE5-9003-E87721B79584",
+    "message" : "This is log message 9, this will be used to verify that we can see how the performance and the file size is effected.  This seems like a decently long message that will be a good experiment.",
+    "type" : "verbose"
+  }
+]
