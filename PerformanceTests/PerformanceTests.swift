@@ -18,7 +18,7 @@ class PerformanceTests: XCTestCase {
         try! FileManager.default.removeItem(atPath: documentsDir.path + "/QuickELogger.json")
     }
 
-    func testPerformanceExample() {
+    func testQuickELoggerPerformance() {
         measure {
             (0...10).forEach { number in
                 let message = "This is log message \(number), this will be used to verify that we can see how the performance and the file size is effected.  This seems like a decently long message that will be a good experiment."
