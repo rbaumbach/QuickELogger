@@ -31,7 +31,7 @@ class PerformanceTests: XCTestCase {
 
 /*
 
- Test Results
+ Test Results - As of version 0.1.3
  
  10     logs -> Executed 1 test, with 0 failures (0 unexpected) in 1.137 (1.140) seconds
  50     logs -> Executed 1 test, with 0 failures (0 unexpected) in 16.448 (16.451) seconds
