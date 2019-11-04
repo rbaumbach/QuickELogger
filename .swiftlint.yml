@@ -4,6 +4,8 @@ disabled_rules:
 
 line_length: 150
 
+cyclomatic_complexity: 12
+
 identifier_name:
   excluded:
     - id

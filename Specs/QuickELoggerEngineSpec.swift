@@ -32,7 +32,7 @@ class QuickELoggerEngineSpec: QuickSpec {
             
             it("is setup properly") {
                 subject = QuickELoggerEngine(filename: "ItsLogLog",
-                                             directory: .documents,
+                                             directory: .documents(),
                                              fileManager: fakeFileManager,
                                              jsonEncoder: fakeJSONEncoder,
                                              jsonDecoder: fakeJSONDecoder,
@@ -41,7 +41,7 @@ class QuickELoggerEngineSpec: QuickSpec {
                                              uuid: fakeUUID)
                 
                 expect(subject.filename).to(equal("ItsLogLog.json"))
-                expect(subject.directory).to(equal(.documents))
+                expect(subject.directory).to(equal(.documents()))
                 expect(fakeJSONEncoder.capturedOutputFormatting).to(equal(.prettyPrinted))
                 expect(fakeJSONEncoder.capturedDateEncodingStrategy).to(equal(.iso8601))
                 
@@ -52,7 +52,7 @@ class QuickELoggerEngineSpec: QuickSpec {
             describe("logging a message") {
                 beforeEach {
                     subject = QuickELoggerEngine(filename: "ItsLogLog",
-                                                 directory: .documents,
+                                                 directory: .documents(),
                                                  fileManager: fakeFileManager,
                                                  jsonEncoder: fakeJSONEncoder,
                                                  jsonDecoder: fakeJSONDecoder,
@@ -76,7 +76,7 @@ class QuickELoggerEngineSpec: QuickSpec {
                         expect(fakeDataUtils.capturedWriteData).to(equal(fakeJSONEncoder.stubbedEncodeData))
                         expect(fakeDataUtils.capturedWriteURL).to(equal(URL(string: "file:///fake-directory/fakefilename.json")))
                         
-                        expect(fakeFileUtils.capturedBuildFullFileURLDirectory).to(equal(.documents))
+                        expect(fakeFileUtils.capturedBuildFullFileURLDirectory).to(equal(.documents()))
                         expect(fakeFileUtils.capturedBuildFullFileURLFilename).to(equal("ItsLogLog.json"))
                     }
                 }
@@ -97,7 +97,7 @@ class QuickELoggerEngineSpec: QuickSpec {
                             expect(fakeDataUtils.capturedWriteData).to(equal(fakeJSONEncoder.stubbedEncodeData))
                             expect(fakeDataUtils.capturedWriteURL).to(equal(URL(string: "file:///fake-directory/fakefilename.json")))
                             
-                            expect(fakeFileUtils.capturedBuildFullFileURLDirectory).to(equal(.documents))
+                            expect(fakeFileUtils.capturedBuildFullFileURLDirectory).to(equal(.documents()))
                             expect(fakeFileUtils.capturedBuildFullFileURLFilename).to(equal("ItsLogLog.json"))
                         }
                     }
@@ -119,7 +119,7 @@ class QuickELoggerEngineSpec: QuickSpec {
                             expect(fakeDataUtils.capturedWriteData).to(equal(fakeJSONEncoder.stubbedEncodeData))
                             expect(fakeDataUtils.capturedWriteURL).to(equal(URL(string: "file:///fake-directory/fakefilename.json")))
                             
-                            expect(fakeFileUtils.capturedBuildFullFileURLDirectory).to(equal(.documents))
+                            expect(fakeFileUtils.capturedBuildFullFileURLDirectory).to(equal(.documents()))
                             expect(fakeFileUtils.capturedBuildFullFileURLFilename).to(equal("ItsLogLog.json"))
                         }
                     }

@@ -22,11 +22,11 @@
 import Foundation
 
 public enum Directory: Equatable, Hashable {
-    case documents
-    case temp
-    case library
-    case caches
-    case applicationSupport
+    case documents(path: String? = nil)
+    case temp(path: String? = nil)
+    case library(path: String? = nil)
+    case caches(path: String? = nil)
+    case applicationSupport(path: String? = nil)
     case custom(url: URL)
 }
 
@@ -54,7 +54,7 @@ public class QuickELogger: NSObject, QuickELoggerProtocol {
     
     // MARK: - Init methods
     
-    public init(filename: String = "QuickELogger", directory: Directory = .documents) {
+    public init(filename: String = "QuickELogger", directory: Directory = .documents()) {
         self.filename = filename
         self.directory = directory
         

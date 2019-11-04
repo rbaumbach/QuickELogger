@@ -40,6 +40,23 @@ public enum ObjCLogType: Int {
 }
 
 @objc
+public class ObjCDirectoryInfo: NSObject {
+    @objc
+    public var directory: ObjCDirectory = .documents
+    
+    @objc
+    public var additionalPath: String?
+    
+    @objc
+    public init(directory: ObjCDirectory, additionalPath: String?) {
+        self.directory = directory
+        self.additionalPath = additionalPath
+        
+        super.init()
+    }
+}
+
+@objc
 public class QuickELoggerObjC: NSObject {
     // MARK: - Public properties
     
@@ -49,37 +66,22 @@ public class QuickELoggerObjC: NSObject {
     
     @objc
     public convenience override init() {
-        self.init(filename: "QuickELogger", directory: .documents)
-    }
-    
-    @objc
-    public convenience init(filename: String) {
-        self.init(filename: filename, directory: .documents)
-    }
-    
-    @objc
-    public convenience init(directory: ObjCDirectory) {
-        self.init(filename: "QuickELogger", directory: directory)
-    }
-    
-    @objc
-    public init(filename: String, directory: ObjCDirectory) {
-        let transformedDirectory = transformDirectory(objcDirectory: directory)
+        let defaultDirectoryInfo = ObjCDirectoryInfo(directory: .documents, additionalPath: nil)
         
+        self.init(filename: "QuickELogger", directoryInfo: defaultDirectoryInfo)
+    }
+    
+    @objc
+    public convenience init(directoryInfo: ObjCDirectoryInfo) {
+        self.init(filename: "QuickELogger", directoryInfo: directoryInfo)
+    }
+    
+    @objc
+    public init(filename: String, directoryInfo: ObjCDirectoryInfo) {
+        let transformedDirectory = transformDirectory(objcDirectoryInfo: directoryInfo)
+
         engine = QuickELoggerEngine(filename: filename, directory: transformedDirectory)
-        
-        super.init()
-    }
-    
-    @objc
-    public convenience init(customDirectory: URL) {
-        self.init(filename: "QuickELogger", customDirectory: customDirectory)
-    }
-    
-    @objc
-    public init(filename: String, customDirectory: URL) {
-        engine = QuickELoggerEngine(filename: filename, directory: .custom(url: customDirectory))
-        
+
         super.init()
     }
     

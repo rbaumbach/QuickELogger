@@ -146,7 +146,15 @@ class QuickELoggerIntegrationSpec: QuickSpec {
                 }
             }
             
-            describe("writing to other directories besides the Documents directory") {
+            describe("writing to other directories besides the root Documents directory") {
+                describe("Documents/somethingElse/dude/") {
+                    beforeEach {
+                        subject = QuickELogger(, directory: .documents(path: "somethingElse/"))
+                    }
+                    
+                    subject.log(message: "This is temporary and will get deleted frequently", type: .info)
+                }
+                
                 describe("tmp") {
                     beforeEach {
                         subject = QuickELogger(directory: .temp)

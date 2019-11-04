@@ -23,89 +23,285 @@ class FileUtilsSpec: QuickSpec {
                 var url: URL!
                 
                 describe("when building /Documents directory URL") {
-                    beforeEach {
-                        url = subject.buildFullFileURL(directory: .documents, filename: "Goofus.json")
+                    describe("when an additional path is given") {
+                        describe("when the additional path directory in documents doesn't exist") {
+                            beforeEach {
+                                url = subject.buildFullFileURL(directory: .documents(path: "abc/123/"), filename: "Goofus.json")
+                            }
+                            
+                            it("creates the the additional path directory in documents") {
+                                expect(fakeFileManager.capturedFileExistsPath).to(equal("/fake-directory/extra-fake-directory/abc/123"))
+                                expect(fakeFileManager.capturedCreateDirectoryURL).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/abc/123")))
+                                expect(fakeFileManager.capturedCreateDirectoryCreateIntermediates).to(beTruthy())
+                                expect(fakeFileManager.capturedCreateDirectoryAttributes).to(beNil())
+                            }
+                            
+                            it("builds the correct URL") {
+                                expect(fakeFileManager.capturedFileExistsPath).to(equal("/fake-directory/extra-fake-directory/abc/123"))
+                                expect(fakeFileManager.capturedCreateDirectoryURL).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/abc/123")!))
+                                expect(fakeFileManager.capturedCreateDirectoryCreateIntermediates).to(beTruthy())
+                                expect(fakeFileManager.capturedCreateDirectoryAttributes).to(beNil())
+                                
+                                expect(url).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/abc/123/Goofus.json")!))
+                            }
+                        }
+                        
+                        describe("when the additional path directory in documents exists") {
+                            beforeEach {
+                                fakeFileManager.stubbedFileExistsPath = true
+                                
+                                url = subject.buildFullFileURL(directory: .documents(), filename: "Goofus.json")
+                            }
+                            
+                            it("builds the correct URL") {
+                                expect(url).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/Goofus.json")!))
+                            }
+                        }
                     }
                     
-                    it("builds the correct URL") {
-                        expect(url).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/Goofus.json")!))
+                    describe("when NO additional path is given") {
+                        beforeEach {
+                            url = subject.buildFullFileURL(directory: .documents(), filename: "Goofus.json")
+                        }
+                        
+                        it("builds the correct URL") {
+                            expect(url).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/Goofus.json")!))
+                        }
                     }
                 }
                 
                 describe("when building /tmp directory URL") {
-                    beforeEach {
-                        url = subject.buildFullFileURL(directory: .temp, filename: "Goofus.json")
+                    describe("when an additional path is given") {
+                        describe("when the additional path directory in tmp doesn't exist") {
+                            beforeEach {
+                                url = subject.buildFullFileURL(directory: .temp(path: "abc/123/"), filename: "Goofus.json")
+                            }
+                            
+                            it("creates the the additional path directory in temp") {
+                                expect(fakeFileManager.capturedFileExistsPath).to(equal("/fake-temp-directory/abc/123"))
+                                expect(fakeFileManager.capturedCreateDirectoryURL).to(equal(URL(string: "file:///fake-temp-directory/abc/123")))
+                                expect(fakeFileManager.capturedCreateDirectoryCreateIntermediates).to(beTruthy())
+                                expect(fakeFileManager.capturedCreateDirectoryAttributes).to(beNil())
+                            }
+                            
+                            it("builds the correct URL") {
+                                expect(fakeFileManager.capturedFileExistsPath).to(equal("/fake-temp-directory/abc/123"))
+                                expect(fakeFileManager.capturedCreateDirectoryURL).to(equal(URL(string: "file:///fake-temp-directory/abc/123")!))
+                                expect(fakeFileManager.capturedCreateDirectoryCreateIntermediates).to(beTruthy())
+                                expect(fakeFileManager.capturedCreateDirectoryAttributes).to(beNil())
+                                
+                                expect(url).to(equal(URL(string: "file:///fake-temp-directory/abc/123/Goofus.json")!))
+                            }
+                        }
+                        
+                        describe("when the additional path directory in tmp exists") {
+                            beforeEach {
+                                fakeFileManager.stubbedFileExistsPath = true
+                                
+                                url = subject.buildFullFileURL(directory: .temp(), filename: "Goofus.json")
+                            }
+                            
+                            it("builds the correct URL") {
+                                expect(url).to(equal(URL(string: "file:///fake-temp-directory/Goofus.json")!))
+                            }
+                        }
                     }
                     
-                    it("builds the correct URL") {
-                        expect(url).to(equal(URL(string: "file:///fake-temp-directory/Goofus.json")!))
+                    describe("when NO additional path is given") {
+                        beforeEach {
+                            url = subject.buildFullFileURL(directory: .documents(), filename: "Goofus.json")
+                        }
+                        
+                        it("builds the correct URL") {
+                            expect(url).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/Goofus.json")!))
+                        }
                     }
                 }
                 
                 describe("when building /Library directory URL") {
-                    beforeEach {
-                        url = subject.buildFullFileURL(directory: .library, filename: "Goofus.json")
+                    describe("when an additional path is given") {
+                        describe("when the additional path directory in library doesn't exist") {
+                            beforeEach {
+                                url = subject.buildFullFileURL(directory: .library(path: "abc/123/"), filename: "Goofus.json")
+                            }
+                            
+                            it("creates the the additional path directory in library") {
+                                expect(fakeFileManager.capturedFileExistsPath).to(equal("/fake-directory/extra-fake-directory/abc/123"))
+                                expect(fakeFileManager.capturedCreateDirectoryURL).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/abc/123")))
+                                expect(fakeFileManager.capturedCreateDirectoryCreateIntermediates).to(beTruthy())
+                                expect(fakeFileManager.capturedCreateDirectoryAttributes).to(beNil())
+                            }
+                            
+                            it("builds the correct URL") {
+                                expect(fakeFileManager.capturedFileExistsPath).to(equal("/fake-directory/extra-fake-directory/abc/123"))
+                                expect(fakeFileManager.capturedCreateDirectoryURL).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/abc/123")!))
+                                expect(fakeFileManager.capturedCreateDirectoryCreateIntermediates).to(beTruthy())
+                                expect(fakeFileManager.capturedCreateDirectoryAttributes).to(beNil())
+                                
+                                expect(url).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/abc/123/Goofus.json")!))
+                            }
+                        }
+                        
+                        describe("when the additional path directory in library exists") {
+                            beforeEach {
+                                fakeFileManager.stubbedFileExistsPath = true
+                                
+                                url = subject.buildFullFileURL(directory: .library(), filename: "Goofus.json")
+                            }
+                            
+                            it("builds the correct URL") {
+                                expect(url).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/Goofus.json")!))
+                            }
+                        }
                     }
                     
-                    it("builds the correct URL") {
-                        expect(url).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/Goofus.json")!))
+                    describe("when NO additional path is given") {
+                        beforeEach {
+                            url = subject.buildFullFileURL(directory: .library(), filename: "Goofus.json")
+                        }
+                        
+                        it("builds the correct URL") {
+                            expect(url).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/Goofus.json")!))
+                        }
                     }
                 }
                 
                 describe("when building /Library/Caches directory URL") {
-                    beforeEach {
-                        url = subject.buildFullFileURL(directory: .caches, filename: "Goofus.json")
+                    describe("when an additional path is given") {
+                        describe("when the additional path directory in documents doesn't exist") {
+                            beforeEach {
+                                url = subject.buildFullFileURL(directory: .caches(path: "abc/123/"), filename: "Goofus.json")
+                            }
+                            
+                            it("creates the the additional path directory in caches") {
+                                expect(fakeFileManager.capturedFileExistsPath).to(equal("/fake-directory/extra-fake-directory/abc/123"))
+                                expect(fakeFileManager.capturedCreateDirectoryURL).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/abc/123")))
+                                expect(fakeFileManager.capturedCreateDirectoryCreateIntermediates).to(beTruthy())
+                                expect(fakeFileManager.capturedCreateDirectoryAttributes).to(beNil())
+                            }
+                            
+                            it("builds the correct URL") {
+                                expect(fakeFileManager.capturedFileExistsPath).to(equal("/fake-directory/extra-fake-directory/abc/123"))
+                                expect(fakeFileManager.capturedCreateDirectoryURL).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/abc/123")!))
+                                expect(fakeFileManager.capturedCreateDirectoryCreateIntermediates).to(beTruthy())
+                                expect(fakeFileManager.capturedCreateDirectoryAttributes).to(beNil())
+                                
+                                expect(url).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/abc/123/Goofus.json")!))
+                            }
+                        }
+                        
+                        describe("when the additional path directory in caches exists") {
+                            beforeEach {
+                                fakeFileManager.stubbedFileExistsPath = true
+                                
+                                url = subject.buildFullFileURL(directory: .caches(), filename: "Goofus.json")
+                            }
+                            
+                            it("builds the correct URL") {
+                                expect(url).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/Goofus.json")!))
+                            }
+                        }
                     }
                     
-                    it("builds the correct URL") {
-                        expect(url).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/Goofus.json")!))
+                    describe("when NO additional path is given") {
+                        beforeEach {
+                            url = subject.buildFullFileURL(directory: .caches(), filename: "Goofus.json")
+                        }
+                        
+                        it("builds the correct URL") {
+                            expect(url).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/Goofus.json")!))
+                        }
                     }
                 }
                 
+                // Note: The "Library/Application Support" directory doesn't exist by default when an application is loaded.
+                // This is why we need code to create the directory to dump our logs in if it doesn't exist.
+                
+                // Additional note: The apple docs say that the directory is "Application support" with a lowercase "support".
+                // However, the FileManager API returns "Application Support" with an uppercase "Support".
+                
                 describe("when building '/Library/Application Support' directory URL") {
-                    // Note: The "Library/Application Support" directory doesn't exist by default when an application is loaded.
-                    // This is why we need code to create the directory to dump our logs in if it doesn't exist.
-                    
-                    // Additional note: The apple docs say that the directory is "Application support" with a lowercase "support".
-                    // However, the FileManager API returns "Application Support" with an uppercase "Support".
-                    
-                    describe("when the application support directory doesn't exist") {
-                        beforeEach {
-                            url = subject.buildFullFileURL(directory: .applicationSupport, filename: "Goofus.json")
-                        }
-                        
-                        it("creates the application support directory") {
-                            expect(fakeFileManager.capturedFileExistsPath).to(equal("/fake-directory/extra-fake-directory"))
-                            expect(fakeFileManager.capturedCreateDirectoryURL).to(equal(URL(string: "file:///fake-directory/extra-fake-directory")))
-                            expect(fakeFileManager.capturedCreateDirectoryCreateIntermediates).to(beFalsy())
-                            expect(fakeFileManager.capturedCreateDirectoryAttributes).to(beNil())
-                        }
-                        
-                        it("builds the correct URL") {
-                            expect(fakeFileManager.capturedFileExistsPath).to(equal("/fake-directory/extra-fake-directory"))
-                            expect(fakeFileManager.capturedCreateDirectoryURL).to(equal(URL(string: "file:///fake-directory/extra-fake-directory")!))
-                            expect(fakeFileManager.capturedCreateDirectoryCreateIntermediates).to(beFalsy())
-                            expect(fakeFileManager.capturedCreateDirectoryAttributes).to(beNil())
+                    describe("when an additional path is given") {
+                        describe("when the additional path directory in application support doesn't exist") {
+                            beforeEach {
+                                url = subject.buildFullFileURL(directory: .applicationSupport(path: "abc/123/"), filename: "Goofus.json")
+                            }
                             
-                            expect(url).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/Goofus.json")!))
+                            it("creates the application support directory") {
+                                expect(fakeFileManager.capturedFileExistsPath).to(equal("/fake-directory/extra-fake-directory/abc/123"))
+                                expect(fakeFileManager.capturedCreateDirectoryURL).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/abc/123")))
+                                expect(fakeFileManager.capturedCreateDirectoryCreateIntermediates).to(beTruthy())
+                                expect(fakeFileManager.capturedCreateDirectoryAttributes).to(beNil())
+                            }
+                            
+                            it("builds the correct URL") {
+                                expect(fakeFileManager.capturedFileExistsPath).to(equal("/fake-directory/extra-fake-directory/abc/123"))
+                                expect(fakeFileManager.capturedCreateDirectoryURL).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/abc/123")!))
+                                expect(fakeFileManager.capturedCreateDirectoryCreateIntermediates).to(beTruthy())
+                                expect(fakeFileManager.capturedCreateDirectoryAttributes).to(beNil())
+                                
+                                expect(url).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/abc/123/Goofus.json")!))
+                            }
+                        }
+                        
+                        describe("when the additional path directory in application support exists") {
+                            beforeEach {
+                                fakeFileManager.stubbedFileExistsPath = true
+                                
+                                url = subject.buildFullFileURL(directory: .applicationSupport(), filename: "Goofus.json")
+                            }
+                            
+                            it("builds the correct URL") {
+                                expect(url).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/Goofus.json")!))
+                            }
+                            
+                            it("can accept log saves") {
+                                expect(fakeFileManager.capturedFileExistsPath).to(equal("/fake-directory/extra-fake-directory"))
+                                
+                                expect(url).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/Goofus.json")!))
+                            }
                         }
                     }
                     
-                    describe("when the application support directory exists") {
-                        beforeEach {
-                            fakeFileManager.stubbedFileExistsPath = true
+                    describe("when NO additional path is given") {
+                        describe("when the application support directory doesn't exist") {
+                            beforeEach {
+                                url = subject.buildFullFileURL(directory: .applicationSupport(), filename: "Goofus.json")
+                            }
                             
-                            url = subject.buildFullFileURL(directory: .applicationSupport, filename: "Goofus.json")
+                            it("creates the application support directory") {
+                                expect(fakeFileManager.capturedFileExistsPath).to(equal("/fake-directory/extra-fake-directory"))
+                                expect(fakeFileManager.capturedCreateDirectoryURL).to(equal(URL(string: "file:///fake-directory/extra-fake-directory")))
+                                expect(fakeFileManager.capturedCreateDirectoryCreateIntermediates).to(beTruthy())
+                                expect(fakeFileManager.capturedCreateDirectoryAttributes).to(beNil())
+                            }
+                            
+                            it("builds the correct URL") {
+                                expect(fakeFileManager.capturedFileExistsPath).to(equal("/fake-directory/extra-fake-directory"))
+                                expect(fakeFileManager.capturedCreateDirectoryURL).to(equal(URL(string: "file:///fake-directory/extra-fake-directory")!))
+                                expect(fakeFileManager.capturedCreateDirectoryCreateIntermediates).to(beTruthy())
+                                expect(fakeFileManager.capturedCreateDirectoryAttributes).to(beNil())
+                                
+                                expect(url).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/Goofus.json")!))
+                            }
                         }
                         
-                        it("builds the correct URL") {
-                            expect(url).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/Goofus.json")!))
-                        }
-                        
-                        it("can accept log saves") {
-                            expect(fakeFileManager.capturedFileExistsPath).to(equal("/fake-directory/extra-fake-directory"))
+                        describe("when the application support directory exists") {
+                            beforeEach {
+                                fakeFileManager.stubbedFileExistsPath = true
+                                
+                                url = subject.buildFullFileURL(directory: .applicationSupport(), filename: "Goofus.json")
+                            }
                             
-                            expect(url).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/Goofus.json")!))
+                            it("builds the correct URL") {
+                                expect(url).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/Goofus.json")!))
+                            }
+                            
+                            it("can accept log saves") {
+                                expect(fakeFileManager.capturedFileExistsPath).to(equal("/fake-directory/extra-fake-directory"))
+                                
+                                expect(url).to(equal(URL(string: "file:///fake-directory/extra-fake-directory/Goofus.json")!))
+                            }
                         }
                     }
                 }
@@ -125,14 +321,14 @@ class FileUtilsSpec: QuickSpec {
                         it("creates the application support directory") {
                             expect(fakeFileManager.capturedFileExistsPath).to(equal("/whocares"))
                             expect(fakeFileManager.capturedCreateDirectoryURL).to(equal(URL(string: "file:///whocares")))
-                            expect(fakeFileManager.capturedCreateDirectoryCreateIntermediates).to(beFalsy())
+                            expect(fakeFileManager.capturedCreateDirectoryCreateIntermediates).to(beTruthy())
                             expect(fakeFileManager.capturedCreateDirectoryAttributes).to(beNil())
                         }
                         
                         it("builds the correct URL") {
                             expect(fakeFileManager.capturedFileExistsPath).to(equal("/whocares"))
                             expect(fakeFileManager.capturedCreateDirectoryURL).to(equal(URL(string: "file:///whocares")!))
-                            expect(fakeFileManager.capturedCreateDirectoryCreateIntermediates).to(beFalsy())
+                            expect(fakeFileManager.capturedCreateDirectoryCreateIntermediates).to(beTruthy())
                             expect(fakeFileManager.capturedCreateDirectoryAttributes).to(beNil())
                             
                             expect(url).to(equal(URL(string: "file:///whocares/Goofus.json")!))
