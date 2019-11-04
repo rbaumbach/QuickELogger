@@ -38,16 +38,6 @@
                ReferencedContainer = "container:QuickELogger.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9464CADD236F7D3200A63EA0"
-               BuildableName = "PerformanceTests.xctest"
-               BlueprintName = "PerformanceTests"
-               ReferencedContainer = "container:QuickELogger.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
