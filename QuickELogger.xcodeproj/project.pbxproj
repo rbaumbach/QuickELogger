@@ -17,6 +17,7 @@
 		9464CAD5236CBDEF00A63EA0 /* FileManagerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9464CAD4236CBDEF00A63EA0 /* FileManagerUtils.swift */; };
 		9464CAD7236DF14100A63EA0 /* FileUtilsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9464CAD6236DF14100A63EA0 /* FileUtilsSpec.swift */; };
 		9464CAD9236DF39000A63EA0 /* FakeFileUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9464CAD8236DF39000A63EA0 /* FakeFileUtils.swift */; };
+		9464CAE1236F7D3200A63EA0 /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9464CAE0236F7D3200A63EA0 /* PerformanceTests.swift */; };
 		946CE535236B4309002DA985 /* QuickELoggerObjC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946CE534236B4309002DA985 /* QuickELoggerObjC.swift */; };
 		946CE537236B433D002DA985 /* QuickELoggerObjCIntegrationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946CE536236B433D002DA985 /* QuickELoggerObjCIntegrationSpec.swift */; };
 		946E72F42363BDF800694575 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E72F02363BDF800694575 /* Utils.swift */; };
@@ -39,6 +40,13 @@
 
 /* Begin PBXContainerItemProxy section */
 		94205A092363B9F20081BE92 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 942059D52363B73D0081BE92 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 942059DC2363B73D0081BE92;
+			remoteInfo = QuickELogger;
+		};
+		9464CAE3236F7D3200A63EA0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 942059D52363B73D0081BE92 /* Project object */;
 			proxyType = 1;
@@ -75,6 +83,9 @@
 		9464CAD4236CBDEF00A63EA0 /* FileManagerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerUtils.swift; sourceTree = "<group>"; };
 		9464CAD6236DF14100A63EA0 /* FileUtilsSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtilsSpec.swift; sourceTree = "<group>"; };
 		9464CAD8236DF39000A63EA0 /* FakeFileUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeFileUtils.swift; sourceTree = "<group>"; };
+		9464CADE236F7D3200A63EA0 /* PerformanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PerformanceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9464CAE0236F7D3200A63EA0 /* PerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
+		9464CAE2236F7D3200A63EA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		946CE534236B4309002DA985 /* QuickELoggerObjC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickELoggerObjC.swift; sourceTree = "<group>"; };
 		946CE536236B433D002DA985 /* QuickELoggerObjCIntegrationSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickELoggerObjCIntegrationSpec.swift; sourceTree = "<group>"; };
 		946E72F02363BDF800694575 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -114,6 +125,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9464CADB236F7D3200A63EA0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		946E730A2364A99000694575 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -141,6 +159,7 @@
 				942059DF2363B73D0081BE92 /* QuickELogger */,
 				94205A052363B9F20081BE92 /* Specs */,
 				946E730E2364A99000694575 /* IntegrationSpecs */,
+				9464CADF236F7D3200A63EA0 /* PerformanceTests */,
 				942059DE2363B73D0081BE92 /* Products */,
 				D817C3C085CFC4CD55B7EEE3 /* Pods */,
 				89D8AE415839FFC778D27A9A /* Frameworks */,
@@ -153,6 +172,7 @@
 				942059DD2363B73D0081BE92 /* QuickELogger.app */,
 				94205A042363B9F20081BE92 /* Specs.xctest */,
 				946E730D2364A99000694575 /* IntegrationSpecs.xctest */,
+				9464CADE236F7D3200A63EA0 /* PerformanceTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -242,6 +262,15 @@
 				946CE534236B4309002DA985 /* QuickELoggerObjC.swift */,
 			);
 			path = ObjC;
+			sourceTree = "<group>";
+		};
+		9464CADF236F7D3200A63EA0 /* PerformanceTests */ = {
+			isa = PBXGroup;
+			children = (
+				9464CAE0236F7D3200A63EA0 /* PerformanceTests.swift */,
+				9464CAE2236F7D3200A63EA0 /* Info.plist */,
+			);
+			path = PerformanceTests;
 			sourceTree = "<group>";
 		};
 		946E72FA2363BEA900694575 /* Fakes */ = {
@@ -341,6 +370,24 @@
 			productReference = 94205A042363B9F20081BE92 /* Specs.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		9464CADD236F7D3200A63EA0 /* PerformanceTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9464CAE5236F7D3200A63EA0 /* Build configuration list for PBXNativeTarget "PerformanceTests" */;
+			buildPhases = (
+				9464CADA236F7D3200A63EA0 /* Sources */,
+				9464CADB236F7D3200A63EA0 /* Frameworks */,
+				9464CADC236F7D3200A63EA0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9464CAE4236F7D3200A63EA0 /* PBXTargetDependency */,
+			);
+			name = PerformanceTests;
+			productName = PerformanceTests;
+			productReference = 9464CADE236F7D3200A63EA0 /* PerformanceTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		946E730C2364A99000694575 /* IntegrationSpecs */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 946E73142364A99000694575 /* Build configuration list for PBXNativeTarget "IntegrationSpecs" */;
@@ -377,6 +424,10 @@
 						CreatedOnToolsVersion = 11.1;
 						TestTargetID = 942059DC2363B73D0081BE92;
 					};
+					9464CADD236F7D3200A63EA0 = {
+						CreatedOnToolsVersion = 11.1;
+						TestTargetID = 942059DC2363B73D0081BE92;
+					};
 					946E730C2364A99000694575 = {
 						CreatedOnToolsVersion = 11.1;
 						TestTargetID = 942059DC2363B73D0081BE92;
@@ -399,6 +450,7 @@
 				942059DC2363B73D0081BE92 /* QuickELogger */,
 				94205A032363B9F20081BE92 /* Specs */,
 				946E730C2364A99000694575 /* IntegrationSpecs */,
+				9464CADD236F7D3200A63EA0 /* PerformanceTests */,
 			);
 		};
 /* End PBXProject section */
@@ -415,6 +467,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		94205A022363B9F20081BE92 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9464CADC236F7D3200A63EA0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -584,6 +643,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9464CADA236F7D3200A63EA0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9464CAE1236F7D3200A63EA0 /* PerformanceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		946E73092364A99000694575 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -602,6 +669,11 @@
 			isa = PBXTargetDependency;
 			target = 942059DC2363B73D0081BE92 /* QuickELogger */;
 			targetProxy = 94205A092363B9F20081BE92 /* PBXContainerItemProxy */;
+		};
+		9464CAE4236F7D3200A63EA0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 942059DC2363B73D0081BE92 /* QuickELogger */;
+			targetProxy = 9464CAE3236F7D3200A63EA0 /* PBXContainerItemProxy */;
 		};
 		946E73132364A99000694575 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -836,6 +908,46 @@
 			};
 			name = Release;
 		};
+		9464CAE6236F7D3200A63EA0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = PerformanceTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = teamthick.PerformanceTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuickELogger.app/QuickELogger";
+			};
+			name = Debug;
+		};
+		9464CAE7236F7D3200A63EA0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = PerformanceTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = teamthick.PerformanceTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuickELogger.app/QuickELogger";
+			};
+			name = Release;
+		};
 		946E73152364A99000694575 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 266CE3AAAC790A23FE18FF91 /* Pods-IntegrationSpecs.debug.xcconfig */;
@@ -904,6 +1016,15 @@
 			buildConfigurations = (
 				94205A0C2363B9F20081BE92 /* Debug */,
 				94205A0D2363B9F20081BE92 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9464CAE5236F7D3200A63EA0 /* Build configuration list for PBXNativeTarget "PerformanceTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9464CAE6236F7D3200A63EA0 /* Debug */,
+				9464CAE7236F7D3200A63EA0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

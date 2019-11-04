@@ -11,4 +11,5 @@ identifier_name:
 excluded:
   - Specs
   - IntegrationSpecs
+  - PerformanceTests
   - Pods
