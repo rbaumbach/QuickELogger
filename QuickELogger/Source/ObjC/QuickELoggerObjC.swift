@@ -66,14 +66,14 @@ public class QuickELoggerObjC: NSObject {
     
     @objc
     public convenience override init() {
-        let defaultDirectoryInfo = ObjCDirectoryInfo(directory: .documents, additionalPath: nil)
+        let defaultDirectoryInfo = ObjCDirectoryInfo(directory: .applicationSupport, additionalPath: "QuickELogger/")
         
         self.init(filename: "QuickELogger", directoryInfo: defaultDirectoryInfo)
     }
     
     @objc
     public convenience init(filename: String) {
-        let defaultDirectoryInfo = ObjCDirectoryInfo(directory: .documents, additionalPath: nil)
+        let defaultDirectoryInfo = ObjCDirectoryInfo(directory: .applicationSupport, additionalPath: "QuickELogger/")
         
         self.init(filename: filename, directoryInfo: defaultDirectoryInfo)
     }
