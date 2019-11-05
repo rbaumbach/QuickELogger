@@ -72,6 +72,13 @@ public class QuickELoggerObjC: NSObject {
     }
     
     @objc
+    public convenience init(filename: String) {
+        let defaultDirectoryInfo = ObjCDirectoryInfo(directory: .documents, additionalPath: nil)
+        
+        self.init(filename: filename, directoryInfo: defaultDirectoryInfo)
+    }
+    
+    @objc
     public convenience init(directoryInfo: ObjCDirectoryInfo) {
         self.init(filename: "QuickELogger", directoryInfo: directoryInfo)
     }
