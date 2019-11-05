@@ -37,7 +37,7 @@ The directory structure can be customized fit in the following standard iOS dire
 * `/Library/Caches`
 * `/Library/Application Support`
 
-using the `init(directory:)` initializer.
+using the `init(directory:)` initializer.  In addition to being able to specify a different system directory, you can also specify a path inside that system directory using and optional path in the `Directory` enum.
 
 They can also be customized using the `init(filename:directory:)` initializer as well.
 

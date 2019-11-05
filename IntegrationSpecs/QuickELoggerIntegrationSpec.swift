@@ -8,12 +8,18 @@ class QuickELoggerIntegrationSpec: QuickSpec {
         describe("QuickELogger") {
             var subject: QuickELogger!
             
+            // Mas cleanup...
+            
             beforeSuite {                
-                deleteAllTestFiles()
+                deleteTestArtifacts()
+            }
+            
+            afterEach {
+                deleteTestArtifacts()
             }
             
             afterSuite {
-                deleteAllTestFiles()
+                deleteTestArtifacts()
             }
             
             describe("when using the default filename for the log file") {
@@ -27,13 +33,9 @@ class QuickELoggerIntegrationSpec: QuickSpec {
                             subject.log(message: "Goofus", type: .error)
                         }
                         
-                        afterEach {
-                            deleteAllTestFiles()
-                        }
-                        
                         it("is logged in a new JSON file to disk") {
                             let logMessages = getLogMessages()
-                                                        
+                            
                             expect(logMessages.count).to(equal(1))
                             
                             let logMessage = logMessages.first!
@@ -52,13 +54,9 @@ class QuickELoggerIntegrationSpec: QuickSpec {
                             subject.log(message: "Gallant", type: .info)
                         }
                         
-                        afterEach {
-                            deleteAllTestFiles()
-                        }
-                        
                         it("is logged with the previous JSON data to disk") {
                             let logMessages = getLogMessages()
-                                                        
+                            
                             expect(logMessages.count).to(equal(2))
                             
                             let previousLogMessage = logMessages[0]
@@ -92,13 +90,9 @@ class QuickELoggerIntegrationSpec: QuickSpec {
                             subject.log(message: "Goofus", type: .error)
                         }
                         
-                        afterEach {
-                            deleteAllTestFiles()
-                        }
-                        
                         it("is logged in a new JSON file to disk") {
                             let logMessages = getLogMessages(filename: "mas-tacos")
-                                                        
+                            
                             expect(logMessages.count).to(equal(1))
                             
                             let logMessage = logMessages.first!
@@ -116,14 +110,10 @@ class QuickELoggerIntegrationSpec: QuickSpec {
                             subject.log(message: "Goofus", type: .error)
                             subject.log(message: "Gallant", type: .info)
                         }
-                        
-                        afterEach {
-                            deleteAllTestFiles()
-                        }
-                        
+
                         it("is logged with the previous JSON data to disk") {
                             let logMessages = getLogMessages(filename: "mas-tacos")
-                                                        
+                            
                             expect(logMessages.count).to(equal(2))
                             
                             let previousLogMessage = logMessages[0]
@@ -146,92 +136,210 @@ class QuickELoggerIntegrationSpec: QuickSpec {
                 }
             }
             
-            describe("writing to other directories besides the Documents directory") {
-                describe("tmp") {
+            describe("writing to other directories besides the root Documents directory") {
+                describe("Documents/somethingElse/dude/") {
                     beforeEach {
-                        subject = QuickELogger(directory: .temp)
-
-                        subject.log(message: "This is temporary and will get deleted frequently", type: .info)
+                        subject = QuickELogger(directory: .documents(path: "somethingElse/dude/"))
+                        
+                        subject.log(message: "Dox", type: .info)
                     }
-
-                    it("writes the log file to the temp directory") {
-                        let logMessages = getLogMessages(filename: "QuickELogger", directory: .temp)
-
+                    
+                    it("writes the log file to the /Documents/somethingElse/dude/ directory") {
+                        let logMessages = getLogMessages(directory: .documents(path: "somethingElse/dude/"))
+                        
                         expect(logMessages.count).to(equal(1))
-
+                        
                         let logMessage = logMessages.first!
-
+                        
                         expect(logMessage.id).toNot(beNil())
                         expect(logMessage.timeStamp).toNot(beNil())
-
+                        
                         expect(logMessage.type).to(equal(.info))
-                        expect(logMessage.message).to(equal("This is temporary and will get deleted frequently"))
+                        expect(logMessage.message).to(equal("Dox"))
+                    }
+                }
+                
+                describe("tmp") {
+                    describe("when an additional path is given") {
+                        beforeEach {
+                            subject = QuickELogger(directory: .temp(path: "extra-temp/folder"))
+                            
+                            subject.log(message: "This is temporary and will get deleted frequently", type: .info)
+                        }
+                        
+                        it("writes the log file in the additional path directory") {
+                            let logMessages = getLogMessages(directory: .temp(path: "extra-temp/folder"))
+                            
+                            expect(logMessages.count).to(equal(1))
+                            
+                            let logMessage = logMessages.first!
+                            
+                            expect(logMessage.id).toNot(beNil())
+                            expect(logMessage.timeStamp).toNot(beNil())
+                            
+                            expect(logMessage.type).to(equal(.info))
+                            expect(logMessage.message).to(equal("This is temporary and will get deleted frequently"))
+                        }
+                    }
+                    
+                    describe("when NO additional path is given") {
+                        beforeEach {
+                            subject = QuickELogger(directory: .temp())
+                            
+                            subject.log(message: "This is temporary and will get deleted frequently", type: .info)
+                        }
+                        
+                        it("writes the log file to the temp directory") {
+                            let logMessages = getLogMessages(directory: .temp())
+                            
+                            expect(logMessages.count).to(equal(1))
+                            
+                            let logMessage = logMessages.first!
+                            
+                            expect(logMessage.id).toNot(beNil())
+                            expect(logMessage.timeStamp).toNot(beNil())
+                            
+                            expect(logMessage.type).to(equal(.info))
+                            expect(logMessage.message).to(equal("This is temporary and will get deleted frequently"))
+                        }
                     }
                 }
                 
                 describe("Library") {
-                    beforeEach {
-                        subject = QuickELogger(directory: .library)
-
-                        subject.log(message: "This is the top-level directory for any files that are not user data files", type: .info)
+                    describe("when an additional path is given") {
+                        beforeEach {
+                            subject = QuickELogger(directory: .library(path: "extra-library/folder"))
+                            
+                            subject.log(message: "This is the top-level directory for any files that are not user data files", type: .info)
+                        }
+                        
+                        it("writes the log file in the additional path directory") {
+                            let logMessages = getLogMessages(directory: .library(path: "extra-library/folder"))
+                            
+                            expect(logMessages.count).to(equal(1))
+                            
+                            let logMessage = logMessages.first!
+                            
+                            expect(logMessage.id).toNot(beNil())
+                            expect(logMessage.timeStamp).toNot(beNil())
+                            
+                            expect(logMessage.type).to(equal(.info))
+                            expect(logMessage.message).to(equal("This is the top-level directory for any files that are not user data files"))
+                        }
                     }
-
-                    it("writes the log file to the library directory") {
-                        let logMessages = getLogMessages(filename: "QuickELogger", directory: .library)
-
-                        expect(logMessages.count).to(equal(1))
-
-                        let logMessage = logMessages.first!
-
-                        expect(logMessage.id).toNot(beNil())
-                        expect(logMessage.timeStamp).toNot(beNil())
-
-                        expect(logMessage.type).to(equal(.info))
-                        expect(logMessage.message).to(equal("This is the top-level directory for any files that are not user data files"))
+                    
+                    describe("when NO additional path is given") {
+                        beforeEach {
+                            subject = QuickELogger(directory: .library())
+                            
+                            subject.log(message: "This is the top-level directory for any files that are not user data files", type: .info)
+                        }
+                        
+                        it("writes the log file to the library directory") {
+                            let logMessages = getLogMessages(directory: .library())
+                            
+                            expect(logMessages.count).to(equal(1))
+                            
+                            let logMessage = logMessages.first!
+                            
+                            expect(logMessage.id).toNot(beNil())
+                            expect(logMessage.timeStamp).toNot(beNil())
+                            
+                            expect(logMessage.type).to(equal(.info))
+                            expect(logMessage.message).to(equal("This is the top-level directory for any files that are not user data files"))
+                        }
                     }
                 }
-
+                
                 describe("Caches") {
-                    beforeEach {
-                        subject = QuickELogger(directory: .caches)
-
-                        subject.log(message: "This can be deleted unexpectedly", type: .info)
+                    describe("when an additional path is given") {
+                        beforeEach {
+                            subject = QuickELogger(directory: .caches(path: "extra-caches/folder"))
+                            
+                            subject.log(message: "This can be deleted unexpectedly", type: .info)
+                        }
+                        
+                        it("writes the log file in the additional path directory") {
+                            let logMessages = getLogMessages(directory: .caches(path: "extra-caches/folder"))
+                            
+                            expect(logMessages.count).to(equal(1))
+                            
+                            let logMessage = logMessages.first!
+                            
+                            expect(logMessage.id).toNot(beNil())
+                            expect(logMessage.timeStamp).toNot(beNil())
+                            
+                            expect(logMessage.type).to(equal(.info))
+                            expect(logMessage.message).to(equal("This can be deleted unexpectedly"))
+                        }
                     }
-
-                    it("writes the log file to the caches directory") {
-                        let logMessages = getLogMessages(filename: "QuickELogger", directory: .caches)
-
-                        expect(logMessages.count).to(equal(1))
-
-                        let logMessage = logMessages.first!
-
-                        expect(logMessage.id).toNot(beNil())
-                        expect(logMessage.timeStamp).toNot(beNil())
-
-                        expect(logMessage.type).to(equal(.info))
-                        expect(logMessage.message).to(equal("This can be deleted unexpectedly"))
+                    
+                    describe("when NO additional path is given") {
+                        beforeEach {
+                            subject = QuickELogger(directory: .caches())
+                            
+                            subject.log(message: "This can be deleted unexpectedly", type: .info)
+                        }
+                        
+                        it("writes the log file to the caches directory") {
+                            let logMessages = getLogMessages(directory: .caches())
+                            
+                            expect(logMessages.count).to(equal(1))
+                            
+                            let logMessage = logMessages.first!
+                            
+                            expect(logMessage.id).toNot(beNil())
+                            expect(logMessage.timeStamp).toNot(beNil())
+                            
+                            expect(logMessage.type).to(equal(.info))
+                            expect(logMessage.message).to(equal("This can be deleted unexpectedly"))
+                        }
                     }
                 }
                 
                 describe("Application Support") {
-                    beforeEach {
-                        subject = QuickELogger(directory: .applicationSupport)
-
-                        subject.log(message: "This is where you should add app related data that is to be hidden from the user", type: .info)
+                    describe("when an additional path is given") {
+                        beforeEach {
+                            subject = QuickELogger(directory: .applicationSupport(path: "extra-application-support/folder"))
+                            
+                            subject.log(message: "This is where you should add app related data that is to be hidden from the user", type: .info)
+                        }
+                        
+                        it("writes the log file in the additional path directory") {
+                            let logMessages = getLogMessages(directory: .applicationSupport(path: "extra-application-support/folder"))
+                            
+                            expect(logMessages.count).to(equal(1))
+                            
+                            let logMessage = logMessages.first!
+                            
+                            expect(logMessage.id).toNot(beNil())
+                            expect(logMessage.timeStamp).toNot(beNil())
+                            
+                            expect(logMessage.type).to(equal(.info))
+                            expect(logMessage.message).to(equal("This is where you should add app related data that is to be hidden from the user"))
+                        }
                     }
 
-                    it("writes the log file to the application support directory") {
-                        let logMessages = getLogMessages(filename: "QuickELogger", directory: .applicationSupport)
+                    describe("when NO additional path is given") {
+                        beforeEach {
+                            subject = QuickELogger(directory: .applicationSupport())
 
-                        expect(logMessages.count).to(equal(1))
+                            subject.log(message: "This is where you should add app related data that is to be hidden from the user", type: .info)
+                        }
 
-                        let logMessage = logMessages.first!
+                        it("writes the log file to the application support directory") {
+                            let logMessages = getLogMessages(directory: .applicationSupport())
 
-                        expect(logMessage.id).toNot(beNil())
-                        expect(logMessage.timeStamp).toNot(beNil())
+                            expect(logMessages.count).to(equal(1))
 
-                        expect(logMessage.type).to(equal(.info))
-                        expect(logMessage.message).to(equal("This is where you should add app related data that is to be hidden from the user"))
+                            let logMessage = logMessages.first!
+
+                            expect(logMessage.id).toNot(beNil())
+                            expect(logMessage.timeStamp).toNot(beNil())
+
+                            expect(logMessage.type).to(equal(.info))
+                            expect(logMessage.message).to(equal("This is where you should add app related data that is to be hidden from the user"))
+                        }
                     }
                 }
                 
@@ -244,27 +352,20 @@ class QuickELoggerIntegrationSpec: QuickSpec {
                         customURL = documentsDirectory()
                         
                         subject = QuickELogger(directory: .custom(url: customURL))
-
-                        subject.log(message: "I will crash if the custom url isn't good!!!!", type: .info)
-                    }
-                    
-                    afterEach {
-                        // Note: Since I'm creating a custom file in the Documents directory, it will get wiped out without any additional work
-                        // since deleteAllTestFiles() deletes all files from this directory
                         
-                        deleteAllTestFiles()
+                        subject.log(message: "I will crash if the custom url isn't good!!!!", type: .info)
                     }
 
                     it("writes the log file to the custom user specified directory") {
-                        let logMessages = getLogMessages(filename: "QuickELogger", directory: .custom(url: customURL))
-
+                        let logMessages = getLogMessages(directory: .custom(url: customURL))
+                        
                         expect(logMessages.count).to(equal(1))
-
+                        
                         let logMessage = logMessages.first!
-
+                        
                         expect(logMessage.id).toNot(beNil())
                         expect(logMessage.timeStamp).toNot(beNil())
-
+                        
                         expect(logMessage.type).to(equal(.info))
                         expect(logMessage.message).to(equal("I will crash if the custom url isn't good!!!!"))
                     }

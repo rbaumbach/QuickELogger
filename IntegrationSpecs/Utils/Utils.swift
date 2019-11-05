@@ -1,29 +1,12 @@
 import Foundation
 @testable import QuickELogger
 
-func getLogMessages(filename: String = "QuickELogger", directory: Directory = .documents) -> [LogMessage] {
-    var fullPathOfJSONFile: URL
+func getLogMessages(filename: String = "QuickELogger", directory: Directory = .documents()) -> [LogMessage] {    
+    let fullFilename = filename + ".json"
     
-    switch directory {
-    case .documents:
-        fullPathOfJSONFile = directoryDict[.documents]!.appendingPathComponent("\(filename).json")
-        
-    case .temp:
-        fullPathOfJSONFile = directoryDict[.temp]!.appendingPathComponent("\(filename).json")
-        
-    case .library:
-        fullPathOfJSONFile = directoryDict[.library]!.appendingPathComponent("\(filename).json")
-    
-    case .caches:
-        fullPathOfJSONFile = directoryDict[.caches]!.appendingPathComponent("\(filename).json")
-    
-    case .applicationSupport:
-        fullPathOfJSONFile = directoryDict[.applicationSupport]!.appendingPathComponent("\(filename).json")
-        
-    case .custom(let url):
-        fullPathOfJSONFile = url.appendingPathComponent("\(filename).json")
-    }
-            
+    let fullPathOfJSONFile = FileUtils().buildFullFileURL(directory: directory,
+                                                          filename: fullFilename)
+                
     guard let jsonData = try? Data(contentsOf: fullPathOfJSONFile, options: .alwaysMapped) else {
         return []
     }

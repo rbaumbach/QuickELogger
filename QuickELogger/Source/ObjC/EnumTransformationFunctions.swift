@@ -21,22 +21,22 @@
 
 import Foundation
 
-func transformDirectory(objcDirectory: ObjCDirectory) -> Directory {
-    switch objcDirectory {
+func transformDirectory(objcDirectoryInfo: ObjCDirectoryInfo) -> Directory {
+    switch objcDirectoryInfo.directory {
     case .documents:
-        return .documents
+        return .documents(path: objcDirectoryInfo.additionalPath)
         
     case .temp:
-        return .temp
+        return .temp(path: objcDirectoryInfo.additionalPath)
         
     case .library:
-        return .library
+        return .library(path: objcDirectoryInfo.additionalPath)
         
     case .caches:
-        return .caches
+        return .caches(path: objcDirectoryInfo.additionalPath)
         
     case .applicationSupport:
-        return .applicationSupport
+        return .applicationSupport(path: objcDirectoryInfo.additionalPath)
     }
 }
 

@@ -9,11 +9,15 @@ class QuickELoggerObjCIntegrationSpec: QuickSpec {
             var subject: QuickELoggerObjC!
             
             beforeSuite {
-                deleteAllTestFiles()
+                deleteTestArtifacts()
+            }
+            
+            afterEach {
+                deleteTestArtifacts()
             }
             
             afterSuite {
-                deleteAllTestFiles()
+                deleteTestArtifacts()
             }
             
             describe("when using the default filename for the log file") {
@@ -25,10 +29,6 @@ class QuickELoggerObjCIntegrationSpec: QuickSpec {
                     describe("when a log file doesn't exist on disk") {
                         beforeEach {
                             subject.log(message: "Goofus", type: .error)
-                        }
-                        
-                        afterEach {
-                            deleteAllTestFiles()
                         }
                         
                         it("is logged in a new JSON file to disk") {
@@ -50,10 +50,6 @@ class QuickELoggerObjCIntegrationSpec: QuickSpec {
                         beforeEach {
                             subject.log(message: "Goofus", type: .error)
                             subject.log(message: "Gallant", type: .info)
-                        }
-                        
-                        afterEach {
-                            deleteAllTestFiles()
                         }
                         
                         it("is logged with the previous JSON data to disk") {
@@ -80,7 +76,7 @@ class QuickELoggerObjCIntegrationSpec: QuickSpec {
                     }
                 }
             }
-            
+                        
             describe("when using a user specified filename for the log file") {
                 beforeEach {
                     subject = QuickELoggerObjC(filename: "mas-tacos")
@@ -145,17 +141,19 @@ class QuickELoggerObjCIntegrationSpec: QuickSpec {
                     }
                 }
             }
-            
+                         
             describe("writing to other directories besides the Documents directory") {
                 describe("tmp") {
                     beforeEach {
-                        subject = QuickELoggerObjC(directory: .temp)
+                        let directoryInfo = ObjCDirectoryInfo(directory: .temp, additionalPath: "extra-temp/folder")
+                        
+                        subject = QuickELoggerObjC(directoryInfo: directoryInfo)
 
                         subject.log(message: "This is temporary and will get deleted frequently", type: .info)
                     }
 
                     it("writes the log file to the temp directory") {
-                        let logMessages = getLogMessages(filename: "QuickELogger", directory: .temp)
+                        let logMessages = getLogMessages(directory: .temp(path: "extra-temp/folder"))
 
                         expect(logMessages.count).to(equal(1))
 
@@ -171,13 +169,15 @@ class QuickELoggerObjCIntegrationSpec: QuickSpec {
                 
                 describe("Library") {
                     beforeEach {
-                        subject = QuickELoggerObjC(directory: .library)
+                        let directoryInfo = ObjCDirectoryInfo(directory: .library, additionalPath: "extra-library/folder")
+
+                        subject = QuickELoggerObjC(directoryInfo: directoryInfo)
 
                         subject.log(message: "This is the top-level directory for any files that are not user data files", type: .info)
                     }
 
                     it("writes the log file to the library directory") {
-                        let logMessages = getLogMessages(filename: "QuickELogger", directory: .library)
+                        let logMessages = getLogMessages(directory: .library(path: "extra-library/folder"))
 
                         expect(logMessages.count).to(equal(1))
 
@@ -193,13 +193,15 @@ class QuickELoggerObjCIntegrationSpec: QuickSpec {
 
                 describe("Caches") {
                     beforeEach {
-                        subject = QuickELoggerObjC(directory: .caches)
+                        let directoryInfo = ObjCDirectoryInfo(directory: .caches, additionalPath: "extra-caches/folder")
+
+                        subject = QuickELoggerObjC(directoryInfo: directoryInfo)
 
                         subject.log(message: "This can be deleted unexpectedly", type: .info)
                     }
 
                     it("writes the log file to the caches directory") {
-                        let logMessages = getLogMessages(filename: "QuickELogger", directory: .caches)
+                        let logMessages = getLogMessages(filename: "QuickELogger", directory: .caches(path: "extra-caches/folder"))
 
                         expect(logMessages.count).to(equal(1))
 
@@ -215,13 +217,15 @@ class QuickELoggerObjCIntegrationSpec: QuickSpec {
                 
                 describe("Application Support") {
                     beforeEach {
-                        subject = QuickELoggerObjC(directory: .applicationSupport)
+                        let directoryInfo = ObjCDirectoryInfo(directory: .applicationSupport, additionalPath: "extra-application-support/folder")
+
+                        subject = QuickELoggerObjC(directoryInfo: directoryInfo)
 
                         subject.log(message: "This is where you should add app related data that is to be hidden from the user", type: .info)
                     }
 
                     it("writes the log file to the application support directory") {
-                        let logMessages = getLogMessages(filename: "QuickELogger", directory: .applicationSupport)
+                        let logMessages = getLogMessages(filename: "QuickELogger", directory: .applicationSupport(path: "extra-application-support/folder"))
 
                         expect(logMessages.count).to(equal(1))
 
@@ -243,16 +247,9 @@ class QuickELoggerObjCIntegrationSpec: QuickSpec {
                     beforeEach {
                         customURL = documentsDirectory()
                         
-                        subject = QuickELoggerObjC(customDirectory: customURL)
+                        subject = QuickELoggerObjC(customURL: customURL)
 
                         subject.log(message: "I will crash if the custom url isn't good!!!!", type: .info)
-                    }
-                    
-                    afterEach {
-                        // Note: Since I'm creating a custom file in the Documents directory, it will get wiped out without any additional work
-                        // since deleteAllTestFiles() deletes all files from this directory
-                        
-                        deleteAllTestFiles()
                     }
 
                     it("writes the log file to the custom user specified directory") {

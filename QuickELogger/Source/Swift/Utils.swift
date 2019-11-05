@@ -61,20 +61,46 @@ class FileUtils: FileUtilsProtocol {
         var directoryPath: URL
 
         switch directory {
-        case .documents:
-            directoryPath = systemDirectory(.documentDirectory)
+        case .documents(let path):
+            if let path = path {
+                directoryPath = systemDirectory(.documentDirectory).appendingPathComponent(path)
+                
+                createDirectoryIfNoneExists(directoryPath: directoryPath)
+            } else {
+                directoryPath = systemDirectory(.documentDirectory)
+            }
+        case .temp(let path):
+            if let path = path {
+                directoryPath = fileManager.temporaryDirectory.appendingPathComponent(path)
+                
+                createDirectoryIfNoneExists(directoryPath: directoryPath)
+            } else {
+                directoryPath = fileManager.temporaryDirectory
+            }
+        case .library(let path):
+            if let path = path {
+                directoryPath = systemDirectory(.libraryDirectory).appendingPathComponent(path)
+                
+                createDirectoryIfNoneExists(directoryPath: directoryPath)
+            } else {
+                directoryPath = systemDirectory(.libraryDirectory)
+            }
 
-        case .temp:
-            directoryPath = fileManager.temporaryDirectory
+        case .caches(let path):
+            if let path = path {
+                directoryPath = systemDirectory(.cachesDirectory).appendingPathComponent(path)
+                
+                createDirectoryIfNoneExists(directoryPath: directoryPath)
+            } else {
+                directoryPath = systemDirectory(.cachesDirectory)
+            }
 
-        case .library:
-            directoryPath = systemDirectory(.libraryDirectory)
-
-        case .caches:
-            directoryPath = systemDirectory(.cachesDirectory)
-
-        case .applicationSupport:
-            directoryPath = systemDirectory(.applicationSupportDirectory)
+        case .applicationSupport(let path):
+            if let path = path {
+                directoryPath = systemDirectory(.applicationSupportDirectory).appendingPathComponent(path)
+            } else {
+                directoryPath = systemDirectory(.applicationSupportDirectory)
+            }
 
             createDirectoryIfNoneExists(directoryPath: directoryPath)
 
@@ -92,12 +118,12 @@ class FileUtils: FileUtilsProtocol {
     private func systemDirectory(_ directory: FileManager.SearchPathDirectory) -> URL {
         return fileManager.urls(for: directory, in: .userDomainMask).first!
     }
-
+        
     private func createDirectoryIfNoneExists(directoryPath: URL) {
         if !fileManager.fileExists(atPath: directoryPath.path) {
             do {
                 try fileManager.createDirectory(at: directoryPath,
-                                                withIntermediateDirectories: false,
+                                                withIntermediateDirectories: true,
                                                 attributes: nil)
             } catch {
                 preconditionFailure("Unable to create directory: \(directoryPath)")
