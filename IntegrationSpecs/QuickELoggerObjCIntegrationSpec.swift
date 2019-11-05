@@ -8,6 +8,8 @@ class QuickELoggerObjCIntegrationSpec: QuickSpec {
         describe("QuickELoggerObjC") {
             var subject: QuickELoggerObjC!
             
+            // Mas cleanup...
+            
             beforeSuite {
                 deleteTestArtifacts()
             }

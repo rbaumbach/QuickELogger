@@ -1,7 +1,7 @@
 import Foundation
 @testable import QuickELogger
 
-func getLogMessages(filename: String = "QuickELogger", directory: Directory = .documents()) -> [LogMessage] {    
+func getLogMessages(filename: String = "QuickELogger", directory: Directory = .applicationSupport(path: "QuickELogger/")) -> [LogMessage] {
     let fullFilename = filename + ".json"
     
     let fullPathOfJSONFile = FileUtils().buildFullFileURL(directory: directory,

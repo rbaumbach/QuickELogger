@@ -54,7 +54,7 @@ public class QuickELogger: NSObject, QuickELoggerProtocol {
     
     // MARK: - Init methods
     
-    public init(filename: String = "QuickELogger", directory: Directory = .documents()) {
+    public init(filename: String = "QuickELogger", directory: Directory = .applicationSupport(path: "QuickELogger/")) {
         self.filename = filename
         self.directory = directory
         
