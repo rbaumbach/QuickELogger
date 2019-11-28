@@ -83,11 +83,6 @@ public class QuickELoggerObjC: NSObject {
         self.init(filename: "QuickELogger", directoryInfo: directoryInfo)
     }
     
-    @objc
-    public convenience init(customURL: URL) {
-        self.init(filename: "QuickELogger", customURL: customURL)
-    }
-    
     // MARK: - Init methods
     
     @objc
@@ -95,13 +90,6 @@ public class QuickELoggerObjC: NSObject {
         let transformedDirectory = transformDirectory(objcDirectoryInfo: directoryInfo)
 
         engine = QuickELoggerEngine(filename: filename, directory: transformedDirectory)
-
-        super.init()
-    }
-    
-    @objc
-    public init(filename: String, customURL: URL) {
-        engine = QuickELoggerEngine(filename: filename, directory: .custom(url: customURL))
 
         super.init()
     }

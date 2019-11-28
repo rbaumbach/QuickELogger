@@ -20,6 +20,8 @@
 //WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import Foundation
+import Capsule
+import Utensils
 
 public struct LogMessage: Equatable, Codable {
     var id: String
@@ -39,7 +41,6 @@ class QuickELoggerEngine: QuickELoggerEngineProtocol {
     let directory: Directory
     let fileManager: FileManagerProtocol
     let dataUtils: DataUtilsProtocol
-    let fileUtils: FileUtilsProtocol
     let uuid: UUIDProtocol
     
     private(set) var jsonEncoder: JSONEncoderProtocol
@@ -53,7 +54,6 @@ class QuickELoggerEngine: QuickELoggerEngineProtocol {
          jsonEncoder: JSONEncoderProtocol = JSONEncoder(),
          jsonDecoder: JSONDecoderProtocol = JSONDecoder(),
          dataUtils: DataUtilsProtocol = DataUtils(),
-         fileUtils: FileUtilsProtocol = FileUtils(),
          uuid: UUIDProtocol = UUID()) {
         self.filename = filename + ".json"
         self.directory = directory
@@ -64,7 +64,6 @@ class QuickELoggerEngine: QuickELoggerEngineProtocol {
         self.jsonDecoder = jsonDecoder
         self.jsonDecoder.dateDecodingStrategy = .iso8601
         self.dataUtils = dataUtils
-        self.fileUtils = fileUtils
         self.uuid = uuid
     }
     
@@ -97,7 +96,7 @@ class QuickELoggerEngine: QuickELoggerEngineProtocol {
     }
     
     private func jsonFilePath() -> URL {
-        return fileUtils.buildFullFileURL(directory: directory, filename: filename)
+        return directory.url().appendingPathComponent(filename)
     }
     
     private func saveLogMessages(messages: [LogMessage]) {

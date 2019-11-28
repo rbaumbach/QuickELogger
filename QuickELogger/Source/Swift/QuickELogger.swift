@@ -20,15 +20,7 @@
 //WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import Foundation
-
-public enum Directory: Equatable, Hashable {
-    case documents(path: String? = nil)
-    case temp(path: String? = nil)
-    case library(path: String? = nil)
-    case caches(path: String? = nil)
-    case applicationSupport(path: String? = nil)
-    case custom(url: URL)
-}
+import Utensils
 
 public enum LogType: String, Equatable, Hashable, Codable {
     case verbose
@@ -54,7 +46,8 @@ public class QuickELogger: NSObject, QuickELoggerProtocol {
     
     // MARK: - Init methods
     
-    public init(filename: String = "QuickELogger", directory: Directory = .applicationSupport(path: "QuickELogger/")) {
+    public init(filename: String = "QuickELogger",
+                directory: Directory = Directory(.applicationSupport(additionalPath: "QuickELogger/"))) {
         self.filename = filename
         self.directory = directory
         

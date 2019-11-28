@@ -1,6 +1,7 @@
 import Quick
 import Nimble
-
+import Capsule
+import Utensils
 @testable import QuickELogger
 
 class QuickELoggerEngineSpec: QuickSpec {
@@ -13,7 +14,6 @@ class QuickELoggerEngineSpec: QuickSpec {
             var fakeFileManager: FakeFileManager!
             var fakeJSONEncoder: FakeJSONEncoder!
             var fakeDataUtils: FakeDataUtils!
-            var fakeFileUtils: FakeFileUtils!
             var fakeUUID: FakeUUID!
             var fakeJSONDecoder: FakeJSONDecoder<[LogMessage]>!
                         
@@ -23,7 +23,6 @@ class QuickELoggerEngineSpec: QuickSpec {
                 fakeFileManager = FakeFileManager()
                 fakeJSONEncoder = FakeJSONEncoder()
                 fakeDataUtils = FakeDataUtils()
-                fakeFileUtils = FakeFileUtils()
                 fakeUUID = FakeUUID()
                                 
                 fakeJSONDecoder = FakeJSONDecoder<[LogMessage]>()
@@ -32,16 +31,15 @@ class QuickELoggerEngineSpec: QuickSpec {
             
             it("is setup properly") {
                 subject = QuickELoggerEngine(filename: "ItsLogLog",
-                                             directory: .documents(),
+                                             directory: Directory(fileManager: fakeFileManager),
                                              fileManager: fakeFileManager,
                                              jsonEncoder: fakeJSONEncoder,
                                              jsonDecoder: fakeJSONDecoder,
                                              dataUtils: fakeDataUtils,
-                                             fileUtils: fakeFileUtils,
                                              uuid: fakeUUID)
                 
                 expect(subject.filename).to(equal("ItsLogLog.json"))
-                expect(subject.directory).to(equal(.documents()))
+                expect(subject.directory).to(equal(Directory()))
                 expect(fakeJSONEncoder.capturedOutputFormatting).to(equal(.prettyPrinted))
                 expect(fakeJSONEncoder.capturedDateEncodingStrategy).to(equal(.iso8601))
                 
@@ -52,12 +50,11 @@ class QuickELoggerEngineSpec: QuickSpec {
             describe("logging a message") {
                 beforeEach {
                     subject = QuickELoggerEngine(filename: "ItsLogLog",
-                                                 directory: .documents(),
+                                                 directory: Directory(fileManager: fakeFileManager),
                                                  fileManager: fakeFileManager,
                                                  jsonEncoder: fakeJSONEncoder,
                                                  jsonDecoder: fakeJSONDecoder,
                                                  dataUtils: fakeDataUtils,
-                                                 fileUtils: fakeFileUtils,
                                                  uuid: fakeUUID)
                 }
                 
@@ -74,10 +71,9 @@ class QuickELoggerEngineSpec: QuickSpec {
                         expect(fakeJSONEncoder.capturedEncodeValue as? [LogMessage]).to(equal(expectedLogMessages))
                         
                         expect(fakeDataUtils.capturedWriteData).to(equal(fakeJSONEncoder.stubbedEncodeData))
-                        expect(fakeDataUtils.capturedWriteURL).to(equal(URL(string: "file:///fake-directory/fakefilename.json")))
-                        
-                        expect(fakeFileUtils.capturedBuildFullFileURLDirectory).to(equal(.documents()))
-                        expect(fakeFileUtils.capturedBuildFullFileURLFilename).to(equal("ItsLogLog.json"))
+                        expect(fakeDataUtils.capturedWriteURL).to(equal(URL(string: "file:///fake-documents-directory/ItsLogLog.json")))
+
+                        expect(fakeFileManager.capturedSearchPathDirectory).to(equal(.documentDirectory))
                     }
                 }
                 
@@ -95,10 +91,9 @@ class QuickELoggerEngineSpec: QuickSpec {
                             expect(fakeJSONEncoder.capturedEncodeValue as? [LogMessage]).to(equal(expectedLogMessages))
                                                        
                             expect(fakeDataUtils.capturedWriteData).to(equal(fakeJSONEncoder.stubbedEncodeData))
-                            expect(fakeDataUtils.capturedWriteURL).to(equal(URL(string: "file:///fake-directory/fakefilename.json")))
+                            expect(fakeDataUtils.capturedWriteURL).to(equal(URL(string: "file:///fake-documents-directory/ItsLogLog.json")))
                             
-                            expect(fakeFileUtils.capturedBuildFullFileURLDirectory).to(equal(.documents()))
-                            expect(fakeFileUtils.capturedBuildFullFileURLFilename).to(equal("ItsLogLog.json"))
+                            expect(fakeFileManager.capturedSearchPathDirectory).to(equal(.documentDirectory))
                         }
                     }
                     
@@ -117,10 +112,9 @@ class QuickELoggerEngineSpec: QuickSpec {
                             expect(fakeJSONEncoder.capturedEncodeValue as? [LogMessage]).to(equal(expectedLogMessages))
                                                        
                             expect(fakeDataUtils.capturedWriteData).to(equal(fakeJSONEncoder.stubbedEncodeData))
-                            expect(fakeDataUtils.capturedWriteURL).to(equal(URL(string: "file:///fake-directory/fakefilename.json")))
+                            expect(fakeDataUtils.capturedWriteURL).to(equal(URL(string: "file:///fake-documents-directory/ItsLogLog.json")))
                             
-                            expect(fakeFileUtils.capturedBuildFullFileURLDirectory).to(equal(.documents()))
-                            expect(fakeFileUtils.capturedBuildFullFileURLFilename).to(equal("ItsLogLog.json"))
+                            expect(fakeFileManager.capturedSearchPathDirectory).to(equal(.documentDirectory))
                         }
                     }
                 }

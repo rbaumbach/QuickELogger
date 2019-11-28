@@ -15,8 +15,6 @@
 		942059ED2363B73E0081BE92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 942059EB2363B73E0081BE92 /* LaunchScreen.storyboard */; };
 		942A75E1236C8EC0001F5F55 /* EnumTransformationFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942A75E0236C8EC0001F5F55 /* EnumTransformationFunctions.swift */; };
 		9464CAD5236CBDEF00A63EA0 /* FileManagerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9464CAD4236CBDEF00A63EA0 /* FileManagerUtils.swift */; };
-		9464CAD7236DF14100A63EA0 /* FileUtilsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9464CAD6236DF14100A63EA0 /* FileUtilsSpec.swift */; };
-		9464CAD9236DF39000A63EA0 /* FakeFileUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9464CAD8236DF39000A63EA0 /* FakeFileUtils.swift */; };
 		9464CAE1236F7D3200A63EA0 /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9464CAE0236F7D3200A63EA0 /* PerformanceTests.swift */; };
 		9464CAEA236FD29300A63EA0 /* QuickELogger-3004-messages.json in Resources */ = {isa = PBXBuildFile; fileRef = 9464CAE9236FD29300A63EA0 /* QuickELogger-3004-messages.json */; };
 		9464CAEE236FD6A100A63EA0 /* QuickELogger-10-messages.json in Resources */ = {isa = PBXBuildFile; fileRef = 9464CAED236FD6A100A63EA0 /* QuickELogger-10-messages.json */; };
@@ -25,13 +23,8 @@
 		946CE537236B433D002DA985 /* QuickELoggerObjCIntegrationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946CE536236B433D002DA985 /* QuickELoggerObjCIntegrationSpec.swift */; };
 		946E72F42363BDF800694575 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E72F02363BDF800694575 /* Utils.swift */; };
 		946E72F52363BDF800694575 /* QuickELogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E72F12363BDF800694575 /* QuickELogger.swift */; };
-		946E72F62363BDF800694575 /* FoundationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E72F22363BDF800694575 /* FoundationProtocols.swift */; };
 		946E72F72363BDF800694575 /* QuickELoggerEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E72F32363BDF800694575 /* QuickELoggerEngine.swift */; };
 		946E72F92363BE4C00694575 /* QuickELoggerEngineSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E72F82363BE4C00694575 /* QuickELoggerEngineSpec.swift */; };
-		946E72FC2363BEDB00694575 /* FakeJSONEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E72FB2363BEDB00694575 /* FakeJSONEncoder.swift */; };
-		946E72FE2363BEE900694575 /* FakeJSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E72FD2363BEE900694575 /* FakeJSONDecoder.swift */; };
-		946E73002363BF0F00694575 /* FakeFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E72FF2363BF0F00694575 /* FakeFileManager.swift */; };
-		946E73022363BF2A00694575 /* FakeUUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E73012363BF2A00694575 /* FakeUUID.swift */; };
 		946E73042363EA4700694575 /* FakeDataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E73032363EA4700694575 /* FakeDataUtils.swift */; };
 		946E73062363EC0500694575 /* FakeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E73052363EC0500694575 /* FakeError.swift */; };
 		946E73082363F1D800694575 /* FoundationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E73072363F1D800694575 /* FoundationExtensions.swift */; };
@@ -84,8 +77,6 @@
 		94205A082363B9F20081BE92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		942A75E0236C8EC0001F5F55 /* EnumTransformationFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumTransformationFunctions.swift; sourceTree = "<group>"; };
 		9464CAD4236CBDEF00A63EA0 /* FileManagerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerUtils.swift; sourceTree = "<group>"; };
-		9464CAD6236DF14100A63EA0 /* FileUtilsSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtilsSpec.swift; sourceTree = "<group>"; };
-		9464CAD8236DF39000A63EA0 /* FakeFileUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeFileUtils.swift; sourceTree = "<group>"; };
 		9464CADE236F7D3200A63EA0 /* PerformanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PerformanceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9464CAE0236F7D3200A63EA0 /* PerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
 		9464CAE2236F7D3200A63EA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -96,13 +87,8 @@
 		946CE536236B433D002DA985 /* QuickELoggerObjCIntegrationSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickELoggerObjCIntegrationSpec.swift; sourceTree = "<group>"; };
 		946E72F02363BDF800694575 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		946E72F12363BDF800694575 /* QuickELogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickELogger.swift; sourceTree = "<group>"; };
-		946E72F22363BDF800694575 /* FoundationProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationProtocols.swift; sourceTree = "<group>"; };
 		946E72F32363BDF800694575 /* QuickELoggerEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickELoggerEngine.swift; sourceTree = "<group>"; };
 		946E72F82363BE4C00694575 /* QuickELoggerEngineSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickELoggerEngineSpec.swift; sourceTree = "<group>"; };
-		946E72FB2363BEDB00694575 /* FakeJSONEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeJSONEncoder.swift; sourceTree = "<group>"; };
-		946E72FD2363BEE900694575 /* FakeJSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeJSONDecoder.swift; sourceTree = "<group>"; };
-		946E72FF2363BF0F00694575 /* FakeFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeFileManager.swift; sourceTree = "<group>"; };
-		946E73012363BF2A00694575 /* FakeUUID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeUUID.swift; sourceTree = "<group>"; };
 		946E73032363EA4700694575 /* FakeDataUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDataUtils.swift; sourceTree = "<group>"; };
 		946E73052363EC0500694575 /* FakeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeError.swift; sourceTree = "<group>"; };
 		946E73072363F1D800694575 /* FoundationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationExtensions.swift; sourceTree = "<group>"; };
@@ -233,7 +219,6 @@
 		94205A052363B9F20081BE92 /* Specs */ = {
 			isa = PBXGroup;
 			children = (
-				9464CAD6236DF14100A63EA0 /* FileUtilsSpec.swift */,
 				946E72F82363BE4C00694575 /* QuickELoggerEngineSpec.swift */,
 				946E72FA2363BEA900694575 /* Fakes */,
 				94205A0E2363B9F70081BE92 /* Supporting Files */,
@@ -253,7 +238,6 @@
 			isa = PBXGroup;
 			children = (
 				946E73072363F1D800694575 /* FoundationExtensions.swift */,
-				946E72F22363BDF800694575 /* FoundationProtocols.swift */,
 				946E72F12363BDF800694575 /* QuickELogger.swift */,
 				946E72F32363BDF800694575 /* QuickELoggerEngine.swift */,
 				946E72F02363BDF800694575 /* Utils.swift */,
@@ -295,11 +279,6 @@
 			children = (
 				946E73032363EA4700694575 /* FakeDataUtils.swift */,
 				946E73052363EC0500694575 /* FakeError.swift */,
-				946E72FF2363BF0F00694575 /* FakeFileManager.swift */,
-				9464CAD8236DF39000A63EA0 /* FakeFileUtils.swift */,
-				946E72FD2363BEE900694575 /* FakeJSONDecoder.swift */,
-				946E72FB2363BEDB00694575 /* FakeJSONEncoder.swift */,
-				946E73012363BF2A00694575 /* FakeUUID.swift */,
 			);
 			path = Fakes;
 			sourceTree = "<group>";
@@ -357,6 +336,7 @@
 				942059DA2363B73D0081BE92 /* Frameworks */,
 				942059DB2363B73D0081BE92 /* Resources */,
 				9457A04723650B2D001411D6 /* Swiftlint Run Script */,
+				A8019F06453346CAD13E2EC5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -567,6 +547,23 @@
 			shellPath = /bin/sh;
 			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
 		};
+		A8019F06453346CAD13E2EC5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QuickELogger/Pods-QuickELogger-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QuickELogger/Pods-QuickELogger-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QuickELogger/Pods-QuickELogger-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A8D4AD44BB758A9116C329EF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -639,7 +636,6 @@
 				946CE535236B4309002DA985 /* QuickELoggerObjC.swift in Sources */,
 				942059E52363B73D0081BE92 /* ViewController.swift in Sources */,
 				946E72F72363BDF800694575 /* QuickELoggerEngine.swift in Sources */,
-				946E72F62363BDF800694575 /* FoundationProtocols.swift in Sources */,
 				942059E12363B73D0081BE92 /* AppDelegate.swift in Sources */,
 				942A75E1236C8EC0001F5F55 /* EnumTransformationFunctions.swift in Sources */,
 				946E72F42363BDF800694575 /* Utils.swift in Sources */,
@@ -651,15 +647,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				946E73022363BF2A00694575 /* FakeUUID.swift in Sources */,
-				9464CAD9236DF39000A63EA0 /* FakeFileUtils.swift in Sources */,
-				946E72FE2363BEE900694575 /* FakeJSONDecoder.swift in Sources */,
-				9464CAD7236DF14100A63EA0 /* FileUtilsSpec.swift in Sources */,
 				946E73042363EA4700694575 /* FakeDataUtils.swift in Sources */,
 				946E72F92363BE4C00694575 /* QuickELoggerEngineSpec.swift in Sources */,
 				946E73062363EC0500694575 /* FakeError.swift in Sources */,
-				946E73002363BF0F00694575 /* FakeFileManager.swift in Sources */,
-				946E72FC2363BEDB00694575 /* FakeJSONEncoder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

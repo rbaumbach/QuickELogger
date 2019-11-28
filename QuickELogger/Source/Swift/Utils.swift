@@ -20,6 +20,7 @@
 //WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import Foundation
+import Capsule
 
 // MARK: - DataUtils
 
@@ -35,99 +36,5 @@ class DataUtils: DataUtilsProtocol {
 
     func write(data: Data, toPath path: URL) throws {
         try data.write(to: path, options: .atomic)
-    }
-}
-
-// MARK: - FileUtils
-
-protocol FileUtilsProtocol {
-    func buildFullFileURL(directory: Directory, filename: String) -> URL
-}
-
-class FileUtils: FileUtilsProtocol {
-    // MARK: - Readonly properties
-    
-    let fileManager: FileManagerProtocol
-    
-    // MARK: - Init methods
-
-    init(fileManager: FileManagerProtocol = FileManager.default) {
-        self.fileManager = fileManager
-    }
-    
-    // MARK: - Public methods
-
-    func buildFullFileURL(directory: Directory, filename: String) -> URL {
-        var directoryPath: URL
-
-        switch directory {
-        case .documents(let path):
-            if let path = path {
-                directoryPath = systemDirectory(.documentDirectory).appendingPathComponent(path)
-                
-                createDirectoryIfNoneExists(directoryPath: directoryPath)
-            } else {
-                directoryPath = systemDirectory(.documentDirectory)
-            }
-        case .temp(let path):
-            if let path = path {
-                directoryPath = fileManager.temporaryDirectory.appendingPathComponent(path)
-                
-                createDirectoryIfNoneExists(directoryPath: directoryPath)
-            } else {
-                directoryPath = fileManager.temporaryDirectory
-            }
-        case .library(let path):
-            if let path = path {
-                directoryPath = systemDirectory(.libraryDirectory).appendingPathComponent(path)
-                
-                createDirectoryIfNoneExists(directoryPath: directoryPath)
-            } else {
-                directoryPath = systemDirectory(.libraryDirectory)
-            }
-
-        case .caches(let path):
-            if let path = path {
-                directoryPath = systemDirectory(.cachesDirectory).appendingPathComponent(path)
-                
-                createDirectoryIfNoneExists(directoryPath: directoryPath)
-            } else {
-                directoryPath = systemDirectory(.cachesDirectory)
-            }
-
-        case .applicationSupport(let path):
-            if let path = path {
-                directoryPath = systemDirectory(.applicationSupportDirectory).appendingPathComponent(path)
-            } else {
-                directoryPath = systemDirectory(.applicationSupportDirectory)
-            }
-
-            createDirectoryIfNoneExists(directoryPath: directoryPath)
-
-        case .custom(let url):
-            directoryPath = url
-            
-            createDirectoryIfNoneExists(directoryPath: url)
-        }
-
-        return directoryPath.appendingPathComponent(filename)
-    }
-    
-    // MARK: - Private methods
-
-    private func systemDirectory(_ directory: FileManager.SearchPathDirectory) -> URL {
-        return fileManager.urls(for: directory, in: .userDomainMask).first!
-    }
-        
-    private func createDirectoryIfNoneExists(directoryPath: URL) {
-        if !fileManager.fileExists(atPath: directoryPath.path) {
-            do {
-                try fileManager.createDirectory(at: directoryPath,
-                                                withIntermediateDirectories: true,
-                                                attributes: nil)
-            } catch {
-                preconditionFailure("Unable to create directory: \(directoryPath)")
-            }
-        }
     }
 }
