@@ -100,7 +100,7 @@ public protocol QuickELoggerProtocol {
 
 This project has been setup to use [fastlane](https://fastlane.tools) to run the specs.
 
-Bundle the required gems and then install Cocoapods using the following commands in the project directory:
+Bundle required gems and then install Cocoapods by running the following commands in the project directory:
 
 ```bash
 $ bundle
