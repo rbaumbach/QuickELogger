@@ -12,6 +12,6 @@ Pod::Spec.new do |spec|
   spec.source_files          = 'QuickELogger/Source/**/*.{swift}'
   spec.swift_version         = '5.1'
 
-  spec.dependency 'Capsule', '0.0.8'
-  spec.dependency 'Utensils', '0.0.4'
+  spec.dependency 'Capsule', '0.0.9'
+  spec.dependency 'Utensils', '0.0.5'
 end
