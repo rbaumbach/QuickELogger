@@ -5,8 +5,8 @@ use_frameworks!
 inhibit_all_warnings!
 
 def shared_pods
-  pod 'Capsule', '0.0.8'
-  pod 'Utensils', '0.0.4'
+  pod 'Capsule', '0.0.9'
+  pod 'Utensils', '0.0.5'
 end
 
 target :QuickELogger do

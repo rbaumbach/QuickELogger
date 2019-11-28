@@ -40,7 +40,7 @@ class QuickELoggerEngine: QuickELoggerEngineProtocol {
     let filename: String
     let directory: Directory
     let fileManager: FileManagerProtocol
-    let dataUtils: DataUtilsProtocol
+    let dataWrapper: DataWrapperProtocol
     let uuid: UUIDProtocol
     
     private(set) var jsonEncoder: JSONEncoderProtocol
@@ -53,7 +53,7 @@ class QuickELoggerEngine: QuickELoggerEngineProtocol {
          fileManager: FileManagerProtocol = FileManager.default,
          jsonEncoder: JSONEncoderProtocol = JSONEncoder(),
          jsonDecoder: JSONDecoderProtocol = JSONDecoder(),
-         dataUtils: DataUtilsProtocol = DataUtils(),
+         dataWrapper: DataWrapperProtocol = DataWrapper(),
          uuid: UUIDProtocol = UUID()) {
         self.filename = filename + ".json"
         self.directory = directory
@@ -63,7 +63,7 @@ class QuickELoggerEngine: QuickELoggerEngineProtocol {
         self.jsonEncoder.dateEncodingStrategy = .iso8601
         self.jsonDecoder = jsonDecoder
         self.jsonDecoder.dateDecodingStrategy = .iso8601
-        self.dataUtils = dataUtils
+        self.dataWrapper = dataWrapper
         self.uuid = uuid
     }
     
@@ -84,7 +84,7 @@ class QuickELoggerEngine: QuickELoggerEngineProtocol {
     // MARK: - Private methods
     
     private func getLogMessages() -> [LogMessage] {
-        guard let jsonData = try? dataUtils.loadData(contentsOfPath: jsonFilePath()) else {
+        guard let jsonData = try? dataWrapper.loadData(contentsOfPath: jsonFilePath()) else {
             return []
         }
         
@@ -103,7 +103,7 @@ class QuickELoggerEngine: QuickELoggerEngineProtocol {
         let encodedJSONData = try! jsonEncoder.encode(messages)
         
         do {
-            try dataUtils.write(data: encodedJSONData, toPath: jsonFilePath())
+            try dataWrapper.write(data: encodedJSONData, toPath: jsonFilePath())
         } catch {
             preconditionFailure("Unable to save messages json to file path: \(jsonFilePath())")
         }

@@ -21,12 +21,9 @@
 		9464CAF0236FD7E400A63EA0 /* QuickELogger-0-messages.json in Resources */ = {isa = PBXBuildFile; fileRef = 9464CAEF236FD7E400A63EA0 /* QuickELogger-0-messages.json */; };
 		946CE535236B4309002DA985 /* QuickELoggerObjC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946CE534236B4309002DA985 /* QuickELoggerObjC.swift */; };
 		946CE537236B433D002DA985 /* QuickELoggerObjCIntegrationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946CE536236B433D002DA985 /* QuickELoggerObjCIntegrationSpec.swift */; };
-		946E72F42363BDF800694575 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E72F02363BDF800694575 /* Utils.swift */; };
 		946E72F52363BDF800694575 /* QuickELogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E72F12363BDF800694575 /* QuickELogger.swift */; };
 		946E72F72363BDF800694575 /* QuickELoggerEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E72F32363BDF800694575 /* QuickELoggerEngine.swift */; };
 		946E72F92363BE4C00694575 /* QuickELoggerEngineSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E72F82363BE4C00694575 /* QuickELoggerEngineSpec.swift */; };
-		946E73042363EA4700694575 /* FakeDataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E73032363EA4700694575 /* FakeDataUtils.swift */; };
-		946E73062363EC0500694575 /* FakeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E73052363EC0500694575 /* FakeError.swift */; };
 		946E73082363F1D800694575 /* FoundationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E73072363F1D800694575 /* FoundationExtensions.swift */; };
 		946E73102364A99000694575 /* QuickELoggerIntegrationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E730F2364A99000694575 /* QuickELoggerIntegrationSpec.swift */; };
 		946E731A2364ACA800694575 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946E73192364ACA800694575 /* Utils.swift */; };
@@ -85,12 +82,9 @@
 		9464CAEF236FD7E400A63EA0 /* QuickELogger-0-messages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "QuickELogger-0-messages.json"; sourceTree = "<group>"; };
 		946CE534236B4309002DA985 /* QuickELoggerObjC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickELoggerObjC.swift; sourceTree = "<group>"; };
 		946CE536236B433D002DA985 /* QuickELoggerObjCIntegrationSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickELoggerObjCIntegrationSpec.swift; sourceTree = "<group>"; };
-		946E72F02363BDF800694575 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		946E72F12363BDF800694575 /* QuickELogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickELogger.swift; sourceTree = "<group>"; };
 		946E72F32363BDF800694575 /* QuickELoggerEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickELoggerEngine.swift; sourceTree = "<group>"; };
 		946E72F82363BE4C00694575 /* QuickELoggerEngineSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickELoggerEngineSpec.swift; sourceTree = "<group>"; };
-		946E73032363EA4700694575 /* FakeDataUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDataUtils.swift; sourceTree = "<group>"; };
-		946E73052363EC0500694575 /* FakeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeError.swift; sourceTree = "<group>"; };
 		946E73072363F1D800694575 /* FoundationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationExtensions.swift; sourceTree = "<group>"; };
 		946E730D2364A99000694575 /* IntegrationSpecs.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntegrationSpecs.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		946E730F2364A99000694575 /* QuickELoggerIntegrationSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickELoggerIntegrationSpec.swift; sourceTree = "<group>"; };
@@ -220,7 +214,6 @@
 			isa = PBXGroup;
 			children = (
 				946E72F82363BE4C00694575 /* QuickELoggerEngineSpec.swift */,
-				946E72FA2363BEA900694575 /* Fakes */,
 				94205A0E2363B9F70081BE92 /* Supporting Files */,
 			);
 			path = Specs;
@@ -240,7 +233,6 @@
 				946E73072363F1D800694575 /* FoundationExtensions.swift */,
 				946E72F12363BDF800694575 /* QuickELogger.swift */,
 				946E72F32363BDF800694575 /* QuickELoggerEngine.swift */,
-				946E72F02363BDF800694575 /* Utils.swift */,
 			);
 			path = Swift;
 			sourceTree = "<group>";
@@ -272,15 +264,6 @@
 				9464CAE9236FD29300A63EA0 /* QuickELogger-3004-messages.json */,
 			);
 			path = TestFiles;
-			sourceTree = "<group>";
-		};
-		946E72FA2363BEA900694575 /* Fakes */ = {
-			isa = PBXGroup;
-			children = (
-				946E73032363EA4700694575 /* FakeDataUtils.swift */,
-				946E73052363EC0500694575 /* FakeError.swift */,
-			);
-			path = Fakes;
 			sourceTree = "<group>";
 		};
 		946E730E2364A99000694575 /* IntegrationSpecs */ = {
@@ -336,7 +319,6 @@
 				942059DA2363B73D0081BE92 /* Frameworks */,
 				942059DB2363B73D0081BE92 /* Resources */,
 				9457A04723650B2D001411D6 /* Swiftlint Run Script */,
-				A8019F06453346CAD13E2EC5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -547,23 +529,6 @@
 			shellPath = /bin/sh;
 			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
 		};
-		A8019F06453346CAD13E2EC5 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-QuickELogger/Pods-QuickELogger-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-QuickELogger/Pods-QuickELogger-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QuickELogger/Pods-QuickELogger-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		A8D4AD44BB758A9116C329EF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -638,7 +603,6 @@
 				946E72F72363BDF800694575 /* QuickELoggerEngine.swift in Sources */,
 				942059E12363B73D0081BE92 /* AppDelegate.swift in Sources */,
 				942A75E1236C8EC0001F5F55 /* EnumTransformationFunctions.swift in Sources */,
-				946E72F42363BDF800694575 /* Utils.swift in Sources */,
 				946E72F52363BDF800694575 /* QuickELogger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -647,9 +611,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				946E73042363EA4700694575 /* FakeDataUtils.swift in Sources */,
 				946E72F92363BE4C00694575 /* QuickELoggerEngineSpec.swift in Sources */,
-				946E73062363EC0500694575 /* FakeError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
