@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name                  = 'QuickELogger'
-  spec.version               = '0.2.0'
+  spec.version               = '0.3.0'
   spec.summary               = 'A quick and simple way to log messages to disk on your iPhone or iPad app'
   spec.homepage              = 'https://github.com/rbaumbach/Quick-E-Logger'
   spec.license               = { :type => 'MIT', :file => 'MIT-LICENSE.txt' }
@@ -11,4 +11,7 @@ Pod::Spec.new do |spec|
   spec.ios.deployment_target = '10.0'
   spec.source_files          = 'QuickELogger/Source/**/*.{swift}'
   spec.swift_version         = '5.1'
+
+  spec.dependency 'Capsule', '0.0.8'
+  spec.dependency 'Utensils', '0.0.4'
 end

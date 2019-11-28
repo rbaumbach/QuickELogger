@@ -41,8 +41,6 @@ using the `init(directory:)` initializer.  In addition to being able to specify 
 
 They can also be customized using the `init(filename:directory:)` initializer as well.
 
-Note: A fully user specified custom directory can be specified as well using the `custom(url: URL)` enum option. However, it is the users responsibility to handle invalid URLs.
-
 ### Example Usage
 
 Swift
@@ -65,7 +63,7 @@ QuickELoggerObjC *logger = [[QuickELoggerObjC alloc] init];
 [logger logWithMessage:@"Pinto beans > Black beans" type:ObjCLogTypeInfo];
 ```
 
-What happens at `/Documents/QuickELogger.json`:
+What happens at `/Library/Application Support/QuickELogger/QuickELogger.json`:
 
 ```
 [

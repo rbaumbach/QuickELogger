@@ -1,6 +1,7 @@
 import Quick
 import Nimble
-
+import Capsule
+import Utensils
 @testable import QuickELogger
 
 class QuickELoggerEngineSpec: QuickSpec {
@@ -12,8 +13,7 @@ class QuickELoggerEngineSpec: QuickSpec {
                         
             var fakeFileManager: FakeFileManager!
             var fakeJSONEncoder: FakeJSONEncoder!
-            var fakeDataUtils: FakeDataUtils!
-            var fakeFileUtils: FakeFileUtils!
+            var fakeDataWrapper: FakeDataWrapper!
             var fakeUUID: FakeUUID!
             var fakeJSONDecoder: FakeJSONDecoder<[LogMessage]>!
                         
@@ -22,8 +22,7 @@ class QuickELoggerEngineSpec: QuickSpec {
 
                 fakeFileManager = FakeFileManager()
                 fakeJSONEncoder = FakeJSONEncoder()
-                fakeDataUtils = FakeDataUtils()
-                fakeFileUtils = FakeFileUtils()
+                fakeDataWrapper = FakeDataWrapper()
                 fakeUUID = FakeUUID()
                                 
                 fakeJSONDecoder = FakeJSONDecoder<[LogMessage]>()
@@ -32,16 +31,15 @@ class QuickELoggerEngineSpec: QuickSpec {
             
             it("is setup properly") {
                 subject = QuickELoggerEngine(filename: "ItsLogLog",
-                                             directory: .documents(),
+                                             directory: Directory(fileManager: fakeFileManager),
                                              fileManager: fakeFileManager,
                                              jsonEncoder: fakeJSONEncoder,
                                              jsonDecoder: fakeJSONDecoder,
-                                             dataUtils: fakeDataUtils,
-                                             fileUtils: fakeFileUtils,
+                                             dataWrapper: fakeDataWrapper,
                                              uuid: fakeUUID)
                 
                 expect(subject.filename).to(equal("ItsLogLog.json"))
-                expect(subject.directory).to(equal(.documents()))
+                expect(subject.directory).to(equal(Directory()))
                 expect(fakeJSONEncoder.capturedOutputFormatting).to(equal(.prettyPrinted))
                 expect(fakeJSONEncoder.capturedDateEncodingStrategy).to(equal(.iso8601))
                 
@@ -52,18 +50,17 @@ class QuickELoggerEngineSpec: QuickSpec {
             describe("logging a message") {
                 beforeEach {
                     subject = QuickELoggerEngine(filename: "ItsLogLog",
-                                                 directory: .documents(),
+                                                 directory: Directory(fileManager: fakeFileManager),
                                                  fileManager: fakeFileManager,
                                                  jsonEncoder: fakeJSONEncoder,
                                                  jsonDecoder: fakeJSONDecoder,
-                                                 dataUtils: fakeDataUtils,
-                                                 fileUtils: fakeFileUtils,
+                                                 dataWrapper: fakeDataWrapper,
                                                  uuid: fakeUUID)
                 }
                 
                 describe("when a log file doesn't exist on disk") {
                     beforeEach {
-                        fakeDataUtils.shouldThrowLoadDataException = true
+                        fakeDataWrapper.shouldThrowLoadDataException = true
                                                                         
                         subject.log(message: "UNO", type: .info, currentDate: justADate)
                     }
@@ -73,11 +70,10 @@ class QuickELoggerEngineSpec: QuickSpec {
                         
                         expect(fakeJSONEncoder.capturedEncodeValue as? [LogMessage]).to(equal(expectedLogMessages))
                         
-                        expect(fakeDataUtils.capturedWriteData).to(equal(fakeJSONEncoder.stubbedEncodeData))
-                        expect(fakeDataUtils.capturedWriteURL).to(equal(URL(string: "file:///fake-directory/fakefilename.json")))
-                        
-                        expect(fakeFileUtils.capturedBuildFullFileURLDirectory).to(equal(.documents()))
-                        expect(fakeFileUtils.capturedBuildFullFileURLFilename).to(equal("ItsLogLog.json"))
+                        expect(fakeDataWrapper.capturedWriteData).to(equal(fakeJSONEncoder.stubbedEncodeData))
+                        expect(fakeDataWrapper.capturedWriteURL).to(equal(URL(string: "file:///fake-documents-directory/ItsLogLog.json")))
+
+                        expect(fakeFileManager.capturedSearchPathDirectory).to(equal(.documentDirectory))
                     }
                 }
                 
@@ -94,11 +90,10 @@ class QuickELoggerEngineSpec: QuickSpec {
                             
                             expect(fakeJSONEncoder.capturedEncodeValue as? [LogMessage]).to(equal(expectedLogMessages))
                                                        
-                            expect(fakeDataUtils.capturedWriteData).to(equal(fakeJSONEncoder.stubbedEncodeData))
-                            expect(fakeDataUtils.capturedWriteURL).to(equal(URL(string: "file:///fake-directory/fakefilename.json")))
+                            expect(fakeDataWrapper.capturedWriteData).to(equal(fakeJSONEncoder.stubbedEncodeData))
+                            expect(fakeDataWrapper.capturedWriteURL).to(equal(URL(string: "file:///fake-documents-directory/ItsLogLog.json")))
                             
-                            expect(fakeFileUtils.capturedBuildFullFileURLDirectory).to(equal(.documents()))
-                            expect(fakeFileUtils.capturedBuildFullFileURLFilename).to(equal("ItsLogLog.json"))
+                            expect(fakeFileManager.capturedSearchPathDirectory).to(equal(.documentDirectory))
                         }
                     }
                     
@@ -112,15 +107,14 @@ class QuickELoggerEngineSpec: QuickSpec {
                                                        LogMessage(id: "uuid-amigos-012345", timeStamp: justADate, type: .error, message: "TRES")]
                             
                             expect(fakeJSONDecoder.capturedDecodeTypeAsString).to(equal("Array<LogMessage>.Type"))
-                            expect(fakeJSONDecoder.capturedDecodeData).to(equal(fakeDataUtils.stubbedLoadData))
+                            expect(fakeJSONDecoder.capturedDecodeData).to(equal(fakeDataWrapper.stubbedLoadData))
                             
                             expect(fakeJSONEncoder.capturedEncodeValue as? [LogMessage]).to(equal(expectedLogMessages))
                                                        
-                            expect(fakeDataUtils.capturedWriteData).to(equal(fakeJSONEncoder.stubbedEncodeData))
-                            expect(fakeDataUtils.capturedWriteURL).to(equal(URL(string: "file:///fake-directory/fakefilename.json")))
+                            expect(fakeDataWrapper.capturedWriteData).to(equal(fakeJSONEncoder.stubbedEncodeData))
+                            expect(fakeDataWrapper.capturedWriteURL).to(equal(URL(string: "file:///fake-documents-directory/ItsLogLog.json")))
                             
-                            expect(fakeFileUtils.capturedBuildFullFileURLDirectory).to(equal(.documents()))
-                            expect(fakeFileUtils.capturedBuildFullFileURLFilename).to(equal("ItsLogLog.json"))
+                            expect(fakeFileManager.capturedSearchPathDirectory).to(equal(.documentDirectory))
                         }
                     }
                 }

@@ -20,23 +20,24 @@
 //WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import Foundation
+import Utensils
 
 func transformDirectory(objcDirectoryInfo: ObjCDirectoryInfo) -> Directory {
     switch objcDirectoryInfo.directory {
     case .documents:
-        return .documents(path: objcDirectoryInfo.additionalPath)
+        return Directory(.documents(additionalPath: objcDirectoryInfo.additionalPath))
         
     case .temp:
-        return .temp(path: objcDirectoryInfo.additionalPath)
+        return Directory(.temp(additionalPath: objcDirectoryInfo.additionalPath))
         
     case .library:
-        return .library(path: objcDirectoryInfo.additionalPath)
+        return Directory(.library(additionalPath: objcDirectoryInfo.additionalPath))
         
     case .caches:
-        return .caches(path: objcDirectoryInfo.additionalPath)
+        return Directory(.caches(additionalPath: objcDirectoryInfo.additionalPath))
         
     case .applicationSupport:
-        return .applicationSupport(path: objcDirectoryInfo.additionalPath)
+        return Directory(.applicationSupport(additionalPath: objcDirectoryInfo.additionalPath))
     }
 }
 

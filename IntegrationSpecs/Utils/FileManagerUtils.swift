@@ -1,15 +1,16 @@
 import Foundation
+import Utensils
 @testable import QuickELogger
 
 func documentsDirectory() -> URL {
     return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
 }
 
-let directoryDict = [ Directory.documents(): documentsDirectory(),
-                      Directory.temp(): FileManager.default.temporaryDirectory,
-                      Directory.library(): FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first!,
-                      Directory.caches(): FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!,
-                      Directory.applicationSupport(): FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first! ]
+let directoryDict = [ Directory(): documentsDirectory(),
+                      Directory(.temp()): FileManager.default.temporaryDirectory,
+                      Directory(.library()): FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first!,
+                      Directory(.caches()): FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!,
+                      Directory(.applicationSupport()): FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first! ]
 
 func deleteTestArtifacts() {
     deleteAllTestFiles()
@@ -56,7 +57,7 @@ func deleteAllTestDirectories() {
         
         // The library directory has a bunch of system directories, let's not touch those...
         
-        if directoryKey == .library() {
+        if directoryKey == Directory(.library()) {
             allFilePathsDirectory = allFilePathsDirectory.filter { filePath in
                 let librarySystemDirs = ["Preferences", "SplashBoard", "Caches", "Saved Application State"]
                 
