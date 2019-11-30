@@ -35,41 +35,33 @@ protocol QuickELoggerEngineProtocol {
 }
 
 class QuickELoggerEngine: QuickELoggerEngineProtocol {
+    // MARK: - Private properties
+    
+    private var trunk: TrunkProtocol
+
     // MARK: - Readonly properties
     
     let filename: String
     let directory: Directory
-    let fileManager: FileManagerProtocol
-    let dataWrapper: DataWrapperProtocol
     let uuid: UUIDProtocol
-    
-    private(set) var jsonEncoder: JSONEncoderProtocol
-    private(set) var jsonDecoder: JSONDecoderProtocol
-    
+        
     // MARK: - Init method
     
     init(filename: String,
          directory: Directory,
-         fileManager: FileManagerProtocol = FileManager.default,
-         jsonEncoder: JSONEncoderProtocol = JSONEncoder(),
-         jsonDecoder: JSONDecoderProtocol = JSONDecoder(),
-         dataWrapper: DataWrapperProtocol = DataWrapper(),
+         trunk: TrunkProtocol = Trunk(),
          uuid: UUIDProtocol = UUID()) {
-        self.filename = filename + ".json"
+        self.filename = filename
         self.directory = directory
-        self.fileManager = fileManager
-        self.jsonEncoder = jsonEncoder
-        self.jsonEncoder.outputFormatting = .prettyPrinted
-        self.jsonEncoder.dateEncodingStrategy = .iso8601
-        self.jsonDecoder = jsonDecoder
-        self.jsonDecoder.dateDecodingStrategy = .iso8601
-        self.dataWrapper = dataWrapper
+        self.trunk = trunk
+        self.trunk.outputFormat = .pretty
+        self.trunk.dateFormat = .iso8601
         self.uuid = uuid
     }
     
     // MARK: - Public methods
     
-    func log(message: String, type: LogType = .debug, currentDate: Date) {
+    func log(message: String, type: LogType, currentDate: Date) {
         let logMessage = LogMessage(id: uuid.uuidString,
                                     timeStamp: currentDate,
                                     type: type,
@@ -84,11 +76,7 @@ class QuickELoggerEngine: QuickELoggerEngineProtocol {
     // MARK: - Private methods
     
     private func getLogMessages() -> [LogMessage] {
-        guard let jsonData = try? dataWrapper.loadData(contentsOfPath: jsonFilePath()) else {
-            return []
-        }
-        
-        guard let logMessages = try? jsonDecoder.decode([LogMessage].self, from: jsonData) else {
+        guard let logMessages: [LogMessage] = trunk.load(directory: directory, filename: filename) else {
             return []
         }
         
@@ -100,12 +88,6 @@ class QuickELoggerEngine: QuickELoggerEngineProtocol {
     }
     
     private func saveLogMessages(messages: [LogMessage]) {
-        let encodedJSONData = try! jsonEncoder.encode(messages)
-        
-        do {
-            try dataWrapper.write(data: encodedJSONData, toPath: jsonFilePath())
-        } catch {
-            preconditionFailure("Unable to save messages json to file path: \(jsonFilePath())")
-        }
+        trunk.save(data: messages, directory: directory, filename: filename)
     }
 }
