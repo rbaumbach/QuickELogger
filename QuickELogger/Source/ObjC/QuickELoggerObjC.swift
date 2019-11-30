@@ -48,6 +48,16 @@ public class ObjCDirectoryInfo: NSObject {
     public var additionalPath: String?
     
     @objc
+    public convenience override init() {
+        self.init(directory: .applicationSupport, additionalPath: "QuickELogger/")
+    }
+    
+    @objc
+    public convenience init(directory: ObjCDirectory) {
+        self.init(directory: directory, additionalPath: "QuickELogger/")
+    }
+    
+    @objc
     public init(directory: ObjCDirectory, additionalPath: String?) {
         self.directory = directory
         self.additionalPath = additionalPath
